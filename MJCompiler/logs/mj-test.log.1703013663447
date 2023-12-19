@@ -1,0 +1,6 @@
+INFO  20:12:11,267 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  20:12:11,274 - #2 program
+INFO  20:12:11,274 - #50 mihailo
+ERROR 20:12:11,274 - 
+Sintaksna greska na liniji 1
+ERROR 20:12:11,274 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 1
