@@ -1,0 +1,70 @@
+INFO  15:47:12,483 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  15:47:12,499 - #2 program
+INFO  15:47:12,499 - #50 mihailo
+INFO  15:47:12,499 - #24 const
+INFO  15:47:12,500 - #50 int
+INFO  15:47:12,500 - #50 a
+INFO  15:47:12,501 - #12 =
+INFO  15:47:12,501 - #49 1
+INFO  15:47:12,501 - #8 ,
+INFO  15:47:12,502 - #50 b
+INFO  15:47:12,502 - #12 =
+INFO  15:47:12,503 - #49 2
+INFO  15:47:12,503 - #5 ;
+INFO  15:47:12,503 - #50 int
+INFO  15:47:12,503 - #50 c
+INFO  15:47:12,503 - #8 ,
+INFO  15:47:12,506 - #50 d
+INFO  15:47:12,506 - #5 ;
+INFO  15:47:12,506 - #3 {
+INFO  15:47:12,506 - #4 }
+INFO  15:47:12,508 - Program(
+ mihailo
+  ConstVarDeclarations(
+    ConstVarDeclarations(
+      ConstVarDeclListDerived1(
+      ) [ConstVarDeclListDerived1]
+      ConstDecl(
+        Type(
+         int
+        ) [Type]
+        CommaConstDeclList(
+          NoCommaConstDeclList(
+            ConstDeclaration(
+             a
+              NumConst(
+               1
+              ) [NumConst]
+            ) [ConstDeclaration]
+          ) [NoCommaConstDeclList]
+          ConstDeclaration(
+           b
+            NumConst(
+             2
+            ) [NumConst]
+          ) [ConstDeclaration]
+        ) [CommaConstDeclList]
+      ) [ConstDecl]
+    ) [ConstVarDeclarations]
+    VarDecl(
+      Type(
+       int
+      ) [Type]
+      CommaVarDeclList(
+        NoCommaVarDeclList(
+          VarDeclaration(
+           c
+            NoOSBrackets(
+            ) [NoOSBrackets]
+          ) [VarDeclaration]
+        ) [NoCommaVarDeclList]
+        VarDeclaration(
+         d
+          NoOSBrackets(
+          ) [NoOSBrackets]
+        ) [VarDeclaration]
+      ) [CommaVarDeclList]
+    ) [VarDecl]
+  ) [ConstVarDeclarations]
+) [Program]
+INFO  15:47:12,508 - ===================================

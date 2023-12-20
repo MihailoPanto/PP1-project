@@ -1,2 +1,9 @@
 program mihailo
+
+	const int a=1, b=2;
+	
+	const char f = 'f';
+	
+	int c, d, e[];
+
 {}

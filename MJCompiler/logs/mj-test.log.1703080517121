@@ -1,0 +1,7 @@
+INFO  14:51:35,576 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  14:51:35,590 - #2 program
+INFO  14:51:35,590 - #50 mihailo
+INFO  14:51:35,590 - #24 const
+ERROR 14:51:35,590 - 
+Sintaksna greska na liniji 3
+ERROR 14:51:35,590 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 3

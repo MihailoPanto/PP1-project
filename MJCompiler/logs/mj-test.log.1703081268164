@@ -1,0 +1,30 @@
+INFO  15:06:27,208 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  15:06:27,223 - #2 program
+INFO  15:06:27,223 - #50 mihailo
+INFO  15:06:27,223 - #24 const
+INFO  15:06:27,223 - #50 int
+INFO  15:06:27,223 - #50 a
+INFO  15:06:27,224 - #12 =
+INFO  15:06:27,224 - #49 2
+INFO  15:06:27,224 - #5 ;
+INFO  15:06:27,225 - #3 {
+INFO  15:06:27,225 - #4 }
+INFO  15:06:27,226 - Program(
+ mihailo
+  ConstDecl(
+    ConstTypeDerived1(
+      Type(
+       int
+      ) [Type]
+    ) [ConstTypeDerived1]
+    NoCommaConstDeclList(
+      ConstDeclaration(
+       a
+        NumConst(
+         2
+        ) [NumConst]
+      ) [ConstDeclaration]
+    ) [NoCommaConstDeclList]
+  ) [ConstDecl]
+) [Program]
+INFO  15:06:27,226 - ===================================

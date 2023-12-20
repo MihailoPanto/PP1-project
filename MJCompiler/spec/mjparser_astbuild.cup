@@ -58,26 +58,54 @@ terminal String IDENT ;
 terminal String CHAR;
 terminal IF, ELSE;
 nonterminal Program Program;
+nonterminal ConstVarDeclList ConstVarDeclList;
+nonterminal ConstVarDecl ConstVarDecl;
+nonterminal ConstDeclList ConstDeclList;
+nonterminal VarDeclList VarDeclList;
+nonterminal ConstDeclaration ConstDeclaration;
+nonterminal ConstValue ConstValue;
+nonterminal VarDeclaration VarDeclaration;
+nonterminal OptionalSquareBrackets OptionalSquareBrackets;
+nonterminal Type Type;
+nonterminal ConstType ConstType;
+nonterminal VarType VarType;
 
+Program ::= (Program) PROG IDENT:I1 ConstVarDeclList:C2 LBRACE RBRACE {: RESULT=new Program(I1, C2); RESULT.setLine(I1left); :};
 
-Program ::= (Program) PROG IDENT:I1 LBRACE RBRACE {: RESULT=new Program(I1); RESULT.setLine(I1left); :};
+ConstVarDeclList ::= (ConstVarDeclarations) ConstVarDeclList:C1 ConstVarDecl:C2 {: RESULT=new ConstVarDeclarations(C1, C2); RESULT.setLine(C1left); :}
+				| {: RESULT=new ConstVarDeclListDerived1(); :}
+				/*epsilon*/
+				;
 
+ConstVarDecl ::= (ConstDecl) CONST Type:T1 ConstDeclList:C2 SEMI {: RESULT=new ConstDecl(T1, C2); RESULT.setLine(T1left); :}
+				|
+				(VarDecl) Type:T1 VarDeclList:V2 SEMI {: RESULT=new VarDecl(T1, V2); RESULT.setLine(T1left); :}
+				;
 
+ConstDeclList ::= (CommaConstDeclList) ConstDeclList:C1 COMMA ConstDeclaration:C2 {: RESULT=new CommaConstDeclList(C1, C2); RESULT.setLine(C1left); :}
+				|
+				(NoCommaConstDeclList) ConstDeclaration:C1 {: RESULT=new NoCommaConstDeclList(C1); RESULT.setLine(C1left); :}
+				;
 				
+ConstDeclaration ::= (ConstDeclaration) IDENT:I1 EQUAL ConstValue:C2 {: RESULT=new ConstDeclaration(I1, C2); RESULT.setLine(I1left); :};
 
+ConstValue ::= (NumConst) NUMBER:N1 {: RESULT=new NumConst(N1); RESULT.setLine(N1left); :}
+			|
+			(CharConst) CHAR:C1 {: RESULT=new CharConst(C1); RESULT.setLine(C1left); :}
+			|
+			(BoolConst) BOOL:B1 {: RESULT=new BoolConst(B1); RESULT.setLine(B1left); :}
+			;
 
+VarDeclList ::= (CommaVarDeclList) VarDeclList:V1 COMMA VarDeclaration:V2 {: RESULT=new CommaVarDeclList(V1, V2); RESULT.setLine(V1left); :}
+			|
+			(NoCommaVarDeclList) VarDeclaration:V1 {: RESULT=new NoCommaVarDeclList(V1); RESULT.setLine(V1left); :}
+			;
+			
+VarDeclaration ::= (VarDeclaration) IDENT:I1 OptionalSquareBrackets:O2 {: RESULT=new VarDeclaration(I1, O2); RESULT.setLine(I1left); :};
 
+OptionalSquareBrackets ::= (OSBrackets) LSQBRACE RSQBRACE {: RESULT=new OSBrackets(); :}
+						|
+						(NoOSBrackets) {: RESULT=new NoOSBrackets(); :} /*epsilon*/
+						;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Type ::= (Type) IDENT:I1 {: RESULT=new Type(I1); RESULT.setLine(I1left); :};

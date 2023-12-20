@@ -1,0 +1,81 @@
+INFO  15:47:24,278 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  15:47:24,294 - #2 program
+INFO  15:47:24,295 - #50 mihailo
+INFO  15:47:24,295 - #24 const
+INFO  15:47:24,296 - #50 int
+INFO  15:47:24,296 - #50 a
+INFO  15:47:24,297 - #12 =
+INFO  15:47:24,297 - #49 1
+INFO  15:47:24,297 - #8 ,
+INFO  15:47:24,298 - #50 b
+INFO  15:47:24,299 - #12 =
+INFO  15:47:24,299 - #49 2
+INFO  15:47:24,299 - #5 ;
+INFO  15:47:24,299 - #50 int
+INFO  15:47:24,299 - #50 c
+INFO  15:47:24,300 - #8 ,
+INFO  15:47:24,305 - #50 d
+INFO  15:47:24,305 - #8 ,
+INFO  15:47:24,305 - #50 e
+INFO  15:47:24,305 - #35 [
+INFO  15:47:24,305 - #37 ]
+INFO  15:47:24,307 - #5 ;
+INFO  15:47:24,308 - #3 {
+INFO  15:47:24,312 - #4 }
+INFO  15:47:24,313 - Program(
+ mihailo
+  ConstVarDeclarations(
+    ConstVarDeclarations(
+      ConstVarDeclListDerived1(
+      ) [ConstVarDeclListDerived1]
+      ConstDecl(
+        Type(
+         int
+        ) [Type]
+        CommaConstDeclList(
+          NoCommaConstDeclList(
+            ConstDeclaration(
+             a
+              NumConst(
+               1
+              ) [NumConst]
+            ) [ConstDeclaration]
+          ) [NoCommaConstDeclList]
+          ConstDeclaration(
+           b
+            NumConst(
+             2
+            ) [NumConst]
+          ) [ConstDeclaration]
+        ) [CommaConstDeclList]
+      ) [ConstDecl]
+    ) [ConstVarDeclarations]
+    VarDecl(
+      Type(
+       int
+      ) [Type]
+      CommaVarDeclList(
+        CommaVarDeclList(
+          NoCommaVarDeclList(
+            VarDeclaration(
+             c
+              NoOSBrackets(
+              ) [NoOSBrackets]
+            ) [VarDeclaration]
+          ) [NoCommaVarDeclList]
+          VarDeclaration(
+           d
+            NoOSBrackets(
+            ) [NoOSBrackets]
+          ) [VarDeclaration]
+        ) [CommaVarDeclList]
+        VarDeclaration(
+         e
+          OSBrackets(
+          ) [OSBrackets]
+        ) [VarDeclaration]
+      ) [CommaVarDeclList]
+    ) [VarDecl]
+  ) [ConstVarDeclarations]
+) [Program]
+INFO  15:47:24,313 - ===================================

@@ -57,27 +57,44 @@ terminal Integer NUMBER ;
 terminal String IDENT ;
 terminal String CHAR;
 terminal IF, ELSE;
-nonterminal Program;
+nonterminal Program, ConstVarDeclList, ConstVarDecl, ConstDeclList, VarDeclList, ConstDeclaration, ConstValue, VarDeclaration, OptionalSquareBrackets, Type, ConstType, VarType;
 
+Program ::= (Program) PROG IDENT ConstVarDeclList LBRACE RBRACE;
 
-Program ::= (Program) PROG IDENT LBRACE RBRACE;
+ConstVarDeclList ::= (ConstVarDeclarations) ConstVarDeclList ConstVarDecl
+				|
+				/*epsilon*/
+				;
 
+ConstVarDecl ::= (ConstDecl) CONST Type ConstDeclList SEMI
+				|
+				(VarDecl) Type VarDeclList SEMI
+				;
 
+ConstDeclList ::= (CommaConstDeclList) ConstDeclList COMMA ConstDeclaration
+				|
+				(NoCommaConstDeclList) ConstDeclaration
+				;
 				
+ConstDeclaration ::= (ConstDeclaration) IDENT EQUAL ConstValue;
 
+ConstValue ::= (NumConst) NUMBER
+			|
+			(CharConst) CHAR
+			|
+			(BoolConst) BOOL
+			;
 
+VarDeclList ::= (CommaVarDeclList) VarDeclList COMMA VarDeclaration
+			|
+			(NoCommaVarDeclList) VarDeclaration
+			;
+			
+VarDeclaration ::= (VarDeclaration) IDENT OptionalSquareBrackets;
 
+OptionalSquareBrackets ::= (OSBrackets) LSQBRACE RSQBRACE
+						|
+						(NoOSBrackets) /*epsilon*/
+						;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Type ::= (Type) IDENT;
