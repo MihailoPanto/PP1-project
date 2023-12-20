@@ -69,8 +69,17 @@ nonterminal OptionalSquareBrackets OptionalSquareBrackets;
 nonterminal Type Type;
 nonterminal ConstType ConstType;
 nonterminal VarType VarType;
+nonterminal NamespaceList NamespaceList;
+nonterminal Namespace Namespace;
 
-Program ::= (Program) PROG IDENT:I1 ConstVarDeclList:C2 LBRACE RBRACE {: RESULT=new Program(I1, C2); RESULT.setLine(I1left); :};
+Program ::= (Program) PROG IDENT:I1 NamespaceList:N2 ConstVarDeclList:C3 LBRACE RBRACE {: RESULT=new Program(I1, N2, C3); RESULT.setLine(I1left); :};
+
+NamespaceList ::= (NsList) NamespaceList:N1 Namespace:N2 {: RESULT=new NsList(N1, N2); RESULT.setLine(N1left); :}
+				|
+				(NoNsList) {: RESULT=new NoNsList(); :} /*epsilon*/
+				;
+
+Namespace ::= (Namespace) NAMESPACE IDENT:I1 LBRACE ConstVarDeclList:C2 LBRACE RBRACE RBRACE {: RESULT=new Namespace(I1, C2); RESULT.setLine(I1left); :};
 
 ConstVarDeclList ::= (ConstVarDeclarations) ConstVarDeclList:C1 ConstVarDecl:C2 {: RESULT=new ConstVarDeclarations(C1, C2); RESULT.setLine(C1left); :}
 				| {: RESULT=new ConstVarDeclListDerived1(); :}

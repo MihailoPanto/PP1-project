@@ -58,8 +58,16 @@ terminal String IDENT ;
 terminal String CHAR;
 terminal IF, ELSE;
 nonterminal Program, ConstVarDeclList, ConstVarDecl, ConstDeclList, VarDeclList, ConstDeclaration, ConstValue, VarDeclaration, OptionalSquareBrackets, Type, ConstType, VarType;
+nonterminal NamespaceList, Namespace;
 
-Program ::= (Program) PROG IDENT ConstVarDeclList LBRACE RBRACE;
+Program ::= (Program) PROG IDENT NamespaceList ConstVarDeclList LBRACE RBRACE;
+
+NamespaceList ::= (NsList) NamespaceList Namespace
+				|
+				(NoNsList) /*epsilon*/
+				;
+
+Namespace ::= (Namespace) NAMESPACE IDENT LBRACE ConstVarDeclList LBRACE RBRACE RBRACE;
 
 ConstVarDeclList ::= (ConstVarDeclarations) ConstVarDeclList ConstVarDecl
 				|

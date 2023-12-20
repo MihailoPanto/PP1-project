@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 20/11/2023 15:46:35
+// 20/11/2023 16:20:56
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -10,10 +10,13 @@ public class Program implements SyntaxNode {
     private SyntaxNode parent;
     private int line;
     private String I1;
+    private NamespaceList NamespaceList;
     private ConstVarDeclList ConstVarDeclList;
 
-    public Program (String I1, ConstVarDeclList ConstVarDeclList) {
+    public Program (String I1, NamespaceList NamespaceList, ConstVarDeclList ConstVarDeclList) {
         this.I1=I1;
+        this.NamespaceList=NamespaceList;
+        if(NamespaceList!=null) NamespaceList.setParent(this);
         this.ConstVarDeclList=ConstVarDeclList;
         if(ConstVarDeclList!=null) ConstVarDeclList.setParent(this);
     }
@@ -24,6 +27,14 @@ public class Program implements SyntaxNode {
 
     public void setI1(String I1) {
         this.I1=I1;
+    }
+
+    public NamespaceList getNamespaceList() {
+        return NamespaceList;
+    }
+
+    public void setNamespaceList(NamespaceList NamespaceList) {
+        this.NamespaceList=NamespaceList;
     }
 
     public ConstVarDeclList getConstVarDeclList() {
@@ -55,15 +66,18 @@ public class Program implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(NamespaceList!=null) NamespaceList.accept(visitor);
         if(ConstVarDeclList!=null) ConstVarDeclList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(NamespaceList!=null) NamespaceList.traverseTopDown(visitor);
         if(ConstVarDeclList!=null) ConstVarDeclList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(NamespaceList!=null) NamespaceList.traverseBottomUp(visitor);
         if(ConstVarDeclList!=null) ConstVarDeclList.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -74,6 +88,12 @@ public class Program implements SyntaxNode {
         buffer.append("Program(\n");
 
         buffer.append(" "+tab+I1);
+        buffer.append("\n");
+
+        if(NamespaceList!=null)
+            buffer.append(NamespaceList.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(ConstVarDeclList!=null)

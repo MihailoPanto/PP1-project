@@ -5,17 +5,17 @@
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class ConstDeclaration implements SyntaxNode {
+public class Namespace implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
     private String I1;
-    private ConstValue ConstValue;
+    private ConstVarDeclList ConstVarDeclList;
 
-    public ConstDeclaration (String I1, ConstValue ConstValue) {
+    public Namespace (String I1, ConstVarDeclList ConstVarDeclList) {
         this.I1=I1;
-        this.ConstValue=ConstValue;
-        if(ConstValue!=null) ConstValue.setParent(this);
+        this.ConstVarDeclList=ConstVarDeclList;
+        if(ConstVarDeclList!=null) ConstVarDeclList.setParent(this);
     }
 
     public String getI1() {
@@ -26,12 +26,12 @@ public class ConstDeclaration implements SyntaxNode {
         this.I1=I1;
     }
 
-    public ConstValue getConstValue() {
-        return ConstValue;
+    public ConstVarDeclList getConstVarDeclList() {
+        return ConstVarDeclList;
     }
 
-    public void setConstValue(ConstValue ConstValue) {
-        this.ConstValue=ConstValue;
+    public void setConstVarDeclList(ConstVarDeclList ConstVarDeclList) {
+        this.ConstVarDeclList=ConstVarDeclList;
     }
 
     public SyntaxNode getParent() {
@@ -55,35 +55,35 @@ public class ConstDeclaration implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(ConstValue!=null) ConstValue.accept(visitor);
+        if(ConstVarDeclList!=null) ConstVarDeclList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(ConstValue!=null) ConstValue.traverseTopDown(visitor);
+        if(ConstVarDeclList!=null) ConstVarDeclList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(ConstValue!=null) ConstValue.traverseBottomUp(visitor);
+        if(ConstVarDeclList!=null) ConstVarDeclList.traverseBottomUp(visitor);
         accept(visitor);
     }
 
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("ConstDeclaration(\n");
+        buffer.append("Namespace(\n");
 
         buffer.append(" "+tab+I1);
         buffer.append("\n");
 
-        if(ConstValue!=null)
-            buffer.append(ConstValue.toString("  "+tab));
+        if(ConstVarDeclList!=null)
+            buffer.append(ConstVarDeclList.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [ConstDeclaration]");
+        buffer.append(") [Namespace]");
         return buffer.toString();
     }
 }
