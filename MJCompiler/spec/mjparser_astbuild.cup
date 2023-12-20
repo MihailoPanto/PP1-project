@@ -71,25 +71,64 @@ nonterminal ConstType ConstType;
 nonterminal VarType VarType;
 nonterminal NamespaceList NamespaceList;
 nonterminal Namespace Namespace;
+nonterminal MethodDeclList MethodDeclList;
+nonterminal MethodDecl MethodDecl;
+nonterminal ConstDecl ConstDecl;
+nonterminal VarDecl VarDecl;
+nonterminal MethodType MethodType;
+nonterminal MethodTypeName MethodTypeName;
+nonterminal LocalVarDeclList LocalVarDeclList;
+nonterminal FormPars FormPars;
+nonterminal FormPar FormPar;
 
-Program ::= (Program) PROG IDENT:I1 NamespaceList:N2 ConstVarDeclList:C3 LBRACE RBRACE {: RESULT=new Program(I1, N2, C3); RESULT.setLine(I1left); :};
+Program ::= (Program) PROG IDENT:I1 NamespaceList:N2 ConstVarDeclList:C3 LBRACE MethodDeclList:M4 RBRACE {: RESULT=new Program(I1, N2, C3, M4); RESULT.setLine(I1left); :};
 
 NamespaceList ::= (NsList) NamespaceList:N1 Namespace:N2 {: RESULT=new NsList(N1, N2); RESULT.setLine(N1left); :}
 				|
 				(NoNsList) {: RESULT=new NoNsList(); :} /*epsilon*/
 				;
 
-Namespace ::= (Namespace) NAMESPACE IDENT:I1 LBRACE ConstVarDeclList:C2 LBRACE RBRACE RBRACE {: RESULT=new Namespace(I1, C2); RESULT.setLine(I1left); :};
+Namespace ::= (Namespace) NAMESPACE IDENT:I1 LBRACE ConstVarDeclList:C2 LBRACE RBRACE MethodDeclList:M3 RBRACE {: RESULT=new Namespace(I1, C2, M3); RESULT.setLine(I1left); :};
+
+MethodDeclList ::= (MDList) MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MDList(M1, M2); RESULT.setLine(M1left); :}
+				|
+				(NoMDList) {: RESULT=new NoMDList(); :} /*epsilon*/
+				;
+				
+MethodDecl ::= (MethodDeclaration) MethodTypeName:M1 LPAREN FormPars:F2 RPAREN LocalVarDeclList:L3 LBRACE RBRACE {: RESULT=new MethodDeclaration(M1, F2, L3); RESULT.setLine(M1left); :};
+
+MethodTypeName ::= (MTypeName) MethodType:M1 IDENT:I2 {: RESULT=new MTypeName(M1, I2); RESULT.setLine(M1left); :};
+
+MethodType ::= (MType) Type:T1 {: RESULT=new MType(T1); RESULT.setLine(T1left); :}
+			|
+			(MVoid) VOID {: RESULT=new MVoid(); :}
+			;
+			
+FormPars ::= (FPars) FormPars:F1 COMMA FormPar:F2 {: RESULT=new FPars(F1, F2); RESULT.setLine(F1left); :}
+			|
+			(FPar) FormPar:F1 {: RESULT=new FPar(F1); RESULT.setLine(F1left); :}
+			;
+
+FormPar ::= (FormPar) Type:T1 IDENT:I2 OptionalSquareBrackets:O3 {: RESULT=new FormPar(T1, I2, O3); RESULT.setLine(T1left); :};
+
+LocalVarDeclList ::= (LVarDeclList) LocalVarDeclList:L1 VarDecl:V2 {: RESULT=new LVarDeclList(L1, V2); RESULT.setLine(L1left); :}
+					|
+					(NoLVarDeclList) {: RESULT=new NoLVarDeclList(); :} /*epsilon*/
+					;
 
 ConstVarDeclList ::= (ConstVarDeclarations) ConstVarDeclList:C1 ConstVarDecl:C2 {: RESULT=new ConstVarDeclarations(C1, C2); RESULT.setLine(C1left); :}
 				| {: RESULT=new ConstVarDeclListDerived1(); :}
 				/*epsilon*/
 				;
 
-ConstVarDecl ::= (ConstDecl) CONST Type:T1 ConstDeclList:C2 SEMI {: RESULT=new ConstDecl(T1, C2); RESULT.setLine(T1left); :}
+ConstVarDecl ::= (CDecl) ConstDecl:C1 {: RESULT=new CDecl(C1); RESULT.setLine(C1left); :}
 				|
-				(VarDecl) Type:T1 VarDeclList:V2 SEMI {: RESULT=new VarDecl(T1, V2); RESULT.setLine(T1left); :}
+				(VDecl) VarDecl:V1 {: RESULT=new VDecl(V1); RESULT.setLine(V1left); :}
 				;
+				
+ConstDecl ::= (ConstDecl) CONST Type:T1 ConstDeclList:C2 SEMI {: RESULT=new ConstDecl(T1, C2); RESULT.setLine(T1left); :};
+
+VarDecl ::= (VarDecl) Type:T1 VarDeclList:V2 SEMI {: RESULT=new VarDecl(T1, V2); RESULT.setLine(T1left); :};
 
 ConstDeclList ::= (CommaConstDeclList) ConstDeclList:C1 COMMA ConstDeclaration:C2 {: RESULT=new CommaConstDeclList(C1, C2); RESULT.setLine(C1left); :}
 				|

@@ -1,12 +1,14 @@
 // generated with ast extension for cup
 // version 0.8
-// 20/11/2023 16:20:56
+// 20/11/2023 22:3:6
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class VarDecl extends ConstVarDecl {
+public class VarDecl implements SyntaxNode {
 
+    private SyntaxNode parent;
+    private int line;
     private Type Type;
     private VarDeclList VarDeclList;
 
@@ -31,6 +33,22 @@ public class VarDecl extends ConstVarDecl {
 
     public void setVarDeclList(VarDeclList VarDeclList) {
         this.VarDeclList=VarDeclList;
+    }
+
+    public SyntaxNode getParent() {
+        return parent;
+    }
+
+    public void setParent(SyntaxNode parent) {
+        this.parent=parent;
+    }
+
+    public int getLine() {
+        return line;
+    }
+
+    public void setLine(int line) {
+        this.line=line;
     }
 
     public void accept(Visitor visitor) {

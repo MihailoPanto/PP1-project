@@ -58,26 +58,59 @@ terminal String IDENT ;
 terminal String CHAR;
 terminal IF, ELSE;
 nonterminal Program, ConstVarDeclList, ConstVarDecl, ConstDeclList, VarDeclList, ConstDeclaration, ConstValue, VarDeclaration, OptionalSquareBrackets, Type, ConstType, VarType;
-nonterminal NamespaceList, Namespace;
+nonterminal NamespaceList, Namespace, MethodDeclList, MethodDecl, ConstDecl, VarDecl, MethodType;
+nonterminal MethodTypeName, LocalVarDeclList, FormPars, FormPar;
+nonterminal Mulop, Addop, AssignOp, NamespaceAccess, Designator, DesignatorOptPart, DesignatorOptPartList;
+nonterminal Expr, Factor, Term, MinusOptional, ExprPart, DesignatorStatement, DesignatorStatementPart, Statement;
 
-Program ::= (Program) PROG IDENT NamespaceList ConstVarDeclList LBRACE RBRACE;
+Program ::= (Program) PROG IDENT NamespaceList ConstVarDeclList LBRACE MethodDeclList RBRACE;
 
 NamespaceList ::= (NsList) NamespaceList Namespace
 				|
 				(NoNsList) /*epsilon*/
 				;
 
-Namespace ::= (Namespace) NAMESPACE IDENT LBRACE ConstVarDeclList LBRACE RBRACE RBRACE;
+Namespace ::= (Namespace) NAMESPACE IDENT LBRACE ConstVarDeclList LBRACE RBRACE MethodDeclList RBRACE;
+
+MethodDeclList ::= (MDList) MethodDeclList MethodDecl
+				|
+				(NoMDList) /*epsilon*/
+				;
+				
+MethodDecl ::= (MethodDeclaration) MethodTypeName LPAREN FormPars RPAREN LocalVarDeclList LBRACE RBRACE;
+
+MethodTypeName ::= (MTypeName) MethodType IDENT;
+
+MethodType ::= (MType) Type
+			|
+			(MVoid) VOID
+			;
+			
+FormPars ::= (FPars) FormPars COMMA FormPar
+			|
+			(FPar) FormPar
+			;
+
+FormPar ::= (FormPar) Type IDENT OptionalSquareBrackets;
+
+LocalVarDeclList ::= (LVarDeclList) LocalVarDeclList VarDecl
+					|
+					(NoLVarDeclList) /*epsilon*/
+					;
 
 ConstVarDeclList ::= (ConstVarDeclarations) ConstVarDeclList ConstVarDecl
 				|
 				/*epsilon*/
 				;
 
-ConstVarDecl ::= (ConstDecl) CONST Type ConstDeclList SEMI
+ConstVarDecl ::= (CDecl) ConstDecl
 				|
-				(VarDecl) Type VarDeclList SEMI
+				(VDecl) VarDecl
 				;
+				
+ConstDecl ::= (ConstDecl) CONST Type ConstDeclList SEMI;
+
+VarDecl ::= (VarDecl) Type VarDeclList SEMI;
 
 ConstDeclList ::= (CommaConstDeclList) ConstDeclList COMMA ConstDeclaration
 				|
@@ -104,5 +137,78 @@ OptionalSquareBrackets ::= (OSBrackets) LSQBRACE RSQBRACE
 						|
 						(NoOSBrackets) /*epsilon*/
 						;
+						
+
 
 Type ::= (Type) IDENT;
+
+Statement ::= (StatementDesigStat) DesignatorStatement SEMI;
+
+DesignatorStatement ::= (DesignatorStatement) Designator DesignatorStatementPart;
+
+DesignatorStatementPart ::= (AssignExpr) Assignop Expr
+						|
+						(PlusPlus) PLUSPLUS
+						|
+						(MinusMinus) MINUSMINUS
+						;
+
+Expr ::= (Expr) MinusOptional ExprPart;
+
+ExprPart ::= (AddopExprPart) ExprPart Addop Term
+			|
+			(NoAddopExprPart) Term
+			;
+
+MinusOptional ::= (MinusOpt) MINUS
+				|
+				/*epsilon*/
+				;
+
+Term ::= (TermMulop) Term Mulop Factor
+		|
+		(TermFactor) Factor
+		; 
+
+Factor ::= (FactorConstValue) ConstValue
+		|
+		(FactorNew) NEW Type LSQBRACE Expr RSQBRACE
+		|
+		(FactorExpr) LPAREN Expr RPAREN
+		;
+
+Designator ::= (Designator) NamespaceAccess IDENT DesignatorOptPart;
+
+DesignatorOptPartList ::= (DesigOptPList) DesignatorOptPartList DesignatorOptPart
+						|
+						(NoDesigOptPList) /*epsilon*/
+						;
+
+DesignatorOptPart ::= (DesignatorComma) COMMA IDENT
+					|
+					(DesignatorExpr) LSQBRACE Expr RSQBRACE
+					;
+
+NamespaceAccess ::= (NsAccess) IDENT TWODOUBLEDOT
+				|
+				(NoNsAccess) /*epsilon*/
+				;
+
+AssignOp ::= (Equal) EQUAL;
+
+Addop ::= (Plus) PLUS
+		|
+		(Minus) MINUS
+		;
+
+Mulop ::= (Mul) MUL
+		|
+		(Div) DIV
+		|
+		(Mod) MOD;
+		;
+		
+		
+		
+		
+		

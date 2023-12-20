@@ -1,0 +1,303 @@
+INFO  21:45:48,476 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  21:45:48,501 - #2 program
+INFO  21:45:48,501 - #50 mihailo
+INFO  21:45:48,501 - #47 namespace
+INFO  21:45:48,503 - #50 Konstante
+INFO  21:45:48,503 - #3 {
+INFO  21:45:48,503 - #24 const
+INFO  21:45:48,505 - #50 int
+INFO  21:45:48,505 - #50 nula
+INFO  21:45:48,507 - #12 =
+INFO  21:45:48,507 - #49 0
+INFO  21:45:48,507 - #5 ;
+INFO  21:45:48,508 - #24 const
+INFO  21:45:48,511 - #50 int
+INFO  21:45:48,511 - #50 jedan
+INFO  21:45:48,511 - #12 =
+INFO  21:45:48,511 - #49 1
+INFO  21:45:48,511 - #5 ;
+INFO  21:45:48,511 - #24 const
+INFO  21:45:48,511 - #50 int
+INFO  21:45:48,511 - #50 pet
+INFO  21:45:48,514 - #12 =
+INFO  21:45:48,514 - #49 5
+INFO  21:45:48,514 - #5 ;
+INFO  21:45:48,514 - #3 {
+INFO  21:45:48,514 - #4 }
+INFO  21:45:48,514 - #4 }
+INFO  21:45:48,514 - #47 namespace
+INFO  21:45:48,516 - #50 Nizovi
+INFO  21:45:48,516 - #3 {
+INFO  21:45:48,516 - #50 int
+INFO  21:45:48,516 - #50 niz
+INFO  21:45:48,516 - #35 [
+INFO  21:45:48,516 - #37 ]
+INFO  21:45:48,516 - #5 ;
+INFO  21:45:48,518 - #50 char
+INFO  21:45:48,520 - #50 nizch
+INFO  21:45:48,520 - #35 [
+INFO  21:45:48,520 - #37 ]
+INFO  21:45:48,520 - #5 ;
+INFO  21:45:48,522 - #3 {
+INFO  21:45:48,522 - #4 }
+INFO  21:45:48,522 - #4 }
+INFO  21:45:48,522 - #24 const
+INFO  21:45:48,522 - #50 int
+INFO  21:45:48,522 - #50 a
+INFO  21:45:48,522 - #12 =
+INFO  21:45:48,522 - #49 1
+INFO  21:45:48,522 - #8 ,
+INFO  21:45:48,523 - #50 b
+INFO  21:45:48,523 - #12 =
+INFO  21:45:48,523 - #49 2
+INFO  21:45:48,523 - #5 ;
+INFO  21:45:48,523 - #24 const
+INFO  21:45:48,523 - #50 char
+INFO  21:45:48,523 - #50 f
+INFO  21:45:48,523 - #12 =
+INFO  21:45:48,523 - #51 'f'
+INFO  21:45:48,523 - #5 ;
+INFO  21:45:48,523 - #50 int
+INFO  21:45:48,523 - #50 c
+INFO  21:45:48,523 - #8 ,
+INFO  21:45:48,525 - #50 d
+INFO  21:45:48,525 - #8 ,
+INFO  21:45:48,525 - #50 e
+INFO  21:45:48,525 - #35 [
+INFO  21:45:48,525 - #37 ]
+INFO  21:45:48,525 - #5 ;
+INFO  21:45:48,525 - #3 {
+INFO  21:45:48,525 - #13 void
+INFO  21:45:48,526 - #50 main
+INFO  21:45:48,527 - #6 (
+INFO  21:45:48,527 - #7 )
+INFO  21:45:48,527 - #50 int
+INFO  21:45:48,528 - #50 c
+INFO  21:45:48,528 - #8 ,
+INFO  21:45:48,528 - #50 d
+INFO  21:45:48,528 - #8 ,
+INFO  21:45:48,528 - #50 e
+INFO  21:45:48,528 - #35 [
+INFO  21:45:48,528 - #37 ]
+INFO  21:45:48,528 - #5 ;
+INFO  21:45:48,528 - #3 {
+INFO  21:45:48,528 - #4 }
+INFO  21:45:48,529 - #4 }
+INFO  21:45:48,531 - Program(
+ mihailo
+  NsList(
+    NsList(
+      NoNsList(
+      ) [NoNsList]
+      Namespace(
+       Konstante
+        ConstVarDeclarations(
+          ConstVarDeclarations(
+            ConstVarDeclarations(
+              ConstVarDeclListDerived1(
+              ) [ConstVarDeclListDerived1]
+              CDecl(
+                ConstDecl(
+                  Type(
+                   int
+                  ) [Type]
+                  NoCommaConstDeclList(
+                    ConstDeclaration(
+                     nula
+                      NumConst(
+                       0
+                      ) [NumConst]
+                    ) [ConstDeclaration]
+                  ) [NoCommaConstDeclList]
+                ) [ConstDecl]
+              ) [CDecl]
+            ) [ConstVarDeclarations]
+            CDecl(
+              ConstDecl(
+                Type(
+                 int
+                ) [Type]
+                NoCommaConstDeclList(
+                  ConstDeclaration(
+                   jedan
+                    NumConst(
+                     1
+                    ) [NumConst]
+                  ) [ConstDeclaration]
+                ) [NoCommaConstDeclList]
+              ) [ConstDecl]
+            ) [CDecl]
+          ) [ConstVarDeclarations]
+          CDecl(
+            ConstDecl(
+              Type(
+               int
+              ) [Type]
+              NoCommaConstDeclList(
+                ConstDeclaration(
+                 pet
+                  NumConst(
+                   5
+                  ) [NumConst]
+                ) [ConstDeclaration]
+              ) [NoCommaConstDeclList]
+            ) [ConstDecl]
+          ) [CDecl]
+        ) [ConstVarDeclarations]
+      ) [Namespace]
+    ) [NsList]
+    Namespace(
+     Nizovi
+      ConstVarDeclarations(
+        ConstVarDeclarations(
+          ConstVarDeclListDerived1(
+          ) [ConstVarDeclListDerived1]
+          VDecl(
+            VarDecl(
+              Type(
+               int
+              ) [Type]
+              NoCommaVarDeclList(
+                VarDeclaration(
+                 niz
+                  OSBrackets(
+                  ) [OSBrackets]
+                ) [VarDeclaration]
+              ) [NoCommaVarDeclList]
+            ) [VarDecl]
+          ) [VDecl]
+        ) [ConstVarDeclarations]
+        VDecl(
+          VarDecl(
+            Type(
+             char
+            ) [Type]
+            NoCommaVarDeclList(
+              VarDeclaration(
+               nizch
+                OSBrackets(
+                ) [OSBrackets]
+              ) [VarDeclaration]
+            ) [NoCommaVarDeclList]
+          ) [VarDecl]
+        ) [VDecl]
+      ) [ConstVarDeclarations]
+    ) [Namespace]
+  ) [NsList]
+  ConstVarDeclarations(
+    ConstVarDeclarations(
+      ConstVarDeclarations(
+        ConstVarDeclListDerived1(
+        ) [ConstVarDeclListDerived1]
+        CDecl(
+          ConstDecl(
+            Type(
+             int
+            ) [Type]
+            CommaConstDeclList(
+              NoCommaConstDeclList(
+                ConstDeclaration(
+                 a
+                  NumConst(
+                   1
+                  ) [NumConst]
+                ) [ConstDeclaration]
+              ) [NoCommaConstDeclList]
+              ConstDeclaration(
+               b
+                NumConst(
+                 2
+                ) [NumConst]
+              ) [ConstDeclaration]
+            ) [CommaConstDeclList]
+          ) [ConstDecl]
+        ) [CDecl]
+      ) [ConstVarDeclarations]
+      CDecl(
+        ConstDecl(
+          Type(
+           char
+          ) [Type]
+          NoCommaConstDeclList(
+            ConstDeclaration(
+             f
+              CharConst(
+               'f'
+              ) [CharConst]
+            ) [ConstDeclaration]
+          ) [NoCommaConstDeclList]
+        ) [ConstDecl]
+      ) [CDecl]
+    ) [ConstVarDeclarations]
+    VDecl(
+      VarDecl(
+        Type(
+         int
+        ) [Type]
+        CommaVarDeclList(
+          CommaVarDeclList(
+            NoCommaVarDeclList(
+              VarDeclaration(
+               c
+                NoOSBrackets(
+                ) [NoOSBrackets]
+              ) [VarDeclaration]
+            ) [NoCommaVarDeclList]
+            VarDeclaration(
+             d
+              NoOSBrackets(
+              ) [NoOSBrackets]
+            ) [VarDeclaration]
+          ) [CommaVarDeclList]
+          VarDeclaration(
+           e
+            OSBrackets(
+            ) [OSBrackets]
+          ) [VarDeclaration]
+        ) [CommaVarDeclList]
+      ) [VarDecl]
+    ) [VDecl]
+  ) [ConstVarDeclarations]
+  MDList(
+    NoMDList(
+    ) [NoMDList]
+    MethodDeclaration(
+      MTypeName(
+        MVoid(
+        ) [MVoid]
+       main
+      ) [MTypeName]
+      LVarDeclList(
+        NoLVarDeclList(
+        ) [NoLVarDeclList]
+        VarDecl(
+          Type(
+           int
+          ) [Type]
+          CommaVarDeclList(
+            CommaVarDeclList(
+              NoCommaVarDeclList(
+                VarDeclaration(
+                 c
+                  NoOSBrackets(
+                  ) [NoOSBrackets]
+                ) [VarDeclaration]
+              ) [NoCommaVarDeclList]
+              VarDeclaration(
+               d
+                NoOSBrackets(
+                ) [NoOSBrackets]
+              ) [VarDeclaration]
+            ) [CommaVarDeclList]
+            VarDeclaration(
+             e
+              OSBrackets(
+              ) [OSBrackets]
+            ) [VarDeclaration]
+          ) [CommaVarDeclList]
+        ) [VarDecl]
+      ) [LVarDeclList]
+    ) [MethodDeclaration]
+  ) [MDList]
+) [Program]
+INFO  21:45:48,531 - ===================================

@@ -21,4 +21,9 @@ namespace Nizovi{
 	
 	int c, d, e[];
 
-{}
+{
+
+void main(int xx, char yy[])int c, d, e[]; char f;{
+}
+
+}
