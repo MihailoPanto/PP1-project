@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 20/11/2023 22:3:6
+// 21/11/2023 15:19:45
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,16 +8,19 @@ package rs.ac.bg.etf.pp1.ast;
 public class MethodDeclaration extends MethodDecl {
 
     private MethodTypeName MethodTypeName;
-    private FormPars FormPars;
+    private FormParsOpt FormParsOpt;
     private LocalVarDeclList LocalVarDeclList;
+    private StatementList StatementList;
 
-    public MethodDeclaration (MethodTypeName MethodTypeName, FormPars FormPars, LocalVarDeclList LocalVarDeclList) {
+    public MethodDeclaration (MethodTypeName MethodTypeName, FormParsOpt FormParsOpt, LocalVarDeclList LocalVarDeclList, StatementList StatementList) {
         this.MethodTypeName=MethodTypeName;
         if(MethodTypeName!=null) MethodTypeName.setParent(this);
-        this.FormPars=FormPars;
-        if(FormPars!=null) FormPars.setParent(this);
+        this.FormParsOpt=FormParsOpt;
+        if(FormParsOpt!=null) FormParsOpt.setParent(this);
         this.LocalVarDeclList=LocalVarDeclList;
         if(LocalVarDeclList!=null) LocalVarDeclList.setParent(this);
+        this.StatementList=StatementList;
+        if(StatementList!=null) StatementList.setParent(this);
     }
 
     public MethodTypeName getMethodTypeName() {
@@ -28,12 +31,12 @@ public class MethodDeclaration extends MethodDecl {
         this.MethodTypeName=MethodTypeName;
     }
 
-    public FormPars getFormPars() {
-        return FormPars;
+    public FormParsOpt getFormParsOpt() {
+        return FormParsOpt;
     }
 
-    public void setFormPars(FormPars FormPars) {
-        this.FormPars=FormPars;
+    public void setFormParsOpt(FormParsOpt FormParsOpt) {
+        this.FormParsOpt=FormParsOpt;
     }
 
     public LocalVarDeclList getLocalVarDeclList() {
@@ -44,27 +47,38 @@ public class MethodDeclaration extends MethodDecl {
         this.LocalVarDeclList=LocalVarDeclList;
     }
 
+    public StatementList getStatementList() {
+        return StatementList;
+    }
+
+    public void setStatementList(StatementList StatementList) {
+        this.StatementList=StatementList;
+    }
+
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 
     public void childrenAccept(Visitor visitor) {
         if(MethodTypeName!=null) MethodTypeName.accept(visitor);
-        if(FormPars!=null) FormPars.accept(visitor);
+        if(FormParsOpt!=null) FormParsOpt.accept(visitor);
         if(LocalVarDeclList!=null) LocalVarDeclList.accept(visitor);
+        if(StatementList!=null) StatementList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(MethodTypeName!=null) MethodTypeName.traverseTopDown(visitor);
-        if(FormPars!=null) FormPars.traverseTopDown(visitor);
+        if(FormParsOpt!=null) FormParsOpt.traverseTopDown(visitor);
         if(LocalVarDeclList!=null) LocalVarDeclList.traverseTopDown(visitor);
+        if(StatementList!=null) StatementList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(MethodTypeName!=null) MethodTypeName.traverseBottomUp(visitor);
-        if(FormPars!=null) FormPars.traverseBottomUp(visitor);
+        if(FormParsOpt!=null) FormParsOpt.traverseBottomUp(visitor);
         if(LocalVarDeclList!=null) LocalVarDeclList.traverseBottomUp(visitor);
+        if(StatementList!=null) StatementList.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -79,14 +93,20 @@ public class MethodDeclaration extends MethodDecl {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(FormPars!=null)
-            buffer.append(FormPars.toString("  "+tab));
+        if(FormParsOpt!=null)
+            buffer.append(FormParsOpt.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(LocalVarDeclList!=null)
             buffer.append(LocalVarDeclList.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(StatementList!=null)
+            buffer.append(StatementList.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

@@ -80,6 +80,25 @@ nonterminal MethodTypeName MethodTypeName;
 nonterminal LocalVarDeclList LocalVarDeclList;
 nonterminal FormPars FormPars;
 nonterminal FormPar FormPar;
+nonterminal Mulop Mulop;
+nonterminal Addop Addop;
+nonterminal AssignOp AssignOp;
+nonterminal NamespaceAccess NamespaceAccess;
+nonterminal Designator Designator;
+nonterminal DesignatorOptPart DesignatorOptPart;
+nonterminal DesignatorOptPartList DesignatorOptPartList;
+nonterminal Expr Expr;
+nonterminal Factor Factor;
+nonterminal Term Term;
+nonterminal MinusOptional MinusOptional;
+nonterminal ExprPart ExprPart;
+nonterminal DesignatorStatement DesignatorStatement;
+nonterminal DesignatorStatementPart DesignatorStatementPart;
+nonterminal Statement Statement;
+nonterminal StatementList StatementList;
+nonterminal DesignatorIdent DesignatorIdent;
+nonterminal OptPrint OptPrint;
+nonterminal FormParsOpt FormParsOpt;
 
 Program ::= (Program) PROG IDENT:I1 NamespaceList:N2 ConstVarDeclList:C3 LBRACE MethodDeclList:M4 RBRACE {: RESULT=new Program(I1, N2, C3, M4); RESULT.setLine(I1left); :};
 
@@ -95,13 +114,18 @@ MethodDeclList ::= (MDList) MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MDList
 				(NoMDList) {: RESULT=new NoMDList(); :} /*epsilon*/
 				;
 				
-MethodDecl ::= (MethodDeclaration) MethodTypeName:M1 LPAREN FormPars:F2 RPAREN LocalVarDeclList:L3 LBRACE RBRACE {: RESULT=new MethodDeclaration(M1, F2, L3); RESULT.setLine(M1left); :};
+MethodDecl ::= (MethodDeclaration) MethodTypeName:M1 LPAREN FormParsOpt:F2 RPAREN LocalVarDeclList:L3 LBRACE StatementList:S4 RBRACE {: RESULT=new MethodDeclaration(M1, F2, L3, S4); RESULT.setLine(M1left); :};
 
 MethodTypeName ::= (MTypeName) MethodType:M1 IDENT:I2 {: RESULT=new MTypeName(M1, I2); RESULT.setLine(M1left); :};
 
 MethodType ::= (MType) Type:T1 {: RESULT=new MType(T1); RESULT.setLine(T1left); :}
 			|
 			(MVoid) VOID {: RESULT=new MVoid(); :}
+			;
+			
+FormParsOpt ::= (FParsOpt) FormPars:F1 {: RESULT=new FParsOpt(F1); RESULT.setLine(F1left); :}
+			|
+			(NoFParsOpt) {: RESULT=new NoFParsOpt(); :}/*epsilon*/
 			;
 			
 FormPars ::= (FPars) FormPars:F1 COMMA FormPar:F2 {: RESULT=new FPars(F1, F2); RESULT.setLine(F1left); :}
@@ -124,6 +148,8 @@ ConstVarDeclList ::= (ConstVarDeclarations) ConstVarDeclList:C1 ConstVarDecl:C2 
 ConstVarDecl ::= (CDecl) ConstDecl:C1 {: RESULT=new CDecl(C1); RESULT.setLine(C1left); :}
 				|
 				(VDecl) VarDecl:V1 {: RESULT=new VDecl(V1); RESULT.setLine(V1left); :}
+				|
+				error SEMI:l {: parser.report_error("Sintaksa greska deklaracije globalne promenljive na liniji " + lleft, null); :} {: RESULT=new ConstVarDeclDerived1(); :}
 				;
 				
 ConstDecl ::= (ConstDecl) CONST Type:T1 ConstDeclList:C2 SEMI {: RESULT=new ConstDecl(T1, C2); RESULT.setLine(T1left); :};
@@ -155,5 +181,88 @@ OptionalSquareBrackets ::= (OSBrackets) LSQBRACE RSQBRACE {: RESULT=new OSBracke
 						|
 						(NoOSBrackets) {: RESULT=new NoOSBrackets(); :} /*epsilon*/
 						;
-
+						
 Type ::= (Type) IDENT:I1 {: RESULT=new Type(I1); RESULT.setLine(I1left); :};
+
+StatementList ::= (StatList) StatementList:S1 Statement:S2 {: RESULT=new StatList(S1, S2); RESULT.setLine(S1left); :}
+				|
+				(NoStatList) {: RESULT=new NoStatList(); :} /*epsilon*/
+				;
+
+Statement ::= (StatementDesigStat) DesignatorStatement:D1 SEMI {: RESULT=new StatementDesigStat(D1); RESULT.setLine(D1left); :}
+			|
+		 	error SEMI:l {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :} {: RESULT=new StatementDerived1(); :}
+			|
+			(StatementRead) READ LPAREN Designator:D1 RPAREN SEMI {: RESULT=new StatementRead(D1); RESULT.setLine(D1left); :}
+			|
+			(StatementPrint) PRINT LPAREN Expr:E1 OptPrint:O2 RPAREN SEMI {: RESULT=new StatementPrint(E1, O2); RESULT.setLine(E1left); :}
+			;
+
+OptPrint ::= (CommaOptPrint) COMMA NUMBER:N1 {: RESULT=new CommaOptPrint(N1); RESULT.setLine(N1left); :}
+			|
+			(NoOptPrint) {: RESULT=new NoOptPrint(); :} /*epsilon*/
+			;
+
+DesignatorStatement ::= (DesigStatement) Designator:D1 DesignatorStatementPart:D2 {: RESULT=new DesigStatement(D1, D2); RESULT.setLine(D1left); :};
+
+DesignatorStatementPart ::= (AssignExpr) AssignOp:A1 Expr:E2 {: RESULT=new AssignExpr(A1, E2); RESULT.setLine(A1left); :}
+						|
+						(PlusPlus) PLUSPLUS {: RESULT=new PlusPlus(); :}
+						|
+						(MinusMinus) MINUSMINUS {: RESULT=new MinusMinus(); :}
+						;
+
+Expr ::= (Exp) MinusOptional:M1 ExprPart:E2 {: RESULT=new Exp(M1, E2); RESULT.setLine(M1left); :};
+
+ExprPart ::= (AddopExprPart) ExprPart:E1 Addop:A2 Term:T3 {: RESULT=new AddopExprPart(E1, A2, T3); RESULT.setLine(E1left); :}
+			|
+			(NoAddopExprPart) Term:T1 {: RESULT=new NoAddopExprPart(T1); RESULT.setLine(T1left); :}
+			;
+
+MinusOptional ::= (MinusOpt) MINUS {: RESULT=new MinusOpt(); :}
+				|
+				(NoMinusOpt) {: RESULT=new NoMinusOpt(); :} /*epsilon*/
+				;
+
+Term ::= (TermMulop) Term:T1 Mulop:M2 Factor:F3 {: RESULT=new TermMulop(T1, M2, F3); RESULT.setLine(T1left); :}
+		|
+		(TermFactor) Factor:F1 {: RESULT=new TermFactor(F1); RESULT.setLine(F1left); :}
+		; 
+
+Factor ::= (FactorConstValue) ConstValue:C1 {: RESULT=new FactorConstValue(C1); RESULT.setLine(C1left); :}
+		|
+		(FactorNew) NEW Type:T1 LSQBRACE Expr:E2 RSQBRACE {: RESULT=new FactorNew(T1, E2); RESULT.setLine(T1left); :}
+		|
+		(FactorExpr) LPAREN Expr:E1 RPAREN {: RESULT=new FactorExpr(E1); RESULT.setLine(E1left); :}
+		|
+		(FactorDesignator) Designator:D1 {: RESULT=new FactorDesignator(D1); RESULT.setLine(D1left); :}
+		;
+
+Designator ::= (Designator) NamespaceAccess:N1 DesignatorOptPart:D2 {: RESULT=new Designator(N1, D2); RESULT.setLine(N1left); :};
+
+DesignatorOptPart ::= (DesignatorExpr) LSQBRACE Expr:E1 RSQBRACE {: RESULT=new DesignatorExpr(E1); RESULT.setLine(E1left); :}
+					|
+					(NoDesignatorExpr) {: RESULT=new NoDesignatorExpr(); :} /*epsilon*/
+					;
+
+NamespaceAccess ::= (NsAccess) IDENT:I1 TWODOUBLEDOT IDENT:I2 {: RESULT=new NsAccess(I1, I2); RESULT.setLine(I1left); :}
+				|
+				(NoNsAccess) IDENT:I1 {: RESULT=new NoNsAccess(I1); RESULT.setLine(I1left); :}
+				;
+				
+
+AssignOp ::= (AssignOpEqual) EQUAL {: RESULT=new AssignOpEqual(); :};
+
+Addop ::= (AddopPlus) PLUS {: RESULT=new AddopPlus(); :}
+		|
+		(AddopMinus) MINUS {: RESULT=new AddopMinus(); :}
+		;
+		
+Mulop ::= (Mul) MUL {: RESULT=new Mul(); :}
+		|
+		(Div) DIV {: RESULT=new Div(); :}
+		|
+		(Mod) MOD {: RESULT=new Mod(); :}
+		;	
+		
+		

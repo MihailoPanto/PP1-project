@@ -62,6 +62,7 @@ nonterminal NamespaceList, Namespace, MethodDeclList, MethodDecl, ConstDecl, Var
 nonterminal MethodTypeName, LocalVarDeclList, FormPars, FormPar;
 nonterminal Mulop, Addop, AssignOp, NamespaceAccess, Designator, DesignatorOptPart, DesignatorOptPartList;
 nonterminal Expr, Factor, Term, MinusOptional, ExprPart, DesignatorStatement, DesignatorStatementPart, Statement;
+nonterminal StatementList, DesignatorIdent, OptPrint, FormParsOpt;
 
 Program ::= (Program) PROG IDENT NamespaceList ConstVarDeclList LBRACE MethodDeclList RBRACE;
 
@@ -77,13 +78,18 @@ MethodDeclList ::= (MDList) MethodDeclList MethodDecl
 				(NoMDList) /*epsilon*/
 				;
 				
-MethodDecl ::= (MethodDeclaration) MethodTypeName LPAREN FormPars RPAREN LocalVarDeclList LBRACE RBRACE;
+MethodDecl ::= (MethodDeclaration) MethodTypeName LPAREN FormParsOpt RPAREN LocalVarDeclList LBRACE StatementList RBRACE;
 
 MethodTypeName ::= (MTypeName) MethodType IDENT;
 
 MethodType ::= (MType) Type
 			|
 			(MVoid) VOID
+			;
+			
+FormParsOpt ::= (FParsOpt) FormPars
+			|
+			(NoFParsOpt)/*epsilon*/
 			;
 			
 FormPars ::= (FPars) FormPars COMMA FormPar
@@ -106,6 +112,8 @@ ConstVarDeclList ::= (ConstVarDeclarations) ConstVarDeclList ConstVarDecl
 ConstVarDecl ::= (CDecl) ConstDecl
 				|
 				(VDecl) VarDecl
+				|
+				error SEMI:l {: parser.report_error("Sintaksa greska deklaracije globalne promenljive na liniji " + lleft, null); :}
 				;
 				
 ConstDecl ::= (ConstDecl) CONST Type ConstDeclList SEMI;
@@ -138,22 +146,37 @@ OptionalSquareBrackets ::= (OSBrackets) LSQBRACE RSQBRACE
 						(NoOSBrackets) /*epsilon*/
 						;
 						
-
-
 Type ::= (Type) IDENT;
 
-Statement ::= (StatementDesigStat) DesignatorStatement SEMI;
+StatementList ::= (StatList) StatementList Statement
+				|
+				(NoStatList) /*epsilon*/
+				;
 
-DesignatorStatement ::= (DesignatorStatement) Designator DesignatorStatementPart;
+Statement ::= (StatementDesigStat) DesignatorStatement SEMI
+			|
+		 	error SEMI:l {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :}
+			|
+			(StatementRead) READ LPAREN Designator RPAREN SEMI
+			|
+			(StatementPrint) PRINT LPAREN Expr OptPrint RPAREN SEMI
+			;
 
-DesignatorStatementPart ::= (AssignExpr) Assignop Expr
+OptPrint ::= (CommaOptPrint) COMMA NUMBER
+			|
+			(NoOptPrint) /*epsilon*/
+			;
+
+DesignatorStatement ::= (DesigStatement) Designator DesignatorStatementPart;
+
+DesignatorStatementPart ::= (AssignExpr) AssignOp Expr
 						|
 						(PlusPlus) PLUSPLUS
 						|
 						(MinusMinus) MINUSMINUS
 						;
 
-Expr ::= (Expr) MinusOptional ExprPart;
+Expr ::= (Exp) MinusOptional ExprPart;
 
 ExprPart ::= (AddopExprPart) ExprPart Addop Term
 			|
@@ -162,7 +185,7 @@ ExprPart ::= (AddopExprPart) ExprPart Addop Term
 
 MinusOptional ::= (MinusOpt) MINUS
 				|
-				/*epsilon*/
+				(NoMinusOpt) /*epsilon*/
 				;
 
 Term ::= (TermMulop) Term Mulop Factor
@@ -175,40 +198,35 @@ Factor ::= (FactorConstValue) ConstValue
 		(FactorNew) NEW Type LSQBRACE Expr RSQBRACE
 		|
 		(FactorExpr) LPAREN Expr RPAREN
+		|
+		(FactorDesignator) Designator
 		;
 
-Designator ::= (Designator) NamespaceAccess IDENT DesignatorOptPart;
+Designator ::= (Designator) NamespaceAccess DesignatorOptPart;
 
-DesignatorOptPartList ::= (DesigOptPList) DesignatorOptPartList DesignatorOptPart
-						|
-						(NoDesigOptPList) /*epsilon*/
-						;
-
-DesignatorOptPart ::= (DesignatorComma) COMMA IDENT
+DesignatorOptPart ::= (DesignatorExpr) LSQBRACE Expr RSQBRACE
 					|
-					(DesignatorExpr) LSQBRACE Expr RSQBRACE
+					(NoDesignatorExpr) /*epsilon*/
 					;
 
-NamespaceAccess ::= (NsAccess) IDENT TWODOUBLEDOT
+NamespaceAccess ::= (NsAccess) IDENT TWODOUBLEDOT IDENT
 				|
-				(NoNsAccess) /*epsilon*/
+				(NoNsAccess) IDENT
 				;
+				
 
-AssignOp ::= (Equal) EQUAL;
+AssignOp ::= (AssignOpEqual) EQUAL;
 
-Addop ::= (Plus) PLUS
+Addop ::= (AddopPlus) PLUS
 		|
-		(Minus) MINUS
+		(AddopMinus) MINUS
 		;
-
+		
 Mulop ::= (Mul) MUL
 		|
 		(Div) DIV
 		|
-		(Mod) MOD;
-		;
-		
-		
-		
+		(Mod) MOD
+		;	
 		
 		
