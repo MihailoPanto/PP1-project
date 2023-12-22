@@ -48,154 +48,195 @@ scan with {:
 	return s;
 :}
 
-terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, COMMA, PRINT, RETURN, PLUS, EQUAL, VOID;
-terminal DOUBLEDOT, EXTENDS, NEW, DOT, DIV, MINUS, RSWBREACE, MINUSMINUS, SWITCH, PLUSPLUS, CONST, AND;
-terminal LESS, READ, GREATER, DIFFERENT, WHILE, DO, CLASS, ELESS, CONTINUE, LSQBRACE, OR;
-terminal RSQBRACE, EGREATER, ENUM, MOD, MUL, BREAK, CASE, QUESTION, EQUALSTO, TWODOUBLEDOT, NAMESPACE;
+// - TERMINALI -
+
+terminal PROG, CONST, IF, NEW, PRINT, READ, RETURN, VOID, NAMESPACE;
+terminal PLUS, MINUS, MUL, DIV, MOD, EQUAL_EQUAL, DIFFERENT, GREATER;
+terminal GREATER_EQUAL, LESS, LESS_EQUAL, AND, OR, EQUAL, PLUS_PLUS;
+terminal MINUS_MINUS, SEMI, DOUBLE_DOT, COMMA, DOT, LPAREN, RPAREN;
+terminal LSBRACE, RSBRACE, LBRACE, RBRACE, TWO_DOUBLE_DOT, ELSE;
 terminal String BOOL;
 terminal Integer NUMBER ;
 terminal String IDENT ;
 terminal String CHAR;
-terminal IF, ELSE;
-nonterminal Program, ConstVarDeclList, ConstVarDecl, ConstDeclList, VarDeclList, ConstDeclaration, ConstValue, VarDeclaration, OptionalSquareBrackets, Type, ConstType, VarType;
-nonterminal NamespaceList, Namespace, MethodDeclList, MethodDecl, ConstDecl, VarDecl, MethodType;
-nonterminal MethodTypeName, LocalVarDeclList, FormPars, FormPar;
-nonterminal Mulop, Addop, AssignOp, NamespaceAccess, Designator, DesignatorOptPart, DesignatorOptPartList;
-nonterminal Expr, Factor, Term, MinusOptional, ExprPart, DesignatorStatement, DesignatorStatementPart, Statement;
-nonterminal StatementList, DesignatorIdent, OptPrint, FormParsOpt;
+
+// - NETERMINALI -
+
+// program
+nonterminal Program;
+// consts & var
+nonterminal ConstVarDeclList, ConstVarDecl, ConstDecl, ConstDeclList, ConstDeclaration, ConstValue, VarDecl, VarDeclList, VarDeclaration, OptionalSquareBrackets, Type;	
+// namespace
+nonterminal NamespaceList, Namespace;
+// method
+nonterminal MethodDeclList, MethodDecl, MethodTypeName, MethodType, FormParsOpt, FormPars, FormPar, LocalVarDeclList;
+// statement
+nonterminal StatementList, Statement, OptPrint, DesignatorStatement, DesignatorStatementPart, Expr, ExprPart, MinusOptional, Term, Factor;
+// designator
+nonterminal Designator, DesignatorOptPart, NamespaceAccess;
+// operators
+nonterminal MulOp, AddOp, AssignOp, RelOp;
+// conditions
+nonterminal ConditionList, CondTermList, CondFact;
+
+// -------------------- PROGRAM --------------------
 
 Program ::= (Program) PROG IDENT NamespaceList ConstVarDeclList LBRACE MethodDeclList RBRACE;
 
-NamespaceList ::= (NsList) NamespaceList Namespace
-				|
-				(NoNsList) /*epsilon*/
-				;
+// -------------------- NAMESPACE --------------------
+
+NamespaceList ::= (NameSpacesList) NamespaceList Namespace
+		|
+		(NoNameSpacesList) /*epsilon*/
+		;
 
 Namespace ::= (Namespace) NAMESPACE IDENT LBRACE ConstVarDeclList LBRACE RBRACE MethodDeclList RBRACE;
 
-MethodDeclList ::= (MDList) MethodDeclList MethodDecl
-				|
-				(NoMDList) /*epsilon*/
-				;
+
+// -------------------- METHOD --------------------
+
+MethodDeclList ::= (MethodDeclarationList) MethodDeclList MethodDecl
+		|
+		(NoMethodDeclarationList) /*epsilon*/
+		;
 				
 MethodDecl ::= (MethodDeclaration) MethodTypeName LPAREN FormParsOpt RPAREN LocalVarDeclList LBRACE StatementList RBRACE;
 
 MethodTypeName ::= (MTypeName) MethodType IDENT;
 
-MethodType ::= (MType) Type
-			|
-			(MVoid) VOID
-			;
+MethodType ::= (MethType) Type
+		|
+		(NoMethType) VOID
+		;
 			
-FormParsOpt ::= (FParsOpt) FormPars
-			|
-			(NoFParsOpt)/*epsilon*/
-			;
+FormParsOpt ::= (FormParsOptional) FormPars
+		|
+		(NoFormParsOptional)/*epsilon*/
+		;
 			
 FormPars ::= (FPars) FormPars COMMA FormPar
-			|
-			(FPar) FormPar
-			;
+		|
+		(FPar) FormPar
+		;
 
 FormPar ::= (FormPar) Type IDENT OptionalSquareBrackets;
 
-LocalVarDeclList ::= (LVarDeclList) LocalVarDeclList VarDecl
-					|
-					(NoLVarDeclList) /*epsilon*/
-					;
+LocalVarDeclList ::= (LocalVarDeclarationList) LocalVarDeclList VarDecl
+		|
+		(NoLocalVarDeclarationList) /*epsilon*/
+		;
 
-ConstVarDeclList ::= (ConstVarDeclarations) ConstVarDeclList ConstVarDecl
-				|
-				/*epsilon*/
-				;
+// -------------------- CONST VAR --------------------
 
-ConstVarDecl ::= (CDecl) ConstDecl
-				|
-				(VDecl) VarDecl
-				|
-				error SEMI:l {: parser.report_error("Sintaksa greska deklaracije globalne promenljive na liniji " + lleft, null); :}
-				;
+ConstVarDeclList ::= (ConstVarDeclarationList) ConstVarDeclList ConstVarDecl
+		|
+		(NoConstVarDeclarationList) /*epsilon*/
+		;
+
+ConstVarDecl ::= (ConstCVDeclaration) ConstDecl
+		|
+		(VarCVDeclaration) VarDecl
+		;
+				
+				
+// -------------------- CONST --------------------
 				
 ConstDecl ::= (ConstDecl) CONST Type ConstDeclList SEMI;
 
-VarDecl ::= (VarDecl) Type VarDeclList SEMI;
-
+		
 ConstDeclList ::= (CommaConstDeclList) ConstDeclList COMMA ConstDeclaration
-				|
-				(NoCommaConstDeclList) ConstDeclaration
-				;
+		|
+		(SingleConstDecl) ConstDeclaration
+		;
 				
 ConstDeclaration ::= (ConstDeclaration) IDENT EQUAL ConstValue;
 
 ConstValue ::= (NumConst) NUMBER
-			|
-			(CharConst) CHAR
-			|
-			(BoolConst) BOOL
-			;
+		|
+		(CharConst) CHAR
+		|
+		(BoolConst) BOOL
+		;
+
+// -------------------- VAR --------------------
+
+VarDecl ::= (TypeSemiVarDecl) Type VarDeclList SEMI
+		|
+		(ErrorVarDecl) error SEMI:l
+		{: parser.report_error("Oporavak izvrsen do ; u liniji " + lleft, null); :}
+		;
 
 VarDeclList ::= (CommaVarDeclList) VarDeclList COMMA VarDeclaration
-			|
-			(NoCommaVarDeclList) VarDeclaration
-			;
-			
-VarDeclaration ::= (VarDeclaration) IDENT OptionalSquareBrackets;
+		|
+		(NoCommaVarDeclList) VarDeclaration
+		|
+		(ErrorCommaVList) error:l 
+		{: parser.report_error("Oporavak izvrsen do , u liniji " + lleft, null); :}
+		;
+	
+VarDeclaration ::= (VArrayDeclaration) IDENT LSBRACE RSBRACE
+		|
+		(VDeclaration) IDENT
+		;
 
-OptionalSquareBrackets ::= (OSBrackets) LSQBRACE RSQBRACE
-						|
-						(NoOSBrackets) /*epsilon*/
-						;
+OptionalSquareBrackets ::= (OptSquareBrackets) LSBRACE RSBRACE
+		|
+		(NoOptSquareBrackets) /*epsilon*/
+		;
 						
 Type ::= (Type) IDENT;
 
-StatementList ::= (StatList) StatementList Statement
-				|
-				(NoStatList) /*epsilon*/
-				;
+// -------------------- STATEMENT --------------------
 
-Statement ::= (StatementDesigStat) DesignatorStatement SEMI
-			|
-		 	error SEMI:l {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :}
-			|
-			(StatementRead) READ LPAREN Designator RPAREN SEMI
-			|
-			(StatementPrint) PRINT LPAREN Expr OptPrint RPAREN SEMI
-			;
+StatementList ::= (StmtList) StatementList Statement
+		|
+		(NoStmtList) /*epsilon*/
+		;
+
+Statement ::= (StmtDesignatorStatement) DesignatorStatement SEMI
+		|
+		(StmtError) error SEMI:l 
+		{: parser.report_error("Oporavak izvrsen do , u liniji " + lleft, null); :}
+		|
+		(StmtRead) READ LPAREN Designator RPAREN SEMI
+		|
+		(StmtPrint) PRINT LPAREN Expr OptPrint RPAREN SEMI
+		;
 
 OptPrint ::= (CommaOptPrint) COMMA NUMBER
-			|
-			(NoOptPrint) /*epsilon*/
-			;
+		|
+		(NoOptPrint) /*epsilon*/
+		;
 
-DesignatorStatement ::= (DesigStatement) Designator DesignatorStatementPart;
+DesignatorStatement ::= (DesignatorStmt) Designator DesignatorStatementPart;
 
 DesignatorStatementPart ::= (AssignExpr) AssignOp Expr
-						|
-						(PlusPlus) PLUSPLUS
-						|
-						(MinusMinus) MINUSMINUS
-						;
+		|
+		(PlusPlus) PLUS_PLUS
+		|
+		(MinusMinus) MINUS_MINUS
+		;
 
-Expr ::= (Exp) MinusOptional ExprPart;
+Expr ::= (Expr) MinusOptional ExprPart;
 
-ExprPart ::= (AddopExprPart) ExprPart Addop Term
-			|
-			(NoAddopExprPart) Term
-			;
+ExprPart ::= (AddopExprPart) ExprPart AddOp Term
+		|
+		(NoAddOpExprPart) Term
+		;
 
 MinusOptional ::= (MinusOpt) MINUS
-				|
-				(NoMinusOpt) /*epsilon*/
-				;
+		|
+		(NoMinusOpt) /*epsilon*/
+		;
 
-Term ::= (TermMulop) Term Mulop Factor
+Term ::= (TermMulOp) Term MulOp Factor
 		|
 		(TermFactor) Factor
 		; 
 
 Factor ::= (FactorConstValue) ConstValue
 		|
-		(FactorNew) NEW Type LSQBRACE Expr RSQBRACE
+		(FactorNew) NEW Type LSBRACE Expr RSBRACE
 		|
 		(FactorExpr) LPAREN Expr RPAREN
 		|
@@ -204,29 +245,58 @@ Factor ::= (FactorConstValue) ConstValue
 
 Designator ::= (Designator) NamespaceAccess DesignatorOptPart;
 
-DesignatorOptPart ::= (DesignatorExpr) LSQBRACE Expr RSQBRACE
-					|
-					(NoDesignatorExpr) /*epsilon*/
-					;
+DesignatorOptPart ::= (DesignatorExpr) LSBRACE Expr RSBRACE
+		|
+		(NoDesignatorExpr) /*epsilon*/
+		;
 
-NamespaceAccess ::= (NsAccess) IDENT TWODOUBLEDOT IDENT
-				|
-				(NoNsAccess) IDENT
-				;
-				
+NamespaceAccess ::= (NsAccess) IDENT TWO_DOUBLE_DOT IDENT
+		|
+		(NoNsAccess) IDENT
+		;
+	
+// -------------------- CONDITIONS --------------------
+			
+ConditionList ::= (CondListOr) ConditionList OR CondTermList
+		|
+		(CondListNoOr)CondTermList
+		;
+		
+CondTermList ::= (CondTermListAnd) CondTermList AND CondFact
+		|
+		(CondTermListNoAnd) CondFact
+		;
+		
+CondFact ::= (CondFactRelOp) Expr RelOp Expr
+		|
+		(CondFactNoRelOp) Expr
+		;			
+
+// -------------------- OPERATORS --------------------
+
+RelOp ::= (RelOp_EqualEqual) EQUAL_EQUAL 
+		|	
+		(RelOp_Different) DIFFERENT
+		|	
+		(RelOp_Greater) GREATER
+		|	
+		(RelOp_Greater_Equal) GREATER_EQUAL
+		|	
+		(RelOp_Less) LESS
+		|	
+		(RelOp_Less_Equal) LESS_EQUAL
+		;
 
 AssignOp ::= (AssignOpEqual) EQUAL;
 
-Addop ::= (AddopPlus) PLUS
+AddOp ::= (AddOpPlus) PLUS
 		|
-		(AddopMinus) MINUS
+		(AddOpMinus) MINUS
 		;
 		
-Mulop ::= (Mul) MUL
+MulOp ::= (Mul) MUL
 		|
 		(Div) DIV
 		|
 		(Mod) MOD
-		;	
-		
-		
+		;

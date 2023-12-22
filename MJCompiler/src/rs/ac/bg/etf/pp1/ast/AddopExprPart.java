@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/11/2023 15:19:45
+// 22/11/2023 22:51:19
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,14 +8,14 @@ package rs.ac.bg.etf.pp1.ast;
 public class AddopExprPart extends ExprPart {
 
     private ExprPart ExprPart;
-    private Addop Addop;
+    private AddOp AddOp;
     private Term Term;
 
-    public AddopExprPart (ExprPart ExprPart, Addop Addop, Term Term) {
+    public AddopExprPart (ExprPart ExprPart, AddOp AddOp, Term Term) {
         this.ExprPart=ExprPart;
         if(ExprPart!=null) ExprPart.setParent(this);
-        this.Addop=Addop;
-        if(Addop!=null) Addop.setParent(this);
+        this.AddOp=AddOp;
+        if(AddOp!=null) AddOp.setParent(this);
         this.Term=Term;
         if(Term!=null) Term.setParent(this);
     }
@@ -28,12 +28,12 @@ public class AddopExprPart extends ExprPart {
         this.ExprPart=ExprPart;
     }
 
-    public Addop getAddop() {
-        return Addop;
+    public AddOp getAddOp() {
+        return AddOp;
     }
 
-    public void setAddop(Addop Addop) {
-        this.Addop=Addop;
+    public void setAddOp(AddOp AddOp) {
+        this.AddOp=AddOp;
     }
 
     public Term getTerm() {
@@ -50,20 +50,20 @@ public class AddopExprPart extends ExprPart {
 
     public void childrenAccept(Visitor visitor) {
         if(ExprPart!=null) ExprPart.accept(visitor);
-        if(Addop!=null) Addop.accept(visitor);
+        if(AddOp!=null) AddOp.accept(visitor);
         if(Term!=null) Term.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(ExprPart!=null) ExprPart.traverseTopDown(visitor);
-        if(Addop!=null) Addop.traverseTopDown(visitor);
+        if(AddOp!=null) AddOp.traverseTopDown(visitor);
         if(Term!=null) Term.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(ExprPart!=null) ExprPart.traverseBottomUp(visitor);
-        if(Addop!=null) Addop.traverseBottomUp(visitor);
+        if(AddOp!=null) AddOp.traverseBottomUp(visitor);
         if(Term!=null) Term.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -79,8 +79,8 @@ public class AddopExprPart extends ExprPart {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(Addop!=null)
-            buffer.append(Addop.toString("  "+tab));
+        if(AddOp!=null)
+            buffer.append(AddOp.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

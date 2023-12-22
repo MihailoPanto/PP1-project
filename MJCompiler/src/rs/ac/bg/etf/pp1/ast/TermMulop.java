@@ -1,21 +1,21 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/11/2023 15:19:45
+// 22/11/2023 22:51:19
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class TermMulop extends Term {
+public class TermMulOp extends Term {
 
     private Term Term;
-    private Mulop Mulop;
+    private MulOp MulOp;
     private Factor Factor;
 
-    public TermMulop (Term Term, Mulop Mulop, Factor Factor) {
+    public TermMulOp (Term Term, MulOp MulOp, Factor Factor) {
         this.Term=Term;
         if(Term!=null) Term.setParent(this);
-        this.Mulop=Mulop;
-        if(Mulop!=null) Mulop.setParent(this);
+        this.MulOp=MulOp;
+        if(MulOp!=null) MulOp.setParent(this);
         this.Factor=Factor;
         if(Factor!=null) Factor.setParent(this);
     }
@@ -28,12 +28,12 @@ public class TermMulop extends Term {
         this.Term=Term;
     }
 
-    public Mulop getMulop() {
-        return Mulop;
+    public MulOp getMulOp() {
+        return MulOp;
     }
 
-    public void setMulop(Mulop Mulop) {
-        this.Mulop=Mulop;
+    public void setMulOp(MulOp MulOp) {
+        this.MulOp=MulOp;
     }
 
     public Factor getFactor() {
@@ -50,20 +50,20 @@ public class TermMulop extends Term {
 
     public void childrenAccept(Visitor visitor) {
         if(Term!=null) Term.accept(visitor);
-        if(Mulop!=null) Mulop.accept(visitor);
+        if(MulOp!=null) MulOp.accept(visitor);
         if(Factor!=null) Factor.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Term!=null) Term.traverseTopDown(visitor);
-        if(Mulop!=null) Mulop.traverseTopDown(visitor);
+        if(MulOp!=null) MulOp.traverseTopDown(visitor);
         if(Factor!=null) Factor.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Term!=null) Term.traverseBottomUp(visitor);
-        if(Mulop!=null) Mulop.traverseBottomUp(visitor);
+        if(MulOp!=null) MulOp.traverseBottomUp(visitor);
         if(Factor!=null) Factor.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -71,7 +71,7 @@ public class TermMulop extends Term {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("TermMulop(\n");
+        buffer.append("TermMulOp(\n");
 
         if(Term!=null)
             buffer.append(Term.toString("  "+tab));
@@ -79,8 +79,8 @@ public class TermMulop extends Term {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(Mulop!=null)
-            buffer.append(Mulop.toString("  "+tab));
+        if(MulOp!=null)
+            buffer.append(MulOp.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
@@ -92,7 +92,7 @@ public class TermMulop extends Term {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [TermMulop]");
+        buffer.append(") [TermMulOp]");
         return buffer.toString();
     }
 }

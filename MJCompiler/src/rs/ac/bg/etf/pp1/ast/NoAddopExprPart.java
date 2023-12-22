@@ -1,15 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/11/2023 15:19:45
+// 22/11/2023 22:51:19
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class NoAddopExprPart extends ExprPart {
+public class NoAddOpExprPart extends ExprPart {
 
     private Term Term;
 
-    public NoAddopExprPart (Term Term) {
+    public NoAddOpExprPart (Term Term) {
         this.Term=Term;
         if(Term!=null) Term.setParent(this);
     }
@@ -43,7 +43,7 @@ public class NoAddopExprPart extends ExprPart {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("NoAddopExprPart(\n");
+        buffer.append("NoAddOpExprPart(\n");
 
         if(Term!=null)
             buffer.append(Term.toString("  "+tab));
@@ -52,7 +52,7 @@ public class NoAddopExprPart extends ExprPart {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [NoAddopExprPart]");
+        buffer.append(") [NoAddOpExprPart]");
         return buffer.toString();
     }
 }

@@ -1,11 +1,11 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/11/2023 15:19:45
+// 22/11/2023 22:51:19
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public abstract class Addop implements SyntaxNode {
+public abstract class AddOp implements SyntaxNode {
 
     private SyntaxNode parent;
 

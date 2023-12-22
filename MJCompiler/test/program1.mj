@@ -1,33 +1,13 @@
-program mihailo
-
-namespace Konstante{
-	const int nula = 0;
-	const int jedan = 1;
-	const int pet = 5;
-	
-	{}
-}
-
-namespace Nizovi{
-	int niz[];
-	char nizch[];
-	
-	{}
-}		
+program mihailo	
 	const int a=1, b=2;
 	
-	const char f c 'f';
+	const char f = 'f';
 	
 	int c=, d, e[];
+	
+	int gdfs=, sec;
 
 {
 
-void main()
-	{
-
-		bodovi++;
-		bodovi = bodovi + Konstante::jedan;
-		bodovi--;
-}
 
 }
