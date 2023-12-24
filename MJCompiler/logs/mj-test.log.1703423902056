@@ -1,0 +1,157 @@
+INFO  14:16:57,664 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  14:16:57,713 - #2 program
+INFO  14:16:57,713 - #41 mihailo
+INFO  14:16:57,713 - #3 const
+INFO  14:16:57,717 - #41 int
+INFO  14:16:57,717 - #41 a
+INFO  14:16:57,719 - #24 =
+INFO  14:16:57,719 - #40 1
+INFO  14:16:57,719 - #29 ,
+INFO  14:16:57,720 - #41 b
+INFO  14:16:57,720 - #24 =
+INFO  14:16:57,720 - #40 2
+INFO  14:16:57,720 - #27 ;
+INFO  14:16:57,720 - #3 const
+INFO  14:16:57,722 - #41 char
+INFO  14:16:57,722 - #41 f
+INFO  14:16:57,722 - #24 =
+INFO  14:16:57,722 - #42 'f'
+INFO  14:16:57,722 - #27 ;
+INFO  14:16:57,722 - #41 int
+INFO  14:16:57,722 - #41 c
+INFO  14:16:57,722 - #24 =
+ERROR 14:16:57,726 - 
+Sintaksna greska na liniji 6
+INFO  14:16:57,726 - #29 ,
+INFO  14:16:57,726 - #41 d
+INFO  14:16:57,726 - #29 ,
+INFO  14:16:57,726 - #41 e
+ERROR 14:16:57,726 - Oporavak izvrsen do , u liniji 6
+INFO  14:16:57,727 - #33 [
+INFO  14:16:57,727 - #34 ]
+INFO  14:16:57,727 - #27 ;
+INFO  14:16:57,727 - #41 int
+INFO  14:16:57,727 - #41 gdfs
+INFO  14:16:57,727 - #24 =
+ERROR 14:16:57,727 - 
+Sintaksna greska na liniji 8
+INFO  14:16:57,727 - #29 ,
+INFO  14:16:57,729 - #41 sec
+INFO  14:16:57,729 - #27 ;
+INFO  14:16:57,729 - #35 {
+ERROR 14:16:57,729 - Oporavak izvrsen do , u liniji 8
+INFO  14:16:57,729 - #9 void
+INFO  14:16:57,731 - #41 main
+INFO  14:16:57,732 - #31 (
+INFO  14:16:57,732 - #32 )
+INFO  14:16:57,734 - #35 {
+INFO  14:16:57,735 - #36 }
+INFO  14:16:57,736 - #36 }
+INFO  14:16:57,749 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          NoConstVarDeclarationList(
+          ) [NoConstVarDeclarationList]
+          ConstCVDeclaration(
+            ConstDecl(
+              Type(
+               int
+              ) [Type]
+              CommaConstDeclList(
+                SingleConstDecl(
+                  ConstDeclaration(
+                   a
+                    NumConst(
+                     1
+                    ) [NumConst]
+                  ) [ConstDeclaration]
+                ) [SingleConstDecl]
+                ConstDeclaration(
+                 b
+                  NumConst(
+                   2
+                  ) [NumConst]
+                ) [ConstDeclaration]
+              ) [CommaConstDeclList]
+            ) [ConstDecl]
+          ) [ConstCVDeclaration]
+        ) [ConstVarDeclarationList]
+        ConstCVDeclaration(
+          ConstDecl(
+            Type(
+             char
+            ) [Type]
+            SingleConstDecl(
+              ConstDeclaration(
+               f
+                CharConst(
+                 'f'
+                ) [CharConst]
+              ) [ConstDeclaration]
+            ) [SingleConstDecl]
+          ) [ConstDecl]
+        ) [ConstCVDeclaration]
+      ) [ConstVarDeclarationList]
+      VarCVDeclaration(
+        TypeSemiVarDecl(
+          Type(
+           int
+          ) [Type]
+          CommaVarDeclList(
+            CommaVarDeclList(
+              ErrorCommaVList(
+              ) [ErrorCommaVList]
+              VDeclaration(
+               d
+              ) [VDeclaration]
+            ) [CommaVarDeclList]
+            VArrayDeclaration(
+             e
+            ) [VArrayDeclaration]
+          ) [CommaVarDeclList]
+        ) [TypeSemiVarDecl]
+      ) [VarCVDeclaration]
+    ) [ConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        CommaVarDeclList(
+          ErrorCommaVList(
+          ) [ErrorCommaVList]
+          VDeclaration(
+           sec
+          ) [VDeclaration]
+        ) [CommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDeclaration(
+      MTypeName(
+        NoMethType(
+        ) [NoMethType]
+       main
+      ) [MTypeName]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      NoStmtList(
+      ) [NoStmtList]
+    ) [MethodDeclaration]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  14:16:57,750 - ===================================
+INFO  14:16:57,752 - ===================================
+ERROR 14:16:57,753 - Parsiranje NIJE uspesno zavrseno!

@@ -1,0 +1,111 @@
+INFO  15:06:31,494 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  15:06:31,538 - #2 program
+INFO  15:06:31,538 - #41 mihailo
+INFO  15:06:31,538 - #10 namespace
+INFO  15:06:31,540 - #41 Miki
+INFO  15:06:31,540 - #35 {
+INFO  15:06:31,541 - #41 char
+INFO  15:06:31,542 - #41 d
+INFO  15:06:31,543 - #27 ;
+INFO  15:06:31,543 - #41 char
+INFO  15:06:31,543 - #41 e
+INFO  15:06:31,544 - #33 [
+INFO  15:06:31,544 - #34 ]
+INFO  15:06:31,544 - #27 ;
+INFO  15:06:31,544 - #35 {
+INFO  15:06:31,544 - #36 }
+INFO  15:06:31,544 - #36 }
+INFO  15:06:31,545 - #41 int
+INFO  15:06:31,548 - #41 a
+INFO  15:06:31,549 - #29 ,
+INFO  15:06:31,549 - #41 b
+INFO  15:06:31,549 - #29 ,
+INFO  15:06:31,549 - #41 c
+INFO  15:06:31,549 - #33 [
+INFO  15:06:31,549 - #34 ]
+INFO  15:06:31,549 - #27 ;
+INFO  15:06:31,549 - #35 {
+INFO  15:06:31,550 - #36 }
+INFO  15:06:31,560 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NameSpacesList(
+    NoNameSpacesList(
+    ) [NoNameSpacesList]
+    Namespace(
+      NamespaceName(
+       Miki
+      ) [NamespaceName]
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          NoConstVarDeclarationList(
+          ) [NoConstVarDeclarationList]
+          VarCVDeclaration(
+            TypeSemiVarDecl(
+              Type(
+               char
+              ) [Type]
+              NoCommaVarDeclList(
+                VDeclaration(
+                 d
+                ) [VDeclaration]
+              ) [NoCommaVarDeclList]
+            ) [TypeSemiVarDecl]
+          ) [VarCVDeclaration]
+        ) [ConstVarDeclarationList]
+        VarCVDeclaration(
+          TypeSemiVarDecl(
+            Type(
+             char
+            ) [Type]
+            NoCommaVarDeclList(
+              VArrayDeclaration(
+               e
+              ) [VArrayDeclaration]
+            ) [NoCommaVarDeclList]
+          ) [TypeSemiVarDecl]
+        ) [VarCVDeclaration]
+      ) [ConstVarDeclarationList]
+      NoMethodDeclarationList(
+      ) [NoMethodDeclarationList]
+    ) [Namespace]
+  ) [NameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        CommaVarDeclList(
+          CommaVarDeclList(
+            NoCommaVarDeclList(
+              VDeclaration(
+               a
+              ) [VDeclaration]
+            ) [NoCommaVarDeclList]
+            VDeclaration(
+             b
+            ) [VDeclaration]
+          ) [CommaVarDeclList]
+          VArrayDeclaration(
+           c
+          ) [VArrayDeclaration]
+        ) [CommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  NoMethodDeclarationList(
+  ) [NoMethodDeclarationList]
+) [Program]
+INFO  15:06:31,560 - ===================================
+INFO  15:06:31,564 - Obradjuje se namespace Miki na liniji 4
+INFO  15:06:31,564 - Deklarisana promenljiva Miki::d na liniji 6
+INFO  15:06:31,564 - Deklarisana promenljiva niza Miki::e na liniji 7
+INFO  15:06:31,564 - Deklarisana promenljiva a na liniji 12
+INFO  15:06:31,565 - Deklarisana promenljiva b na liniji 12
+INFO  15:06:31,565 - Deklarisana promenljiva niza c na liniji 12
+INFO  15:06:31,565 - ===================================
+INFO  15:06:31,566 - Parsiranje uspesno zavrseno!

@@ -1,0 +1,37 @@
+INFO  14:18:22,059 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  14:18:22,103 - #2 program
+INFO  14:18:22,104 - #41 mihailo
+INFO  14:18:22,104 - #10 namespace
+INFO  14:18:22,106 - #41 Miki
+INFO  14:18:22,106 - #35 {
+INFO  14:18:22,107 - #35 {
+INFO  14:18:22,108 - #36 }
+INFO  14:18:22,108 - #36 }
+INFO  14:18:22,109 - #35 {
+INFO  14:18:22,111 - #36 }
+INFO  14:18:22,123 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NameSpacesList(
+    NoNameSpacesList(
+    ) [NoNameSpacesList]
+    Namespace(
+      NamespaceName(
+       Miki
+      ) [NamespaceName]
+      NoConstVarDeclarationList(
+      ) [NoConstVarDeclarationList]
+      NoMethodDeclarationList(
+      ) [NoMethodDeclarationList]
+    ) [Namespace]
+  ) [NameSpacesList]
+  NoConstVarDeclarationList(
+  ) [NoConstVarDeclarationList]
+  NoMethodDeclarationList(
+  ) [NoMethodDeclarationList]
+) [Program]
+INFO  14:18:22,127 - ===================================
+INFO  14:18:22,129 - Obradjuje se namespaceMiki na liniji 4
+INFO  14:18:22,129 - ===================================
+INFO  14:18:22,130 - Parsiranje uspesno zavrseno!

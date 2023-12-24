@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/11/2023 22:51:19
+// 24/11/2023 23:9:20
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -22,17 +22,17 @@ public interface Visitor {
     public void visit(DesignatorStatementPart DesignatorStatementPart);
     public void visit(Term Term);
     public void visit(OptionalSquareBrackets OptionalSquareBrackets);
-    public void visit(MulOp MulOp);
     public void visit(ConstValue ConstValue);
+    public void visit(MulOp MulOp);
     public void visit(ConstDeclList ConstDeclList);
     public void visit(ExprPart ExprPart);
     public void visit(MinusOptional MinusOptional);
     public void visit(RelOp RelOp);
     public void visit(AssignOp AssignOp);
     public void visit(VarDeclList VarDeclList);
+    public void visit(MethodTypeName MethodTypeName);
     public void visit(AddOp AddOp);
     public void visit(NamespaceAccess NamespaceAccess);
-    public void visit(MethodTypeName MethodTypeName);
     public void visit(DesignatorStatement DesignatorStatement);
     public void visit(Statement Statement);
     public void visit(VarDecl VarDecl);
@@ -88,8 +88,6 @@ public interface Visitor {
     public void visit(NoStmtList NoStmtList);
     public void visit(StmtList StmtList);
     public void visit(Type Type);
-    public void visit(NoOptSquareBrackets NoOptSquareBrackets);
-    public void visit(OptSquareBrackets OptSquareBrackets);
     public void visit(VDeclaration VDeclaration);
     public void visit(VArrayDeclaration VArrayDeclaration);
     public void visit(ErrorCommaVList ErrorCommaVList);
@@ -99,7 +97,7 @@ public interface Visitor {
     public void visit(TypeSemiVarDecl TypeSemiVarDecl);
     public void visit(BoolConst BoolConst);
     public void visit(CharConst CharConst);
-    public void visit(NumConst NumConst);
+    public void visit(NumberConst NumberConst);
     public void visit(ConstDeclaration ConstDeclaration);
     public void visit(SingleConstDecl SingleConstDecl);
     public void visit(CommaConstDeclList CommaConstDeclList);
@@ -121,9 +119,11 @@ public interface Visitor {
     public void visit(MethodDeclaration MethodDeclaration);
     public void visit(NoMethodDeclarationList NoMethodDeclarationList);
     public void visit(MethodDeclarationList MethodDeclarationList);
+    public void visit(NamespaceName NamespaceName);
     public void visit(Namespace Namespace);
     public void visit(NoNameSpacesList NoNameSpacesList);
     public void visit(NameSpacesList NameSpacesList);
+    public void visit(ProgName ProgName);
     public void visit(Program Program);
 
 }

@@ -1,0 +1,55 @@
+INFO  15:01:50,389 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  15:01:50,432 - #2 program
+INFO  15:01:50,432 - #41 mihailo
+INFO  15:01:50,432 - #10 namespace
+INFO  15:01:50,433 - #41 Miki
+INFO  15:01:50,433 - #35 {
+INFO  15:01:50,434 - #35 {
+INFO  15:01:50,435 - #36 }
+INFO  15:01:50,435 - #36 }
+INFO  15:01:50,436 - #41 int
+INFO  15:01:50,437 - #41 a
+INFO  15:01:50,438 - #27 ;
+INFO  15:01:50,438 - #35 {
+INFO  15:01:50,439 - #36 }
+INFO  15:01:50,453 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NameSpacesList(
+    NoNameSpacesList(
+    ) [NoNameSpacesList]
+    Namespace(
+      NamespaceName(
+       Miki
+      ) [NamespaceName]
+      NoConstVarDeclarationList(
+      ) [NoConstVarDeclarationList]
+      NoMethodDeclarationList(
+      ) [NoMethodDeclarationList]
+    ) [Namespace]
+  ) [NameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        NoCommaVarDeclList(
+          VDeclaration(
+           a
+          ) [VDeclaration]
+        ) [NoCommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  NoMethodDeclarationList(
+  ) [NoMethodDeclarationList]
+) [Program]
+INFO  15:01:50,453 - ===================================
+INFO  15:01:50,456 - Obradjuje se namespace Miki na liniji 4
+INFO  15:01:50,456 - Deklarisana promenljiva a na liniji 6
+INFO  15:01:50,456 - ===================================
+INFO  15:01:50,456 - Parsiranje uspesno zavrseno!

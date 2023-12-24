@@ -1,0 +1,51 @@
+INFO  15:00:57,794 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  15:00:57,837 - #2 program
+INFO  15:00:57,837 - #41 mihailo
+INFO  15:00:57,837 - #10 namespace
+INFO  15:00:57,839 - #41 Miki
+INFO  15:00:57,839 - #35 {
+INFO  15:00:57,840 - #35 {
+INFO  15:00:57,841 - #36 }
+INFO  15:00:57,841 - #36 }
+INFO  15:00:57,842 - #35 {
+INFO  15:00:57,844 - #36 }
+INFO  15:00:57,844 - #41 int
+ERROR 15:00:57,844 - 
+Sintaksna greska na liniji 12
+INFO  15:00:57,844 - #41 a
+INFO  15:00:57,844 - #27 ;
+INFO  15:00:57,844 - #35 {
+INFO  15:00:57,846 - #36 }
+ERROR 15:00:57,846 - Oporavak izvrsen do ; u liniji 6
+INFO  15:00:57,861 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NameSpacesList(
+    NoNameSpacesList(
+    ) [NoNameSpacesList]
+    Namespace(
+      NamespaceName(
+       Miki
+      ) [NamespaceName]
+      NoConstVarDeclarationList(
+      ) [NoConstVarDeclarationList]
+      NoMethodDeclarationList(
+      ) [NoMethodDeclarationList]
+    ) [Namespace]
+  ) [NameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    VarCVDeclaration(
+      ErrorVarDecl(
+      ) [ErrorVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  NoMethodDeclarationList(
+  ) [NoMethodDeclarationList]
+) [Program]
+INFO  15:00:57,861 - ===================================
+INFO  15:00:57,863 - Obradjuje se namespace Miki na liniji 4
+INFO  15:00:57,864 - ===================================
+ERROR 15:00:57,865 - Parsiranje NIJE uspesno zavrseno!

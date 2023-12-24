@@ -1,0 +1,137 @@
+INFO  14:15:50,475 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  14:15:50,517 - #2 program
+INFO  14:15:50,518 - #41 mihailo
+INFO  14:15:50,518 - #3 const
+INFO  14:15:50,520 - #41 int
+INFO  14:15:50,520 - #41 a
+INFO  14:15:50,521 - #24 =
+INFO  14:15:50,521 - #40 1
+INFO  14:15:50,521 - #29 ,
+INFO  14:15:50,523 - #41 b
+INFO  14:15:50,523 - #24 =
+INFO  14:15:50,523 - #40 2
+INFO  14:15:50,523 - #27 ;
+INFO  14:15:50,523 - #3 const
+INFO  14:15:50,525 - #41 char
+INFO  14:15:50,525 - #41 f
+INFO  14:15:50,525 - #24 =
+INFO  14:15:50,525 - #42 'f'
+INFO  14:15:50,525 - #27 ;
+INFO  14:15:50,526 - #41 int
+INFO  14:15:50,526 - #41 c
+INFO  14:15:50,526 - #24 =
+ERROR 14:15:50,527 - 
+Sintaksna greska na liniji 6
+INFO  14:15:50,527 - #29 ,
+INFO  14:15:50,527 - #41 d
+INFO  14:15:50,527 - #29 ,
+INFO  14:15:50,527 - #41 e
+ERROR 14:15:50,527 - Oporavak izvrsen do , u liniji 6
+INFO  14:15:50,528 - #33 [
+INFO  14:15:50,528 - #34 ]
+INFO  14:15:50,528 - #27 ;
+INFO  14:15:50,529 - #41 int
+INFO  14:15:50,529 - #41 gdfs
+INFO  14:15:50,529 - #24 =
+ERROR 14:15:50,529 - 
+Sintaksna greska na liniji 8
+INFO  14:15:50,529 - #29 ,
+INFO  14:15:50,529 - #41 sec
+INFO  14:15:50,530 - #27 ;
+INFO  14:15:50,530 - #35 {
+ERROR 14:15:50,530 - Oporavak izvrsen do , u liniji 8
+INFO  14:15:50,530 - #36 }
+INFO  14:15:50,539 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          NoConstVarDeclarationList(
+          ) [NoConstVarDeclarationList]
+          ConstCVDeclaration(
+            ConstDecl(
+              Type(
+               int
+              ) [Type]
+              CommaConstDeclList(
+                SingleConstDecl(
+                  ConstDeclaration(
+                   a
+                    NumConst(
+                     1
+                    ) [NumConst]
+                  ) [ConstDeclaration]
+                ) [SingleConstDecl]
+                ConstDeclaration(
+                 b
+                  NumConst(
+                   2
+                  ) [NumConst]
+                ) [ConstDeclaration]
+              ) [CommaConstDeclList]
+            ) [ConstDecl]
+          ) [ConstCVDeclaration]
+        ) [ConstVarDeclarationList]
+        ConstCVDeclaration(
+          ConstDecl(
+            Type(
+             char
+            ) [Type]
+            SingleConstDecl(
+              ConstDeclaration(
+               f
+                CharConst(
+                 'f'
+                ) [CharConst]
+              ) [ConstDeclaration]
+            ) [SingleConstDecl]
+          ) [ConstDecl]
+        ) [ConstCVDeclaration]
+      ) [ConstVarDeclarationList]
+      VarCVDeclaration(
+        TypeSemiVarDecl(
+          Type(
+           int
+          ) [Type]
+          CommaVarDeclList(
+            CommaVarDeclList(
+              ErrorCommaVList(
+              ) [ErrorCommaVList]
+              VDeclaration(
+               d
+              ) [VDeclaration]
+            ) [CommaVarDeclList]
+            VArrayDeclaration(
+             e
+            ) [VArrayDeclaration]
+          ) [CommaVarDeclList]
+        ) [TypeSemiVarDecl]
+      ) [VarCVDeclaration]
+    ) [ConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        CommaVarDeclList(
+          ErrorCommaVList(
+          ) [ErrorCommaVList]
+          VDeclaration(
+           sec
+          ) [VDeclaration]
+        ) [CommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  NoMethodDeclarationList(
+  ) [NoMethodDeclarationList]
+) [Program]
+INFO  14:15:50,540 - ===================================
+ERROR 14:15:50,542 - U tabeli simbola ne postoji MAIN funkcija! na liniji 1
+INFO  14:15:50,542 - ===================================
+ERROR 14:15:50,543 - Parsiranje NIJE uspesno zavrseno!

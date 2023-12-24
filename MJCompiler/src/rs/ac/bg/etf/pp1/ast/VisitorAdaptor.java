@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/11/2023 22:51:19
+// 24/11/2023 23:9:20
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -22,17 +22,17 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorStatementPart DesignatorStatementPart) { }
     public void visit(Term Term) { }
     public void visit(OptionalSquareBrackets OptionalSquareBrackets) { }
-    public void visit(MulOp MulOp) { }
     public void visit(ConstValue ConstValue) { }
+    public void visit(MulOp MulOp) { }
     public void visit(ConstDeclList ConstDeclList) { }
     public void visit(ExprPart ExprPart) { }
     public void visit(MinusOptional MinusOptional) { }
     public void visit(RelOp RelOp) { }
     public void visit(AssignOp AssignOp) { }
     public void visit(VarDeclList VarDeclList) { }
+    public void visit(MethodTypeName MethodTypeName) { }
     public void visit(AddOp AddOp) { }
     public void visit(NamespaceAccess NamespaceAccess) { }
-    public void visit(MethodTypeName MethodTypeName) { }
     public void visit(DesignatorStatement DesignatorStatement) { }
     public void visit(Statement Statement) { }
     public void visit(VarDecl VarDecl) { }
@@ -88,8 +88,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(NoStmtList NoStmtList) { visit(); }
     public void visit(StmtList StmtList) { visit(); }
     public void visit(Type Type) { visit(); }
-    public void visit(NoOptSquareBrackets NoOptSquareBrackets) { visit(); }
-    public void visit(OptSquareBrackets OptSquareBrackets) { visit(); }
     public void visit(VDeclaration VDeclaration) { visit(); }
     public void visit(VArrayDeclaration VArrayDeclaration) { visit(); }
     public void visit(ErrorCommaVList ErrorCommaVList) { visit(); }
@@ -99,7 +97,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(TypeSemiVarDecl TypeSemiVarDecl) { visit(); }
     public void visit(BoolConst BoolConst) { visit(); }
     public void visit(CharConst CharConst) { visit(); }
-    public void visit(NumConst NumConst) { visit(); }
+    public void visit(NumberConst NumberConst) { visit(); }
     public void visit(ConstDeclaration ConstDeclaration) { visit(); }
     public void visit(SingleConstDecl SingleConstDecl) { visit(); }
     public void visit(CommaConstDeclList CommaConstDeclList) { visit(); }
@@ -121,9 +119,11 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(MethodDeclaration MethodDeclaration) { visit(); }
     public void visit(NoMethodDeclarationList NoMethodDeclarationList) { visit(); }
     public void visit(MethodDeclarationList MethodDeclarationList) { visit(); }
+    public void visit(NamespaceName NamespaceName) { visit(); }
     public void visit(Namespace Namespace) { visit(); }
     public void visit(NoNameSpacesList NoNameSpacesList) { visit(); }
     public void visit(NameSpacesList NameSpacesList) { visit(); }
+    public void visit(ProgName ProgName) { visit(); }
     public void visit(Program Program) { visit(); }
 
 

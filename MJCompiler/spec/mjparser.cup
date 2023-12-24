@@ -63,11 +63,10 @@ terminal String CHAR;
 // - NETERMINALI -
 
 // program
-nonterminal Program;
 // consts & var
-nonterminal ConstVarDeclList, ConstVarDecl, ConstDecl, ConstDeclList, ConstDeclaration, ConstValue, VarDecl, VarDeclList, VarDeclaration, OptionalSquareBrackets, Type;	
+nonterminal ConstVarDeclList, ConstVarDecl, ConstDecl, ConstDeclList, ConstDeclaration, VarDecl, VarDeclList, VarDeclaration, OptionalSquareBrackets;	
 // namespace
-nonterminal NamespaceList, Namespace;
+nonterminal NamespaceList;
 // method
 nonterminal MethodDeclList, MethodDecl, MethodTypeName, MethodType, FormParsOpt, FormPars, FormPar, LocalVarDeclList;
 // statement
@@ -79,9 +78,17 @@ nonterminal MulOp, AddOp, AssignOp, RelOp;
 // conditions
 nonterminal ConditionList, CondTermList, CondFact;
 
+// symboltable obj
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, Namespace, NamespaceName;
+// symboltable obj
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ConstValue;
+
+
 // -------------------- PROGRAM --------------------
 
-Program ::= (Program) PROG IDENT NamespaceList ConstVarDeclList LBRACE MethodDeclList RBRACE;
+Program ::= (Program) PROG ProgName:p NamespaceList ConstVarDeclList LBRACE MethodDeclList RBRACE;
+
+ProgName ::= (ProgName) IDENT:progName;
 
 // -------------------- NAMESPACE --------------------
 
@@ -90,8 +97,9 @@ NamespaceList ::= (NameSpacesList) NamespaceList Namespace
 		(NoNameSpacesList) /*epsilon*/
 		;
 
-Namespace ::= (Namespace) NAMESPACE IDENT LBRACE ConstVarDeclList LBRACE RBRACE MethodDeclList RBRACE;
+Namespace ::= (Namespace) NAMESPACE NamespaceName:n LBRACE ConstVarDeclList LBRACE RBRACE MethodDeclList RBRACE;
 
+NamespaceName ::= (NamespaceName) IDENT:namespaceName;
 
 // -------------------- METHOD --------------------
 
@@ -149,9 +157,9 @@ ConstDeclList ::= (CommaConstDeclList) ConstDeclList COMMA ConstDeclaration
 		(SingleConstDecl) ConstDeclaration
 		;
 				
-ConstDeclaration ::= (ConstDeclaration) IDENT EQUAL ConstValue;
+ConstDeclaration ::= (ConstDeclaration) IDENT:constName EQUAL ConstValue:constValue;
 
-ConstValue ::= (NumConst) NUMBER
+ConstValue ::= (NumberConst) NUMBER
 		|
 		(CharConst) CHAR
 		|
@@ -174,17 +182,12 @@ VarDeclList ::= (CommaVarDeclList) VarDeclList COMMA VarDeclaration
 		{: parser.report_error("Oporavak izvrsen do , u liniji " + lleft, null); :}
 		;
 	
-VarDeclaration ::= (VArrayDeclaration) IDENT LSBRACE RSBRACE
+VarDeclaration ::= (VArrayDeclaration) IDENT:varName LSBRACE RSBRACE
 		|
-		(VDeclaration) IDENT
-		;
-
-OptionalSquareBrackets ::= (OptSquareBrackets) LSBRACE RSBRACE
-		|
-		(NoOptSquareBrackets) /*epsilon*/
+		(VDeclaration) IDENT:varName
 		;
 						
-Type ::= (Type) IDENT;
+Type ::= (Type) IDENT:typeName;
 
 // -------------------- STATEMENT --------------------
 

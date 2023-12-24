@@ -63,22 +63,18 @@ terminal String CHAR;
 // - NETERMINALI -
 
 // program
-nonterminal Program Program;
 // consts & var
 nonterminal ConstVarDeclList ConstVarDeclList;
 nonterminal ConstVarDecl ConstVarDecl;
 nonterminal ConstDecl ConstDecl;
 nonterminal ConstDeclList ConstDeclList;
 nonterminal ConstDeclaration ConstDeclaration;
-nonterminal ConstValue ConstValue;
 nonterminal VarDecl VarDecl;
 nonterminal VarDeclList VarDeclList;
 nonterminal VarDeclaration VarDeclaration;
-nonterminal OptionalSquareBrackets OptionalSquareBrackets;
-nonterminal Type Type;	
+nonterminal OptionalSquareBrackets OptionalSquareBrackets;	
 // namespace
 nonterminal NamespaceList NamespaceList;
-nonterminal Namespace Namespace;
 // method
 nonterminal MethodDeclList MethodDeclList;
 nonterminal MethodDecl MethodDecl;
@@ -113,9 +109,17 @@ nonterminal ConditionList ConditionList;
 nonterminal CondTermList CondTermList;
 nonterminal CondFact CondFact;
 
+// symboltable obj
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, Namespace, NamespaceName;
+// symboltable obj
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ConstValue;
+
+
 // -------------------- PROGRAM --------------------
 
-Program ::= (Program) PROG IDENT:I1 NamespaceList:N2 ConstVarDeclList:C3 LBRACE MethodDeclList:M4 RBRACE {: RESULT=new Program(I1, N2, C3, M4); RESULT.setLine(I1left); :};
+Program ::= (Program) PROG ProgName:p NamespaceList:N1 ConstVarDeclList:C2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(p, N1, C2, M3); RESULT.setLine(pleft); :};
+
+ProgName ::= (ProgName) IDENT:progName {: RESULT=new ProgName(progName); RESULT.setLine(progNameleft); :};
 
 // -------------------- NAMESPACE --------------------
 
@@ -124,8 +128,9 @@ NamespaceList ::= (NameSpacesList) NamespaceList:N1 Namespace:N2 {: RESULT=new N
 		(NoNameSpacesList) {: RESULT=new NoNameSpacesList(); :} /*epsilon*/
 		;
 
-Namespace ::= (Namespace) NAMESPACE IDENT:I1 LBRACE ConstVarDeclList:C2 LBRACE RBRACE MethodDeclList:M3 RBRACE {: RESULT=new Namespace(I1, C2, M3); RESULT.setLine(I1left); :};
+Namespace ::= (Namespace) NAMESPACE NamespaceName:n LBRACE ConstVarDeclList:C1 LBRACE RBRACE MethodDeclList:M2 RBRACE {: RESULT=new Namespace(n, C1, M2); RESULT.setLine(nleft); :};
 
+NamespaceName ::= (NamespaceName) IDENT:namespaceName {: RESULT=new NamespaceName(namespaceName); RESULT.setLine(namespaceNameleft); :};
 
 // -------------------- METHOD --------------------
 
@@ -183,9 +188,9 @@ ConstDeclList ::= (CommaConstDeclList) ConstDeclList:C1 COMMA ConstDeclaration:C
 		(SingleConstDecl) ConstDeclaration:C1 {: RESULT=new SingleConstDecl(C1); RESULT.setLine(C1left); :}
 		;
 				
-ConstDeclaration ::= (ConstDeclaration) IDENT:I1 EQUAL ConstValue:C2 {: RESULT=new ConstDeclaration(I1, C2); RESULT.setLine(I1left); :};
+ConstDeclaration ::= (ConstDeclaration) IDENT:constName EQUAL ConstValue:constValue {: RESULT=new ConstDeclaration(constName, constValue); RESULT.setLine(constNameleft); :};
 
-ConstValue ::= (NumConst) NUMBER:N1 {: RESULT=new NumConst(N1); RESULT.setLine(N1left); :}
+ConstValue ::= (NumberConst) NUMBER:N1 {: RESULT=new NumberConst(N1); RESULT.setLine(N1left); :}
 		|
 		(CharConst) CHAR:C1 {: RESULT=new CharConst(C1); RESULT.setLine(C1left); :}
 		|
@@ -208,17 +213,12 @@ VarDeclList ::= (CommaVarDeclList) VarDeclList:V1 COMMA VarDeclaration:V2 {: RES
 		{: parser.report_error("Oporavak izvrsen do , u liniji " + lleft, null); :} {: RESULT=new ErrorCommaVList(); :}
 		;
 	
-VarDeclaration ::= (VArrayDeclaration) IDENT:I1 LSBRACE RSBRACE {: RESULT=new VArrayDeclaration(I1); RESULT.setLine(I1left); :}
+VarDeclaration ::= (VArrayDeclaration) IDENT:varName LSBRACE RSBRACE {: RESULT=new VArrayDeclaration(varName); RESULT.setLine(varNameleft); :}
 		|
-		(VDeclaration) IDENT:I1 {: RESULT=new VDeclaration(I1); RESULT.setLine(I1left); :}
-		;
-
-OptionalSquareBrackets ::= (OptSquareBrackets) LSBRACE RSBRACE {: RESULT=new OptSquareBrackets(); :}
-		|
-		(NoOptSquareBrackets) {: RESULT=new NoOptSquareBrackets(); :} /*epsilon*/
+		(VDeclaration) IDENT:varName {: RESULT=new VDeclaration(varName); RESULT.setLine(varNameleft); :}
 		;
 						
-Type ::= (Type) IDENT:I1 {: RESULT=new Type(I1); RESULT.setLine(I1left); :};
+Type ::= (Type) IDENT:typeName {: RESULT=new Type(typeName); RESULT.setLine(typeNameleft); :};
 
 // -------------------- STATEMENT --------------------
 

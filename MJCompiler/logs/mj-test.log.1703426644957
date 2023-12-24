@@ -1,0 +1,73 @@
+INFO  15:02:08,826 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  15:02:08,868 - #2 program
+INFO  15:02:08,868 - #41 mihailo
+INFO  15:02:08,868 - #10 namespace
+INFO  15:02:08,869 - #41 Miki
+INFO  15:02:08,870 - #35 {
+INFO  15:02:08,870 - #35 {
+INFO  15:02:08,871 - #36 }
+INFO  15:02:08,871 - #36 }
+INFO  15:02:08,872 - #41 int
+INFO  15:02:08,873 - #41 a
+INFO  15:02:08,874 - #29 ,
+INFO  15:02:08,874 - #41 b
+INFO  15:02:08,874 - #29 ,
+INFO  15:02:08,874 - #41 c
+INFO  15:02:08,874 - #33 [
+INFO  15:02:08,874 - #34 ]
+INFO  15:02:08,874 - #27 ;
+INFO  15:02:08,875 - #35 {
+INFO  15:02:08,875 - #36 }
+INFO  15:02:08,888 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NameSpacesList(
+    NoNameSpacesList(
+    ) [NoNameSpacesList]
+    Namespace(
+      NamespaceName(
+       Miki
+      ) [NamespaceName]
+      NoConstVarDeclarationList(
+      ) [NoConstVarDeclarationList]
+      NoMethodDeclarationList(
+      ) [NoMethodDeclarationList]
+    ) [Namespace]
+  ) [NameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        CommaVarDeclList(
+          CommaVarDeclList(
+            NoCommaVarDeclList(
+              VDeclaration(
+               a
+              ) [VDeclaration]
+            ) [NoCommaVarDeclList]
+            VDeclaration(
+             b
+            ) [VDeclaration]
+          ) [CommaVarDeclList]
+          VArrayDeclaration(
+           c
+          ) [VArrayDeclaration]
+        ) [CommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  NoMethodDeclarationList(
+  ) [NoMethodDeclarationList]
+) [Program]
+INFO  15:02:08,891 - ===================================
+INFO  15:02:08,895 - Obradjuje se namespace Miki na liniji 4
+INFO  15:02:08,896 - Deklarisana promenljiva a na liniji 6
+INFO  15:02:08,896 - Deklarisana promenljiva b na liniji 6
+INFO  15:02:08,896 - Deklarisana promenljiva niza c na liniji 6
+INFO  15:02:08,896 - ===================================
+INFO  15:02:08,897 - Parsiranje uspesno zavrseno!

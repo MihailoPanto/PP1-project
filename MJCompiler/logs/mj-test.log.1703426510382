@@ -1,0 +1,16 @@
+INFO  15:01:34,477 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  15:01:34,532 - #2 program
+INFO  15:01:34,533 - #41 mihailo
+INFO  15:01:34,533 - #10 namespace
+INFO  15:01:34,534 - #41 Miki
+INFO  15:01:34,535 - #35 {
+INFO  15:01:34,535 - #35 {
+INFO  15:01:34,536 - #36 }
+INFO  15:01:34,536 - #36 }
+INFO  15:01:34,537 - #35 {
+INFO  15:01:34,538 - #36 }
+INFO  15:01:34,538 - #35 {
+ERROR 15:01:34,540 - 
+Sintaksna greska na liniji 14
+INFO  15:01:34,540 - #36 }
+ERROR 15:01:34,541 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 16

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/11/2023 22:51:19
+// 24/11/2023 23:9:20
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,24 +9,27 @@ public class Namespace implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private String I1;
+    public rs.etf.pp1.symboltable.concepts.Obj obj = null;
+
+    private NamespaceName NamespaceName;
     private ConstVarDeclList ConstVarDeclList;
     private MethodDeclList MethodDeclList;
 
-    public Namespace (String I1, ConstVarDeclList ConstVarDeclList, MethodDeclList MethodDeclList) {
-        this.I1=I1;
+    public Namespace (NamespaceName NamespaceName, ConstVarDeclList ConstVarDeclList, MethodDeclList MethodDeclList) {
+        this.NamespaceName=NamespaceName;
+        if(NamespaceName!=null) NamespaceName.setParent(this);
         this.ConstVarDeclList=ConstVarDeclList;
         if(ConstVarDeclList!=null) ConstVarDeclList.setParent(this);
         this.MethodDeclList=MethodDeclList;
         if(MethodDeclList!=null) MethodDeclList.setParent(this);
     }
 
-    public String getI1() {
-        return I1;
+    public NamespaceName getNamespaceName() {
+        return NamespaceName;
     }
 
-    public void setI1(String I1) {
-        this.I1=I1;
+    public void setNamespaceName(NamespaceName NamespaceName) {
+        this.NamespaceName=NamespaceName;
     }
 
     public ConstVarDeclList getConstVarDeclList() {
@@ -66,17 +69,20 @@ public class Namespace implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(NamespaceName!=null) NamespaceName.accept(visitor);
         if(ConstVarDeclList!=null) ConstVarDeclList.accept(visitor);
         if(MethodDeclList!=null) MethodDeclList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(NamespaceName!=null) NamespaceName.traverseTopDown(visitor);
         if(ConstVarDeclList!=null) ConstVarDeclList.traverseTopDown(visitor);
         if(MethodDeclList!=null) MethodDeclList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(NamespaceName!=null) NamespaceName.traverseBottomUp(visitor);
         if(ConstVarDeclList!=null) ConstVarDeclList.traverseBottomUp(visitor);
         if(MethodDeclList!=null) MethodDeclList.traverseBottomUp(visitor);
         accept(visitor);
@@ -87,7 +93,10 @@ public class Namespace implements SyntaxNode {
         buffer.append(tab);
         buffer.append("Namespace(\n");
 
-        buffer.append(" "+tab+I1);
+        if(NamespaceName!=null)
+            buffer.append(NamespaceName.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(ConstVarDeclList!=null)

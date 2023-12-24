@@ -1,15 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/11/2023 22:51:19
+// 24/11/2023 23:9:20
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class NumConst extends ConstValue {
+public class NumberConst extends ConstValue {
 
     private Integer N1;
 
-    public NumConst (Integer N1) {
+    public NumberConst (Integer N1) {
         this.N1=N1;
     }
 
@@ -39,13 +39,13 @@ public class NumConst extends ConstValue {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("NumConst(\n");
+        buffer.append("NumberConst(\n");
 
         buffer.append(" "+tab+N1);
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [NumConst]");
+        buffer.append(") [NumberConst]");
         return buffer.toString();
     }
 }
