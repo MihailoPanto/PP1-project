@@ -1,0 +1,148 @@
+INFO  09:56:28,882 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  09:56:28,924 - #2 program
+INFO  09:56:28,924 - #41 mihailo
+INFO  09:56:28,924 - #10 namespace
+INFO  09:56:28,926 - #41 Miki
+INFO  09:56:28,926 - #35 {
+INFO  09:56:28,927 - #41 char
+INFO  09:56:28,928 - #41 d
+INFO  09:56:28,929 - #27 ;
+INFO  09:56:28,929 - #41 char
+INFO  09:56:28,929 - #41 e
+INFO  09:56:28,929 - #33 [
+INFO  09:56:28,929 - #34 ]
+INFO  09:56:28,929 - #27 ;
+INFO  09:56:28,929 - #35 {
+INFO  09:56:28,930 - #36 }
+INFO  09:56:28,930 - #36 }
+INFO  09:56:28,931 - #41 int
+INFO  09:56:28,932 - #41 a
+INFO  09:56:28,932 - #29 ,
+INFO  09:56:28,932 - #41 b
+INFO  09:56:28,932 - #29 ,
+INFO  09:56:28,936 - #41 c
+INFO  09:56:28,936 - #33 [
+INFO  09:56:28,936 - #34 ]
+INFO  09:56:28,936 - #27 ;
+INFO  09:56:28,936 - #3 const
+INFO  09:56:28,936 - #41 int
+INFO  09:56:28,936 - #41 g
+INFO  09:56:28,936 - #24 =
+INFO  09:56:28,936 - #40 1
+INFO  09:56:28,936 - #29 ,
+INFO  09:56:28,939 - #41 h
+INFO  09:56:28,939 - #24 =
+INFO  09:56:28,939 - #40 2
+INFO  09:56:28,939 - #27 ;
+INFO  09:56:28,939 - #35 {
+INFO  09:56:28,939 - #36 }
+INFO  09:56:28,946 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NameSpacesList(
+    NoNameSpacesList(
+    ) [NoNameSpacesList]
+    Namespace(
+      NamespaceName(
+       Miki
+      ) [NamespaceName]
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          NoConstVarDeclarationList(
+          ) [NoConstVarDeclarationList]
+          VarCVDeclaration(
+            TypeSemiVarDecl(
+              Type(
+               char
+              ) [Type]
+              NoCommaVarDeclList(
+                VDeclaration(
+                 d
+                ) [VDeclaration]
+              ) [NoCommaVarDeclList]
+            ) [TypeSemiVarDecl]
+          ) [VarCVDeclaration]
+        ) [ConstVarDeclarationList]
+        VarCVDeclaration(
+          TypeSemiVarDecl(
+            Type(
+             char
+            ) [Type]
+            NoCommaVarDeclList(
+              VArrayDeclaration(
+               e
+              ) [VArrayDeclaration]
+            ) [NoCommaVarDeclList]
+          ) [TypeSemiVarDecl]
+        ) [VarCVDeclaration]
+      ) [ConstVarDeclarationList]
+      NoMethodDeclarationList(
+      ) [NoMethodDeclarationList]
+    ) [Namespace]
+  ) [NameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      NoConstVarDeclarationList(
+      ) [NoConstVarDeclarationList]
+      VarCVDeclaration(
+        TypeSemiVarDecl(
+          Type(
+           int
+          ) [Type]
+          CommaVarDeclList(
+            CommaVarDeclList(
+              NoCommaVarDeclList(
+                VDeclaration(
+                 a
+                ) [VDeclaration]
+              ) [NoCommaVarDeclList]
+              VDeclaration(
+               b
+              ) [VDeclaration]
+            ) [CommaVarDeclList]
+            VArrayDeclaration(
+             c
+            ) [VArrayDeclaration]
+          ) [CommaVarDeclList]
+        ) [TypeSemiVarDecl]
+      ) [VarCVDeclaration]
+    ) [ConstVarDeclarationList]
+    ConstCVDeclaration(
+      TypeSemiConstDecl(
+        Type(
+         int
+        ) [Type]
+        CommaConstDeclList(
+          SingleConstDecl(
+            ConstDeclaration(
+             g
+              NumberConst(
+               1
+              ) [NumberConst]
+            ) [ConstDeclaration]
+          ) [SingleConstDecl]
+          ConstDeclaration(
+           h
+            NumberConst(
+             2
+            ) [NumberConst]
+          ) [ConstDeclaration]
+        ) [CommaConstDeclList]
+      ) [TypeSemiConstDecl]
+    ) [ConstCVDeclaration]
+  ) [ConstVarDeclarationList]
+  NoMethodDeclarationList(
+  ) [NoMethodDeclarationList]
+) [Program]
+INFO  09:56:28,948 - ===================================
+INFO  09:56:28,950 - Obradjuje se namespace Miki na liniji 4
+INFO  09:56:28,950 - Deklarisana promenljiva Miki::d na liniji 6
+INFO  09:56:28,950 - Deklarisana promenljiva niza Miki::e na liniji 7
+INFO  09:56:28,950 - Deklarisana promenljiva a na liniji 12
+INFO  09:56:28,950 - Deklarisana promenljiva b na liniji 12
+INFO  09:56:28,950 - Deklarisana promenljiva niza c na liniji 12
+INFO  09:56:28,950 - Deklarisana konstanta g na liniji 13
+INFO  09:56:28,950 - Deklarisana konstanta h na liniji 13
+INFO  09:56:28,951 - ===================================
+INFO  09:56:28,952 - Parsiranje uspesno zavrseno!

@@ -68,20 +68,19 @@ nonterminal ConstVarDeclList, ConstVarDecl, ConstDecl, ConstDeclList, ConstDecla
 // namespace
 nonterminal NamespaceList;
 // method
-nonterminal MethodDeclList, MethodDecl, MethodTypeName, MethodType, FormParsOpt, FormPars, FormPar, LocalVarDeclList;
+nonterminal MethodDeclList, MethodType, FormParsOpt, FormPars, FormPar, LocalVarDeclList;
 // statement
-nonterminal StatementList, Statement, OptPrint, DesignatorStatement, DesignatorStatementPart, Expr, ExprPart, MinusOptional, Term, Factor;
+nonterminal StatementList, Statement, OptPrint;
 // designator
-nonterminal Designator, DesignatorOptPart, NamespaceAccess;
 // operators
 nonterminal MulOp, AddOp, AssignOp, RelOp;
 // conditions
 nonterminal ConditionList, CondTermList, CondFact;
 
 // symboltable obj
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, Namespace, NamespaceName;
-// symboltable obj
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ConstValue;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, Namespace, NamespaceName, MethodDecl, MethodTypeName, NamespaceAccess, Designator, DesignatorStatement;
+// symboltable struct
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ConstValue, Expr, Term, Factor;
 
 
 // -------------------- PROGRAM --------------------
@@ -108,13 +107,11 @@ MethodDeclList ::= (MethodDeclarationList) MethodDeclList MethodDecl
 		(NoMethodDeclarationList) /*epsilon*/
 		;
 				
-MethodDecl ::= (MethodDeclaration) MethodTypeName LPAREN FormParsOpt RPAREN LocalVarDeclList LBRACE StatementList RBRACE;
+MethodDecl ::= (MethodDecl) MethodTypeName:methodTypeName LPAREN FormParsOpt RPAREN LocalVarDeclList LBRACE StatementList RBRACE;
 
-MethodTypeName ::= (MTypeName) MethodType IDENT;
-
-MethodType ::= (MethType) Type
+MethodTypeName ::= (MethodTypeNameType) Type:methodType IDENT:methodName
 		|
-		(NoMethType) VOID
+		(MethodTypeNameVoid) VOID:methodType IDENT:methodName
 		;
 			
 FormParsOpt ::= (FormParsOptional) FormPars
@@ -149,7 +146,7 @@ ConstVarDecl ::= (ConstCVDeclaration) ConstDecl
 				
 // -------------------- CONST --------------------
 				
-ConstDecl ::= (ConstDecl) CONST Type ConstDeclList SEMI;
+ConstDecl ::= (TypeSemiConstDecl) CONST Type ConstDeclList SEMI;
 
 		
 ConstDeclList ::= (CommaConstDeclList) ConstDeclList COMMA ConstDeclaration
@@ -211,25 +208,18 @@ OptPrint ::= (CommaOptPrint) COMMA NUMBER
 		(NoOptPrint) /*epsilon*/
 		;
 
-DesignatorStatement ::= (DesignatorStmt) Designator DesignatorStatementPart;
-
-DesignatorStatementPart ::= (AssignExpr) AssignOp Expr
+DesignatorStatement ::= (DesignatorAssign) Designator AssignOp Expr
 		|
-		(PlusPlus) PLUS_PLUS
+		(DesignatorPlusPlus)Designator PLUS_PLUS
 		|
-		(MinusMinus) MINUS_MINUS
+		(DesignatorMinusMinus) Designator MINUS_MINUS
 		;
 
-Expr ::= (Expr) MinusOptional ExprPart;
-
-ExprPart ::= (AddopExprPart) ExprPart AddOp Term
+Expr ::= (ExprMinus) MINUS Term
 		|
-		(NoAddOpExprPart) Term
-		;
-
-MinusOptional ::= (MinusOpt) MINUS
+		(ExprAddop) Expr AddOp Term
 		|
-		(NoMinusOpt) /*epsilon*/
+		(ExprTerm) Term
 		;
 
 Term ::= (TermMulOp) Term MulOp Factor
@@ -237,7 +227,7 @@ Term ::= (TermMulOp) Term MulOp Factor
 		(TermFactor) Factor
 		; 
 
-Factor ::= (FactorConstValue) ConstValue
+Factor ::= (FactorConstValue) ConstValue:constValue
 		|
 		(FactorNew) NEW Type LSBRACE Expr RSBRACE
 		|
@@ -246,16 +236,13 @@ Factor ::= (FactorConstValue) ConstValue
 		(FactorDesignator) Designator
 		;
 
-Designator ::= (Designator) NamespaceAccess DesignatorOptPart;
-
-DesignatorOptPart ::= (DesignatorExpr) LSBRACE Expr RSBRACE
+Designator ::= (DesignatorIdentBraces) IDENT:desigName LSBRACE Expr RSBRACE
 		|
-		(NoDesignatorExpr) /*epsilon*/
-		;
-
-NamespaceAccess ::= (NsAccess) IDENT TWO_DOUBLE_DOT IDENT
+		(DesignatorNamespaceBraces) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName LSBRACE Expr RSBRACE
 		|
-		(NoNsAccess) IDENT
+		(DesignatorNamespace) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName
+		|
+		(DesignatorIdent) IDENT:desigName
 		;
 	
 // -------------------- CONDITIONS --------------------
