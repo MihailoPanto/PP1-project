@@ -85,7 +85,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	// Namespace
 
 	public void visit(NamespaceName namespaceName) {
-		currentNamespace = Tab.insert(Obj.Type, namespaceName.getNamespaceName(), Tab.noType);
+		currentNamespace = Tab.insert(NewObj.Namespace, namespaceName.getNamespaceName(), Tab.noType);
 		namespaceName.obj = currentNamespace;
 		Tab.openScope();
 		report_info("Obradjuje se namespace " + currentNamespace.getName(), namespaceName);
@@ -100,6 +100,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	// Deklaracija promenljivih
 
 	public void visit(VDeclaration vDeclaration) {
+
+		Obj var = Tab.currentScope.findSymbol(vDeclaration.getVarName());
+		if (var != null) {
+			report_error("Ime promenljive na liniji " + vDeclaration.getLine() + " je zauzeto!", null);
+		}
+
 		SyntaxNode par = vDeclaration.getParent();
 		while (!(par instanceof TypeSemiVarDecl))
 			par = par.getParent();
@@ -117,6 +123,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	}
 
 	public void visit(VArrayDeclaration vArrayDeclaration) {
+
+		Obj var = Tab.currentScope.findSymbol(vArrayDeclaration.getVarName());
+		if (var != null) {
+			report_error("Ime promenljive niza na liniji " + vArrayDeclaration.getLine() + " je zauzeto!", null);
+		}
+
 		SyntaxNode par = vArrayDeclaration.getParent();
 		while (!(par instanceof TypeSemiVarDecl))
 			par = par.getParent();
@@ -144,10 +156,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	// TODO:
 	public void visit(BoolConst boolConst) {
-		// izvedi iz Tab
+		boolConst.struct = NewTab.boolType;
 	}
 
 	public void visit(ConstDeclaration constDeclaration) {
+
+		Obj con = Tab.currentScope.findSymbol(constDeclaration.getConstName());
+		if (con != null) {
+			report_error("Ime konstante na liniji " + constDeclaration.getLine() + " je zauzeto!", null);
+		}
+
 		SyntaxNode par = constDeclaration.getParent();
 		while (!(par instanceof TypeSemiConstDecl))
 			par = par.getParent();
@@ -175,6 +193,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	// Metode
 
 	public void visit(MethodTypeNameType methodTypeNameType) {
+
+		Obj meth = Tab.currentScope.findSymbol(methodTypeNameType.getMethodName());
+		if (meth != null) {
+			report_error("Ime funkcije na liniji " + methodTypeNameType.getLine() + " je zauzeto!", null);
+		}
+
 		currentMethod = Tab.insert(Obj.Meth, methodTypeNameType.getMethodName(), methodTypeNameType.getType().struct);
 		methodTypeNameType.obj = currentMethod;
 		Tab.openScope();
@@ -182,6 +206,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	}
 
 	public void visit(MethodTypeNameVoid methodTypeNameVoid) {
+
+		Obj meth = Tab.currentScope.findSymbol(methodTypeNameVoid.getMethodName());
+		if (meth != null) {
+			report_error("Ime funkcije na liniji " + methodTypeNameVoid.getLine() + " je zauzeto!", null);
+		}
+
 		currentMethod = Tab.insert(Obj.Meth, methodTypeNameVoid.getMethodName(), Tab.noType);
 		methodTypeNameVoid.obj = currentMethod;
 		Tab.openScope();
@@ -202,6 +232,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	// DesignatorStatement
 
+	public void visit(DesignatorIdent designatorIdent) {
+		designatorIdent.obj = Tab.find(designatorIdent.getDesigName());
+		if (designatorIdent.obj == Tab.noObj) {
+			report_error("Nepostojeci simbol na liniji " + designatorIdent.getLine(), null);
+		}
+	}
+
 	public void visit(DesignatorIdentBraces designatorIdentBraces) {
 		Obj array = Tab.find(designatorIdentBraces.getDesigName());
 		if (array == Tab.noObj) {
@@ -210,6 +247,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		if (array.getType().getKind() != Struct.Array) {
 			report_error("Nije niz u liniji " + designatorIdentBraces.getLine(), null);
 		}
+
 		if (designatorIdentBraces.getExpr().struct != Tab.intType) {
 			report_error("U uglastim zagradama mora biti tip int " + designatorIdentBraces.getLine(), null);
 		}
@@ -217,21 +255,51 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorNamespaceBraces designatorNamespaceBraces) {
+		Boolean flag = false;
+		designatorNamespaceBraces.obj = Tab.noObj;
+		Obj namespace = Tab.find(designatorNamespaceBraces.getNamespaceName());
+		if (namespace.getKind() != NewObj.Namespace) {
+			report_error("Nije napisan postojeci namespace na liniji " + designatorNamespaceBraces.getLine(), null);
+		}
 
+		for (Obj o : namespace.getLocalSymbols()) {
+			if (o.getName().equals(designatorNamespaceBraces.getDesigName())) {
+				Obj array = o;
+				if (array.getType().getKind() != Struct.Array) {
+					report_error("Nije niz Namespace-a u liniji " + designatorNamespaceBraces.getLine(), null);
+				}
+				if (designatorNamespaceBraces.getExpr().struct != Tab.intType) {
+					report_error("U uglastim zagradama mora biti tip int " + designatorNamespaceBraces.getLine(), null);
+				}
+				designatorNamespaceBraces.obj = new Obj(Obj.Elem, "", array.getType().getElemType());
+				flag = true;
+				break;
+			}
+		}
+		if (!flag) {
+			report_error("Ne postoji zadat simbol niza u namespace-u na liniji " + designatorNamespaceBraces.getLine(),
+					null);
+		}
 	}
 
 	public void visit(DesignatorNamespace designatorNamespace) {
-//		Obj namespace = Tab.find(designatorNamespace.getNamespaceName());
-//		// dodaj proveru da li je ovo namespace
-//		if (namespace.getLocalSymbols() != null) {
-//			namespace.get;
-//		}
-	}
+		Boolean flag = false;
+		designatorNamespace.obj = Tab.noObj;
+		Obj namespace = Tab.find(designatorNamespace.getNamespaceName());
+		if (namespace.getKind() != NewObj.Namespace) {
+			report_error("Nije napisan postojeci namespace na liniji " + designatorNamespace.getLine(), null);
+		}
 
-	public void visit(DesignatorIdent designatorIdent) {
-		designatorIdent.obj = Tab.find(designatorIdent.getDesigName());
-		if (designatorIdent.obj == Tab.noObj) {
-			report_error("Nepostojeci simbol na liniji " + designatorIdent.getLine(), null);
+		for (Obj o : namespace.getLocalSymbols()) {
+			if (o.getName().equals(designatorNamespace.getDesigName())) {
+				designatorNamespace.obj = o;
+				flag = true;
+				break;
+			}
+		}
+		if (!flag) {
+			report_error("Ne postoji zadat simbol u namespace-u na liniji " + designatorNamespace.getLine(),
+					null);
 		}
 	}
 
@@ -239,13 +307,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		Struct leftVariable = designatorAssign.getDesignator().obj.getType();
 		Struct rightVariable = designatorAssign.getExpr().struct;
 
-		if (leftVariable.getKind() == Struct.Array && rightVariable.getKind() == Struct.Array) {
-			if (leftVariable.getElemType() == rightVariable.getElemType()) {
-				return;
-			}
-			report_error("Nisu odgovarajuci tipovi dva niza " + designatorAssign.getLine(), null);
-		} else if (leftVariable != rightVariable) {
+		if (designatorAssign.getDesignator().obj.getKind() == Obj.Con) {
+			report_error("Nije dozvoljena dodela vrednosti kontstanti u liniji " + designatorAssign.getLine(), null);
+		}
+
+		if (!leftVariable.compatibleWith(rightVariable)) {
 			report_error("Nisu odgovarajuci tipovi " + designatorAssign.getLine(), null);
+		} else if (leftVariable.getKind() == Struct.Array && rightVariable.getKind() == Struct.Array) {
+			if (leftVariable.getElemType() != rightVariable.getElemType()) {
+				report_error("Nisu odgovarajuci tipovi dva niza " + designatorAssign.getLine(), null);
+			}
 		}
 
 		designatorAssign.obj = designatorAssign.getDesignator().obj;
@@ -315,7 +386,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	}
 
 	public void visit(ExprMinus exprMinus) {
-		if (exprMinus.struct != Tab.intType) {
+		if (exprMinus.getTerm().struct != Tab.intType) {
 			report_error("Iza negativnog predznaka moze biti samo tip int u liniji " + exprMinus.getLine(), null);
 		}
 		exprMinus.struct = exprMinus.getTerm().struct;
@@ -337,8 +408,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	public void visit(StmtPrint stmtPrint) {
 		Struct exprType = stmtPrint.getExpr().struct;
-		// dodaj i za bool
-		if (exprType != Tab.intType && exprType != Tab.charType) {
+		if (exprType != Tab.intType && exprType != Tab.charType && exprType != NewTab.boolType) {
 			report_error("Expr mora biti biti int u liniji " + stmtPrint.getLine(), null);
 		}
 	}

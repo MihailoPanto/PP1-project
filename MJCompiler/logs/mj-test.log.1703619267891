@@ -1,0 +1,281 @@
+INFO  20:34:04,181 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  20:34:04,223 - #2 program
+INFO  20:34:04,223 - #41 mihailo
+INFO  20:34:04,223 - #10 namespace
+INFO  20:34:04,225 - #41 Miki
+INFO  20:34:04,225 - #35 {
+INFO  20:34:04,225 - #41 int
+INFO  20:34:04,226 - #41 a
+INFO  20:34:04,227 - #27 ;
+INFO  20:34:04,227 - #41 char
+INFO  20:34:04,227 - #41 d
+INFO  20:34:04,228 - #27 ;
+INFO  20:34:04,228 - #41 char
+INFO  20:34:04,228 - #41 e
+INFO  20:34:04,228 - #33 [
+INFO  20:34:04,228 - #34 ]
+INFO  20:34:04,228 - #27 ;
+INFO  20:34:04,228 - #3 const
+INFO  20:34:04,228 - #41 char
+INFO  20:34:04,228 - #41 f
+INFO  20:34:04,228 - #24 =
+INFO  20:34:04,228 - #42 'f'
+INFO  20:34:04,230 - #27 ;
+INFO  20:34:04,231 - #35 {
+INFO  20:34:04,232 - #36 }
+INFO  20:34:04,232 - #36 }
+INFO  20:34:04,233 - #41 int
+INFO  20:34:04,234 - #41 a
+INFO  20:34:04,234 - #29 ,
+INFO  20:34:04,234 - #41 b
+INFO  20:34:04,234 - #29 ,
+INFO  20:34:04,234 - #41 c
+INFO  20:34:04,234 - #33 [
+INFO  20:34:04,234 - #34 ]
+INFO  20:34:04,234 - #27 ;
+INFO  20:34:04,234 - #3 const
+INFO  20:34:04,234 - #41 int
+INFO  20:34:04,234 - #41 g
+INFO  20:34:04,234 - #24 =
+INFO  20:34:04,234 - #40 1
+INFO  20:34:04,234 - #29 ,
+INFO  20:34:04,234 - #41 h
+INFO  20:34:04,234 - #24 =
+INFO  20:34:04,234 - #40 2
+INFO  20:34:04,235 - #27 ;
+INFO  20:34:04,235 - #41 char
+INFO  20:34:04,235 - #41 aa
+INFO  20:34:04,235 - #27 ;
+INFO  20:34:04,235 - #3 const
+INFO  20:34:04,235 - #41 int
+INFO  20:34:04,235 - #41 xx
+INFO  20:34:04,235 - #24 =
+INFO  20:34:04,235 - #40 2
+INFO  20:34:04,235 - #27 ;
+INFO  20:34:04,235 - #41 bool
+INFO  20:34:04,235 - #41 abc
+INFO  20:34:04,235 - #27 ;
+INFO  20:34:04,235 - #35 {
+INFO  20:34:04,236 - #9 void
+INFO  20:34:04,236 - #41 main
+INFO  20:34:04,236 - #31 (
+INFO  20:34:04,236 - #32 )
+INFO  20:34:04,237 - #35 {
+INFO  20:34:04,238 - #41 Miki
+INFO  20:34:04,239 - #37 ::
+INFO  20:34:04,239 - #41 a
+INFO  20:34:04,239 - #24 =
+INFO  20:34:04,239 - #40 2
+INFO  20:34:04,241 - #27 ;
+INFO  20:34:04,242 - #36 }
+INFO  20:34:04,242 - #36 }
+INFO  20:34:04,248 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NameSpacesList(
+    NoNameSpacesList(
+    ) [NoNameSpacesList]
+    Namespace(
+      NamespaceName(
+       Miki
+      ) [NamespaceName]
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          ConstVarDeclarationList(
+            ConstVarDeclarationList(
+              NoConstVarDeclarationList(
+              ) [NoConstVarDeclarationList]
+              VarCVDeclaration(
+                TypeSemiVarDecl(
+                  Type(
+                   int
+                  ) [Type]
+                  NoCommaVarDeclList(
+                    VDeclaration(
+                     a
+                    ) [VDeclaration]
+                  ) [NoCommaVarDeclList]
+                ) [TypeSemiVarDecl]
+              ) [VarCVDeclaration]
+            ) [ConstVarDeclarationList]
+            VarCVDeclaration(
+              TypeSemiVarDecl(
+                Type(
+                 char
+                ) [Type]
+                NoCommaVarDeclList(
+                  VDeclaration(
+                   d
+                  ) [VDeclaration]
+                ) [NoCommaVarDeclList]
+              ) [TypeSemiVarDecl]
+            ) [VarCVDeclaration]
+          ) [ConstVarDeclarationList]
+          VarCVDeclaration(
+            TypeSemiVarDecl(
+              Type(
+               char
+              ) [Type]
+              NoCommaVarDeclList(
+                VArrayDeclaration(
+                 e
+                ) [VArrayDeclaration]
+              ) [NoCommaVarDeclList]
+            ) [TypeSemiVarDecl]
+          ) [VarCVDeclaration]
+        ) [ConstVarDeclarationList]
+        ConstCVDeclaration(
+          TypeSemiConstDecl(
+            Type(
+             char
+            ) [Type]
+            SingleConstDecl(
+              ConstDeclaration(
+               f
+                CharConst(
+                 'f'
+                ) [CharConst]
+              ) [ConstDeclaration]
+            ) [SingleConstDecl]
+          ) [TypeSemiConstDecl]
+        ) [ConstCVDeclaration]
+      ) [ConstVarDeclarationList]
+      NoMethodDeclarationList(
+      ) [NoMethodDeclarationList]
+    ) [Namespace]
+  ) [NameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          ConstVarDeclarationList(
+            NoConstVarDeclarationList(
+            ) [NoConstVarDeclarationList]
+            VarCVDeclaration(
+              TypeSemiVarDecl(
+                Type(
+                 int
+                ) [Type]
+                CommaVarDeclList(
+                  CommaVarDeclList(
+                    NoCommaVarDeclList(
+                      VDeclaration(
+                       a
+                      ) [VDeclaration]
+                    ) [NoCommaVarDeclList]
+                    VDeclaration(
+                     b
+                    ) [VDeclaration]
+                  ) [CommaVarDeclList]
+                  VArrayDeclaration(
+                   c
+                  ) [VArrayDeclaration]
+                ) [CommaVarDeclList]
+              ) [TypeSemiVarDecl]
+            ) [VarCVDeclaration]
+          ) [ConstVarDeclarationList]
+          ConstCVDeclaration(
+            TypeSemiConstDecl(
+              Type(
+               int
+              ) [Type]
+              CommaConstDeclList(
+                SingleConstDecl(
+                  ConstDeclaration(
+                   g
+                    NumberConst(
+                     1
+                    ) [NumberConst]
+                  ) [ConstDeclaration]
+                ) [SingleConstDecl]
+                ConstDeclaration(
+                 h
+                  NumberConst(
+                   2
+                  ) [NumberConst]
+                ) [ConstDeclaration]
+              ) [CommaConstDeclList]
+            ) [TypeSemiConstDecl]
+          ) [ConstCVDeclaration]
+        ) [ConstVarDeclarationList]
+        VarCVDeclaration(
+          TypeSemiVarDecl(
+            Type(
+             char
+            ) [Type]
+            NoCommaVarDeclList(
+              VDeclaration(
+               aa
+              ) [VDeclaration]
+            ) [NoCommaVarDeclList]
+          ) [TypeSemiVarDecl]
+        ) [VarCVDeclaration]
+      ) [ConstVarDeclarationList]
+      ConstCVDeclaration(
+        TypeSemiConstDecl(
+          Type(
+           int
+          ) [Type]
+          SingleConstDecl(
+            ConstDeclaration(
+             xx
+              NumberConst(
+               2
+              ) [NumberConst]
+            ) [ConstDeclaration]
+          ) [SingleConstDecl]
+        ) [TypeSemiConstDecl]
+      ) [ConstCVDeclaration]
+    ) [ConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         bool
+        ) [Type]
+        NoCommaVarDeclList(
+          VDeclaration(
+           abc
+          ) [VDeclaration]
+        ) [NoCommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        NoStmtList(
+        ) [NoStmtList]
+        StmtDesignatorStatement(
+          DesignatorAssign(
+            DesignatorNamespace(
+             Miki
+             a
+            ) [DesignatorNamespace]
+            AssignOpEqual(
+            ) [AssignOpEqual]
+            ExprTerm(
+              TermFactor(
+                FactorConstValue(
+                  NumberConst(
+                   2
+                  ) [NumberConst]
+                ) [FactorConstValue]
+              ) [TermFactor]
+            ) [ExprTerm]
+          ) [DesignatorAssign]
+        ) [StmtDesignatorStatement]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  20:34:04,248 - ===================================

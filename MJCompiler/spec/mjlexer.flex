@@ -88,7 +88,7 @@ import java_cup.runtime.Symbol;
 
 "false" { return new_symbol(sym.BOOL, yytext());}
 
-"'"[ -~]"'"		{ return new_symbol(sym.CHAR, yytext());}
+'.'		{ return new_symbol(sym.CHAR, yytext());}
 
 [0-9]+  { return new_symbol(sym.NUMBER, new Integer(yytext()));}
 

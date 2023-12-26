@@ -2,7 +2,7 @@ program mihailo
 
 	
 namespace Miki{
-
+int a;
 char d;
 char e[];
 const char f='f';
@@ -10,19 +10,19 @@ const char f='f';
 }
 
 int a, b, c[];
+int ccc[];
+char tt[];
 const int g=1,h=2;
 char aa;
 const int xx = 2;
+bool abc;
 {
 
 void main(){
-	a=1;
-	a++;
-	b=a;
-	
-	a = a + b*aa;
-	
-	xx = 4;
+	Miki::a=2;
+	aa=1;
+	Miki::e[1]='d';
+	c=ccc;
 }
 
 }

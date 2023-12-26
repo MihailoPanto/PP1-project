@@ -1,0 +1,362 @@
+INFO  21:02:25,328 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program1.mj
+INFO  21:02:25,374 - #2 program
+INFO  21:02:25,374 - #41 mihailo
+INFO  21:02:25,374 - #10 namespace
+INFO  21:02:25,376 - #41 Miki
+INFO  21:02:25,376 - #35 {
+INFO  21:02:25,377 - #41 int
+INFO  21:02:25,380 - #41 a
+INFO  21:02:25,381 - #27 ;
+INFO  21:02:25,381 - #41 char
+INFO  21:02:25,382 - #41 d
+INFO  21:02:25,382 - #27 ;
+INFO  21:02:25,382 - #41 char
+INFO  21:02:25,382 - #41 e
+INFO  21:02:25,382 - #33 [
+INFO  21:02:25,382 - #34 ]
+INFO  21:02:25,382 - #27 ;
+INFO  21:02:25,382 - #3 const
+INFO  21:02:25,382 - #41 char
+INFO  21:02:25,382 - #41 f
+INFO  21:02:25,382 - #24 =
+INFO  21:02:25,382 - #42 'f'
+INFO  21:02:25,383 - #27 ;
+INFO  21:02:25,384 - #35 {
+INFO  21:02:25,384 - #36 }
+INFO  21:02:25,384 - #36 }
+INFO  21:02:25,385 - #41 int
+INFO  21:02:25,386 - #41 a
+INFO  21:02:25,386 - #29 ,
+INFO  21:02:25,386 - #41 b
+INFO  21:02:25,386 - #29 ,
+INFO  21:02:25,386 - #41 c
+INFO  21:02:25,386 - #33 [
+INFO  21:02:25,386 - #34 ]
+INFO  21:02:25,386 - #27 ;
+INFO  21:02:25,386 - #41 int
+INFO  21:02:25,386 - #41 ccc
+INFO  21:02:25,386 - #33 [
+INFO  21:02:25,386 - #34 ]
+INFO  21:02:25,386 - #27 ;
+INFO  21:02:25,386 - #41 char
+INFO  21:02:25,386 - #41 tt
+INFO  21:02:25,386 - #33 [
+INFO  21:02:25,387 - #34 ]
+INFO  21:02:25,387 - #27 ;
+INFO  21:02:25,387 - #3 const
+INFO  21:02:25,387 - #41 int
+INFO  21:02:25,387 - #41 g
+INFO  21:02:25,387 - #24 =
+INFO  21:02:25,387 - #40 1
+INFO  21:02:25,387 - #29 ,
+INFO  21:02:25,387 - #41 h
+INFO  21:02:25,387 - #24 =
+INFO  21:02:25,387 - #40 2
+INFO  21:02:25,387 - #27 ;
+INFO  21:02:25,387 - #41 char
+INFO  21:02:25,387 - #41 aa
+INFO  21:02:25,388 - #27 ;
+INFO  21:02:25,388 - #3 const
+INFO  21:02:25,388 - #41 int
+INFO  21:02:25,388 - #41 xx
+INFO  21:02:25,388 - #24 =
+INFO  21:02:25,388 - #40 2
+INFO  21:02:25,388 - #27 ;
+INFO  21:02:25,388 - #41 bool
+INFO  21:02:25,388 - #41 abc
+INFO  21:02:25,388 - #27 ;
+INFO  21:02:25,388 - #35 {
+INFO  21:02:25,388 - #9 void
+INFO  21:02:25,388 - #41 main
+INFO  21:02:25,388 - #31 (
+INFO  21:02:25,388 - #32 )
+INFO  21:02:25,389 - #35 {
+INFO  21:02:25,390 - #41 Miki
+INFO  21:02:25,391 - #37 ::
+INFO  21:02:25,391 - #41 a
+INFO  21:02:25,391 - #24 =
+INFO  21:02:25,391 - #40 2
+INFO  21:02:25,392 - #27 ;
+INFO  21:02:25,393 - #41 c
+INFO  21:02:25,393 - #24 =
+INFO  21:02:25,393 - #41 ccc
+INFO  21:02:25,393 - #27 ;
+INFO  21:02:25,393 - #36 }
+INFO  21:02:25,393 - #36 }
+INFO  21:02:25,407 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NameSpacesList(
+    NoNameSpacesList(
+    ) [NoNameSpacesList]
+    Namespace(
+      NamespaceName(
+       Miki
+      ) [NamespaceName]
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          ConstVarDeclarationList(
+            ConstVarDeclarationList(
+              NoConstVarDeclarationList(
+              ) [NoConstVarDeclarationList]
+              VarCVDeclaration(
+                TypeSemiVarDecl(
+                  Type(
+                   int
+                  ) [Type]
+                  NoCommaVarDeclList(
+                    VDeclaration(
+                     a
+                    ) [VDeclaration]
+                  ) [NoCommaVarDeclList]
+                ) [TypeSemiVarDecl]
+              ) [VarCVDeclaration]
+            ) [ConstVarDeclarationList]
+            VarCVDeclaration(
+              TypeSemiVarDecl(
+                Type(
+                 char
+                ) [Type]
+                NoCommaVarDeclList(
+                  VDeclaration(
+                   d
+                  ) [VDeclaration]
+                ) [NoCommaVarDeclList]
+              ) [TypeSemiVarDecl]
+            ) [VarCVDeclaration]
+          ) [ConstVarDeclarationList]
+          VarCVDeclaration(
+            TypeSemiVarDecl(
+              Type(
+               char
+              ) [Type]
+              NoCommaVarDeclList(
+                VArrayDeclaration(
+                 e
+                ) [VArrayDeclaration]
+              ) [NoCommaVarDeclList]
+            ) [TypeSemiVarDecl]
+          ) [VarCVDeclaration]
+        ) [ConstVarDeclarationList]
+        ConstCVDeclaration(
+          TypeSemiConstDecl(
+            Type(
+             char
+            ) [Type]
+            SingleConstDecl(
+              ConstDeclaration(
+               f
+                CharConst(
+                 'f'
+                ) [CharConst]
+              ) [ConstDeclaration]
+            ) [SingleConstDecl]
+          ) [TypeSemiConstDecl]
+        ) [ConstCVDeclaration]
+      ) [ConstVarDeclarationList]
+      NoMethodDeclarationList(
+      ) [NoMethodDeclarationList]
+    ) [Namespace]
+  ) [NameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          ConstVarDeclarationList(
+            ConstVarDeclarationList(
+              ConstVarDeclarationList(
+                NoConstVarDeclarationList(
+                ) [NoConstVarDeclarationList]
+                VarCVDeclaration(
+                  TypeSemiVarDecl(
+                    Type(
+                     int
+                    ) [Type]
+                    CommaVarDeclList(
+                      CommaVarDeclList(
+                        NoCommaVarDeclList(
+                          VDeclaration(
+                           a
+                          ) [VDeclaration]
+                        ) [NoCommaVarDeclList]
+                        VDeclaration(
+                         b
+                        ) [VDeclaration]
+                      ) [CommaVarDeclList]
+                      VArrayDeclaration(
+                       c
+                      ) [VArrayDeclaration]
+                    ) [CommaVarDeclList]
+                  ) [TypeSemiVarDecl]
+                ) [VarCVDeclaration]
+              ) [ConstVarDeclarationList]
+              VarCVDeclaration(
+                TypeSemiVarDecl(
+                  Type(
+                   int
+                  ) [Type]
+                  NoCommaVarDeclList(
+                    VArrayDeclaration(
+                     ccc
+                    ) [VArrayDeclaration]
+                  ) [NoCommaVarDeclList]
+                ) [TypeSemiVarDecl]
+              ) [VarCVDeclaration]
+            ) [ConstVarDeclarationList]
+            VarCVDeclaration(
+              TypeSemiVarDecl(
+                Type(
+                 char
+                ) [Type]
+                NoCommaVarDeclList(
+                  VArrayDeclaration(
+                   tt
+                  ) [VArrayDeclaration]
+                ) [NoCommaVarDeclList]
+              ) [TypeSemiVarDecl]
+            ) [VarCVDeclaration]
+          ) [ConstVarDeclarationList]
+          ConstCVDeclaration(
+            TypeSemiConstDecl(
+              Type(
+               int
+              ) [Type]
+              CommaConstDeclList(
+                SingleConstDecl(
+                  ConstDeclaration(
+                   g
+                    NumberConst(
+                     1
+                    ) [NumberConst]
+                  ) [ConstDeclaration]
+                ) [SingleConstDecl]
+                ConstDeclaration(
+                 h
+                  NumberConst(
+                   2
+                  ) [NumberConst]
+                ) [ConstDeclaration]
+              ) [CommaConstDeclList]
+            ) [TypeSemiConstDecl]
+          ) [ConstCVDeclaration]
+        ) [ConstVarDeclarationList]
+        VarCVDeclaration(
+          TypeSemiVarDecl(
+            Type(
+             char
+            ) [Type]
+            NoCommaVarDeclList(
+              VDeclaration(
+               aa
+              ) [VDeclaration]
+            ) [NoCommaVarDeclList]
+          ) [TypeSemiVarDecl]
+        ) [VarCVDeclaration]
+      ) [ConstVarDeclarationList]
+      ConstCVDeclaration(
+        TypeSemiConstDecl(
+          Type(
+           int
+          ) [Type]
+          SingleConstDecl(
+            ConstDeclaration(
+             xx
+              NumberConst(
+               2
+              ) [NumberConst]
+            ) [ConstDeclaration]
+          ) [SingleConstDecl]
+        ) [TypeSemiConstDecl]
+      ) [ConstCVDeclaration]
+    ) [ConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         bool
+        ) [Type]
+        NoCommaVarDeclList(
+          VDeclaration(
+           abc
+          ) [VDeclaration]
+        ) [NoCommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        StmtList(
+          NoStmtList(
+          ) [NoStmtList]
+          StmtDesignatorStatement(
+            DesignatorAssign(
+              DesignatorNamespace(
+               Miki
+               a
+              ) [DesignatorNamespace]
+              AssignOpEqual(
+              ) [AssignOpEqual]
+              ExprTerm(
+                TermFactor(
+                  FactorConstValue(
+                    NumberConst(
+                     2
+                    ) [NumberConst]
+                  ) [FactorConstValue]
+                ) [TermFactor]
+              ) [ExprTerm]
+            ) [DesignatorAssign]
+          ) [StmtDesignatorStatement]
+        ) [StmtList]
+        StmtDesignatorStatement(
+          DesignatorAssign(
+            DesignatorIdent(
+             c
+            ) [DesignatorIdent]
+            AssignOpEqual(
+            ) [AssignOpEqual]
+            ExprTerm(
+              TermFactor(
+                FactorDesignator(
+                  DesignatorIdent(
+                   ccc
+                  ) [DesignatorIdent]
+                ) [FactorDesignator]
+              ) [TermFactor]
+            ) [ExprTerm]
+          ) [DesignatorAssign]
+        ) [StmtDesignatorStatement]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  21:02:25,408 - ===================================
+INFO  21:02:25,412 - Obradjuje se namespace Miki na liniji 4
+INFO  21:02:25,412 - Deklarisana namespace promenljiva Miki::a na liniji 5
+INFO  21:02:25,412 - Deklarisana namespace promenljiva Miki::d na liniji 6
+INFO  21:02:25,412 - Deklarisana namespace promenljiva niza Miki::e na liniji 7
+INFO  21:02:25,412 - Deklarisana namespace konstanta Miki::f na liniji 8
+INFO  21:02:25,412 - Deklarisana promenljiva a na liniji 12
+INFO  21:02:25,413 - Deklarisana promenljiva b na liniji 12
+INFO  21:02:25,413 - Deklarisana promenljiva niza c na liniji 12
+INFO  21:02:25,413 - Deklarisana promenljiva niza ccc na liniji 13
+INFO  21:02:25,413 - Deklarisana promenljiva niza tt na liniji 14
+INFO  21:02:25,413 - Deklarisana konstanta g na liniji 15
+INFO  21:02:25,413 - Deklarisana konstanta h na liniji 15
+INFO  21:02:25,413 - Deklarisana promenljiva aa na liniji 16
+INFO  21:02:25,413 - Deklarisana konstanta xx na liniji 17
+INFO  21:02:25,413 - Deklarisana promenljiva abc na liniji 18
+INFO  21:02:25,413 - Obradjuje se funkcija main na liniji 21
+ERROR 21:02:25,413 - Nisu odgovarajuci tipovi 25
+INFO  21:02:25,413 - ===================================
+ERROR 21:02:25,414 - Parsiranje NIJE uspesno zavrseno!
