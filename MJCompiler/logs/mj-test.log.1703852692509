@@ -1,0 +1,143 @@
+INFO  13:24:20,993 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program2.mj
+INFO  13:24:21,035 - #2 program
+INFO  13:24:21,035 - #41 mihailo
+INFO  13:24:21,036 - #3 const
+INFO  13:24:21,037 - #41 int
+INFO  13:24:21,037 - #41 xx
+INFO  13:24:21,038 - #24 =
+INFO  13:24:21,038 - #40 22
+INFO  13:24:21,038 - #27 ;
+INFO  13:24:21,039 - #3 const
+INFO  13:24:21,039 - #41 char
+INFO  13:24:21,039 - #41 yy
+INFO  13:24:21,039 - #24 =
+INFO  13:24:21,039 - #42 'y'
+INFO  13:24:21,039 - #27 ;
+INFO  13:24:21,040 - #3 const
+INFO  13:24:21,040 - #41 bool
+INFO  13:24:21,040 - #41 zz
+INFO  13:24:21,040 - #24 =
+INFO  13:24:21,040 - #39 true
+INFO  13:24:21,040 - #27 ;
+INFO  13:24:21,040 - #35 {
+INFO  13:24:21,043 - #9 void
+INFO  13:24:21,044 - #41 main
+INFO  13:24:21,045 - #31 (
+INFO  13:24:21,045 - #32 )
+INFO  13:24:21,047 - #35 {
+INFO  13:24:21,048 - #41 xx
+INFO  13:24:21,049 - #25 ++
+INFO  13:24:21,050 - #27 ;
+INFO  13:24:21,050 - #6 print
+INFO  13:24:21,050 - #31 (
+INFO  13:24:21,050 - #41 zz
+INFO  13:24:21,050 - #32 )
+INFO  13:24:21,051 - #27 ;
+INFO  13:24:21,051 - #36 }
+INFO  13:24:21,051 - #36 }
+INFO  13:24:21,063 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      ConstVarDeclarationList(
+        NoConstVarDeclarationList(
+        ) [NoConstVarDeclarationList]
+        ConstCVDeclaration(
+          TypeSemiConstDecl(
+            Type(
+             int
+            ) [Type]
+            SingleConstDecl(
+              ConstDeclaration(
+               xx
+                NumberConst(
+                 22
+                ) [NumberConst]
+              ) [ConstDeclaration]
+            ) [SingleConstDecl]
+          ) [TypeSemiConstDecl]
+        ) [ConstCVDeclaration]
+      ) [ConstVarDeclarationList]
+      ConstCVDeclaration(
+        TypeSemiConstDecl(
+          Type(
+           char
+          ) [Type]
+          SingleConstDecl(
+            ConstDeclaration(
+             yy
+              CharConst(
+               'y'
+              ) [CharConst]
+            ) [ConstDeclaration]
+          ) [SingleConstDecl]
+        ) [TypeSemiConstDecl]
+      ) [ConstCVDeclaration]
+    ) [ConstVarDeclarationList]
+    ConstCVDeclaration(
+      TypeSemiConstDecl(
+        Type(
+         bool
+        ) [Type]
+        SingleConstDecl(
+          ConstDeclaration(
+           zz
+            BoolConst(
+             true
+            ) [BoolConst]
+          ) [ConstDeclaration]
+        ) [SingleConstDecl]
+      ) [TypeSemiConstDecl]
+    ) [ConstCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        StmtList(
+          NoStmtList(
+          ) [NoStmtList]
+          StmtDesignatorStatement(
+            DesignatorPlusPlus(
+              DesignatorIdent(
+               xx
+              ) [DesignatorIdent]
+            ) [DesignatorPlusPlus]
+          ) [StmtDesignatorStatement]
+        ) [StmtList]
+        StmtPrint(
+          ExprTerm(
+            TermFactor(
+              FactorDesignator(
+                DesignatorIdent(
+                 zz
+                ) [DesignatorIdent]
+              ) [FactorDesignator]
+            ) [TermFactor]
+          ) [ExprTerm]
+          NoOptPrint(
+          ) [NoOptPrint]
+        ) [StmtPrint]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  13:24:21,063 - ===================================
+INFO  13:24:21,066 - Deklarisana konstanta xx na liniji 3
+INFO  13:24:21,066 - Deklarisana konstanta yy na liniji 4
+INFO  13:24:21,066 - Deklarisana konstanta zz na liniji 5
+INFO  13:24:21,066 - Obradjuje se funkcija main na liniji 9
+INFO  13:24:21,066 - ===================================
+INFO  13:24:21,073 - Parsiranje uspesno zavrseno!

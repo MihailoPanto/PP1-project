@@ -1,0 +1,83 @@
+INFO  11:36:04,672 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program2.mj
+INFO  11:36:04,716 - #2 program
+INFO  11:36:04,716 - #41 mihailo
+INFO  11:36:04,717 - #3 const
+INFO  11:36:04,718 - #41 char
+INFO  11:36:04,719 - #41 yy
+INFO  11:36:04,720 - #24 =
+INFO  11:36:04,720 - #42 'y'
+INFO  11:36:04,720 - #27 ;
+INFO  11:36:04,721 - #35 {
+INFO  11:36:04,722 - #9 void
+INFO  11:36:04,724 - #41 main
+INFO  11:36:04,725 - #31 (
+INFO  11:36:04,725 - #32 )
+INFO  11:36:04,726 - #35 {
+INFO  11:36:04,728 - #6 print
+INFO  11:36:04,730 - #31 (
+INFO  11:36:04,731 - #41 yy
+INFO  11:36:04,731 - #32 )
+INFO  11:36:04,732 - #27 ;
+INFO  11:36:04,733 - #36 }
+INFO  11:36:04,733 - #36 }
+INFO  11:36:04,753 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    ConstCVDeclaration(
+      TypeSemiConstDecl(
+        Type(
+         char
+        ) [Type]
+        SingleConstDecl(
+          ConstDeclaration(
+           yy
+            CharConst(
+             'y'
+            ) [CharConst]
+          ) [ConstDeclaration]
+        ) [SingleConstDecl]
+      ) [TypeSemiConstDecl]
+    ) [ConstCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        NoStmtList(
+        ) [NoStmtList]
+        StmtPrint(
+          ExprTerm(
+            TermFactor(
+              FactorDesignator(
+                DesignatorIdent(
+                 yy
+                ) [DesignatorIdent]
+              ) [FactorDesignator]
+            ) [TermFactor]
+          ) [ExprTerm]
+          NoOptPrint(
+          ) [NoOptPrint]
+        ) [StmtPrint]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  11:36:04,755 - ===================================
+INFO  11:36:04,762 - Deklarisana konstanta yy na liniji 4
+INFO  11:36:04,763 - Obradjuje se funkcija main na liniji 8
+INFO  11:36:04,763 - ===================================
+INFO  11:36:04,771 - Parsiranje uspesno zavrseno!

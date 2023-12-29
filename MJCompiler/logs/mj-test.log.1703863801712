@@ -1,0 +1,274 @@
+INFO  16:29:28,613 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program2.mj
+INFO  16:29:28,657 - #2 program
+INFO  16:29:28,657 - #41 mihailo
+INFO  16:29:28,657 - #3 const
+INFO  16:29:28,659 - #41 char
+INFO  16:29:28,659 - #41 yy
+INFO  16:29:28,660 - #24 =
+INFO  16:29:28,660 - #42 'y'
+INFO  16:29:28,660 - #27 ;
+INFO  16:29:28,661 - #3 const
+INFO  16:29:28,661 - #41 bool
+INFO  16:29:28,661 - #41 zz
+INFO  16:29:28,661 - #24 =
+INFO  16:29:28,661 - #39 true
+INFO  16:29:28,661 - #27 ;
+INFO  16:29:28,661 - #41 int
+INFO  16:29:28,661 - #41 tmp
+INFO  16:29:28,661 - #33 [
+INFO  16:29:28,661 - #34 ]
+INFO  16:29:28,662 - #27 ;
+INFO  16:29:28,662 - #41 int
+INFO  16:29:28,662 - #41 x
+INFO  16:29:28,662 - #33 [
+INFO  16:29:28,662 - #34 ]
+INFO  16:29:28,662 - #27 ;
+INFO  16:29:28,662 - #3 const
+INFO  16:29:28,662 - #41 int
+INFO  16:29:28,663 - #41 xx
+INFO  16:29:28,663 - #24 =
+INFO  16:29:28,663 - #40 1
+INFO  16:29:28,663 - #27 ;
+INFO  16:29:28,663 - #41 int
+INFO  16:29:28,663 - #41 bb
+INFO  16:29:28,663 - #27 ;
+INFO  16:29:28,663 - #35 {
+INFO  16:29:28,663 - #9 void
+INFO  16:29:28,664 - #41 main
+INFO  16:29:28,664 - #31 (
+INFO  16:29:28,664 - #32 )
+INFO  16:29:28,665 - #35 {
+INFO  16:29:28,665 - #41 tmp
+INFO  16:29:28,666 - #24 =
+INFO  16:29:28,666 - #5 new
+INFO  16:29:28,667 - #41 int
+INFO  16:29:28,667 - #33 [
+INFO  16:29:28,667 - #40 3
+INFO  16:29:28,667 - #34 ]
+INFO  16:29:28,667 - #27 ;
+INFO  16:29:28,667 - #41 tmp
+INFO  16:29:28,668 - #33 [
+INFO  16:29:28,668 - #41 xx
+INFO  16:29:28,668 - #34 ]
+INFO  16:29:28,668 - #24 =
+INFO  16:29:28,668 - #41 xx
+INFO  16:29:28,668 - #27 ;
+INFO  16:29:28,668 - #6 print
+INFO  16:29:28,668 - #31 (
+INFO  16:29:28,668 - #41 tmp
+INFO  16:29:28,668 - #33 [
+INFO  16:29:28,668 - #41 xx
+INFO  16:29:28,668 - #34 ]
+INFO  16:29:28,668 - #32 )
+INFO  16:29:28,670 - #27 ;
+INFO  16:29:28,670 - #36 }
+INFO  16:29:28,670 - #36 }
+INFO  16:29:28,685 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          ConstVarDeclarationList(
+            ConstVarDeclarationList(
+              NoConstVarDeclarationList(
+              ) [NoConstVarDeclarationList]
+              ConstCVDeclaration(
+                TypeSemiConstDecl(
+                  Type(
+                   char
+                  ) [Type]
+                  SingleConstDecl(
+                    ConstDeclaration(
+                     yy
+                      CharConst(
+                       'y'
+                      ) [CharConst]
+                    ) [ConstDeclaration]
+                  ) [SingleConstDecl]
+                ) [TypeSemiConstDecl]
+              ) [ConstCVDeclaration]
+            ) [ConstVarDeclarationList]
+            ConstCVDeclaration(
+              TypeSemiConstDecl(
+                Type(
+                 bool
+                ) [Type]
+                SingleConstDecl(
+                  ConstDeclaration(
+                   zz
+                    BoolConst(
+                     true
+                    ) [BoolConst]
+                  ) [ConstDeclaration]
+                ) [SingleConstDecl]
+              ) [TypeSemiConstDecl]
+            ) [ConstCVDeclaration]
+          ) [ConstVarDeclarationList]
+          VarCVDeclaration(
+            TypeSemiVarDecl(
+              Type(
+               int
+              ) [Type]
+              NoCommaVarDeclList(
+                VArrayDeclaration(
+                 tmp
+                ) [VArrayDeclaration]
+              ) [NoCommaVarDeclList]
+            ) [TypeSemiVarDecl]
+          ) [VarCVDeclaration]
+        ) [ConstVarDeclarationList]
+        VarCVDeclaration(
+          TypeSemiVarDecl(
+            Type(
+             int
+            ) [Type]
+            NoCommaVarDeclList(
+              VArrayDeclaration(
+               x
+              ) [VArrayDeclaration]
+            ) [NoCommaVarDeclList]
+          ) [TypeSemiVarDecl]
+        ) [VarCVDeclaration]
+      ) [ConstVarDeclarationList]
+      ConstCVDeclaration(
+        TypeSemiConstDecl(
+          Type(
+           int
+          ) [Type]
+          SingleConstDecl(
+            ConstDeclaration(
+             xx
+              NumberConst(
+               1
+              ) [NumberConst]
+            ) [ConstDeclaration]
+          ) [SingleConstDecl]
+        ) [TypeSemiConstDecl]
+      ) [ConstCVDeclaration]
+    ) [ConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        NoCommaVarDeclList(
+          VDeclaration(
+           bb
+          ) [VDeclaration]
+        ) [NoCommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        StmtList(
+          StmtList(
+            NoStmtList(
+            ) [NoStmtList]
+            StmtDesignatorStatement(
+              DesignatorAssign(
+                DesignatorIdent(
+                 tmp
+                ) [DesignatorIdent]
+                AssignOpEqual(
+                ) [AssignOpEqual]
+                ExprTerm(
+                  TermFactor(
+                    FactorNew(
+                      Type(
+                       int
+                      ) [Type]
+                      ExprTerm(
+                        TermFactor(
+                          FactorConstValue(
+                            NumberConst(
+                             3
+                            ) [NumberConst]
+                          ) [FactorConstValue]
+                        ) [TermFactor]
+                      ) [ExprTerm]
+                    ) [FactorNew]
+                  ) [TermFactor]
+                ) [ExprTerm]
+              ) [DesignatorAssign]
+            ) [StmtDesignatorStatement]
+          ) [StmtList]
+          StmtDesignatorStatement(
+            DesignatorAssign(
+              DesignatorIdentBraces(
+               tmp
+                ExprTerm(
+                  TermFactor(
+                    FactorDesignator(
+                      DesignatorIdent(
+                       xx
+                      ) [DesignatorIdent]
+                    ) [FactorDesignator]
+                  ) [TermFactor]
+                ) [ExprTerm]
+              ) [DesignatorIdentBraces]
+              AssignOpEqual(
+              ) [AssignOpEqual]
+              ExprTerm(
+                TermFactor(
+                  FactorDesignator(
+                    DesignatorIdent(
+                     xx
+                    ) [DesignatorIdent]
+                  ) [FactorDesignator]
+                ) [TermFactor]
+              ) [ExprTerm]
+            ) [DesignatorAssign]
+          ) [StmtDesignatorStatement]
+        ) [StmtList]
+        StmtPrint(
+          ExprTerm(
+            TermFactor(
+              FactorDesignator(
+                DesignatorIdentBraces(
+                 tmp
+                  ExprTerm(
+                    TermFactor(
+                      FactorDesignator(
+                        DesignatorIdent(
+                         xx
+                        ) [DesignatorIdent]
+                      ) [FactorDesignator]
+                    ) [TermFactor]
+                  ) [ExprTerm]
+                ) [DesignatorIdentBraces]
+              ) [FactorDesignator]
+            ) [TermFactor]
+          ) [ExprTerm]
+          NoOptPrint(
+          ) [NoOptPrint]
+        ) [StmtPrint]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  16:29:28,686 - ===================================
+INFO  16:29:28,689 - Deklarisana konstanta yy na liniji 2
+INFO  16:29:28,689 - Deklarisana konstanta zz na liniji 3
+INFO  16:29:28,689 - Deklarisana promenljiva niza tmp na liniji 4
+INFO  16:29:28,692 - Deklarisana promenljiva niza x na liniji 5
+INFO  16:29:28,692 - Deklarisana konstanta xx na liniji 6
+INFO  16:29:28,692 - Deklarisana promenljiva bb na liniji 7
+INFO  16:29:28,692 - Obradjuje se funkcija main na liniji 12
+INFO  16:29:28,692 - ===================================
+INFO  16:29:28,698 - Parsiranje uspesno zavrseno!

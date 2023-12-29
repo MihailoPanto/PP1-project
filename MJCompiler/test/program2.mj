@@ -1,0 +1,33 @@
+program mihailo	
+const char yy = 'y';
+const bool zz = true;
+int tmp[];
+int x[];
+char nn[];
+const int xx = 2;
+int bb;
+const int dd = 44;
+
+{
+
+void main()
+	int a;
+	int b;
+{	
+	a=33;
+	b=17;
+	bb=2;
+//	print(bb);
+//	bb++;
+//	print(bb);
+//	bb--;
+//	print(bb);
+	tmp = new int[3];
+	tmp[1]= dd;
+//	print(tmp[1]);
+//	bb=tmp[1];
+//	bb++;
+	bb= a + b*2 + a + tmp[1]*2;
+	print(bb); 
+}
+}

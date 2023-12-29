@@ -1,0 +1,62 @@
+INFO  11:31:31,940 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program2.mj
+INFO  11:31:31,998 - #2 program
+INFO  11:31:31,999 - #41 mihailo
+INFO  11:31:31,999 - #3 const
+INFO  11:31:32,002 - #41 int
+INFO  11:31:32,002 - #41 xx
+INFO  11:31:32,003 - #24 =
+INFO  11:31:32,003 - #40 2
+INFO  11:31:32,004 - #27 ;
+INFO  11:31:32,005 - #35 {
+INFO  11:31:32,005 - #9 void
+INFO  11:31:32,006 - #41 main
+INFO  11:31:32,006 - #31 (
+INFO  11:31:32,006 - #32 )
+INFO  11:31:32,009 - #35 {
+INFO  11:31:32,010 - #36 }
+INFO  11:31:32,012 - #36 }
+INFO  11:31:32,037 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    ConstCVDeclaration(
+      TypeSemiConstDecl(
+        Type(
+         int
+        ) [Type]
+        SingleConstDecl(
+          ConstDeclaration(
+           xx
+            NumberConst(
+             2
+            ) [NumberConst]
+          ) [ConstDeclaration]
+        ) [SingleConstDecl]
+      ) [TypeSemiConstDecl]
+    ) [ConstCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      NoStmtList(
+      ) [NoStmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  11:31:32,040 - ===================================
+INFO  11:31:32,042 - Deklarisana konstanta xx na liniji 3
+INFO  11:31:32,043 - Obradjuje se funkcija main na liniji 7
+INFO  11:31:32,043 - ===================================

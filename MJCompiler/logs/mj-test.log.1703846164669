@@ -1,0 +1,63 @@
+INFO  11:35:43,571 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program2.mj
+INFO  11:35:43,617 - #2 program
+INFO  11:35:43,617 - #41 mihailo
+INFO  11:35:43,617 - #3 const
+INFO  11:35:43,619 - #41 char
+INFO  11:35:43,619 - #41 yy
+INFO  11:35:43,620 - #24 =
+INFO  11:35:43,620 - #42 'y'
+INFO  11:35:43,620 - #27 ;
+INFO  11:35:43,621 - #35 {
+INFO  11:35:43,622 - #9 void
+INFO  11:35:43,622 - #41 main
+INFO  11:35:43,622 - #31 (
+INFO  11:35:43,623 - #32 )
+INFO  11:35:43,624 - #35 {
+INFO  11:35:43,625 - #36 }
+INFO  11:35:43,626 - #36 }
+INFO  11:35:43,637 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    ConstCVDeclaration(
+      TypeSemiConstDecl(
+        Type(
+         char
+        ) [Type]
+        SingleConstDecl(
+          ConstDeclaration(
+           yy
+            CharConst(
+             'y'
+            ) [CharConst]
+          ) [ConstDeclaration]
+        ) [SingleConstDecl]
+      ) [TypeSemiConstDecl]
+    ) [ConstCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      NoStmtList(
+      ) [NoStmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  11:35:43,638 - ===================================
+INFO  11:35:43,641 - Deklarisana konstanta yy na liniji 4
+INFO  11:35:43,641 - Obradjuje se funkcija main na liniji 8
+INFO  11:35:43,641 - ===================================
+INFO  11:35:43,648 - Parsiranje uspesno zavrseno!

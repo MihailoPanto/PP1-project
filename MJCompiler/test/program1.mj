@@ -18,11 +18,13 @@ const int xx = 2;
 bool abc;
 {
 
-void main(){
+void main()
+	char a;
+	{
 	Miki::a=2;
-	aa=1;
+	a=b;
 	Miki::e[1]='d';
 	c=ccc;
-}
+	}
 
 }

@@ -68,7 +68,6 @@ nonterminal ConstVarDeclList ConstVarDeclList;
 nonterminal ConstVarDecl ConstVarDecl;
 nonterminal ConstDecl ConstDecl;
 nonterminal ConstDeclList ConstDeclList;
-nonterminal ConstDeclaration ConstDeclaration;
 nonterminal VarDecl VarDecl;
 nonterminal VarDeclList VarDeclList;
 nonterminal VarDeclaration VarDeclaration;
@@ -99,6 +98,7 @@ nonterminal CondFact CondFact;
 
 // symboltable obj
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, Namespace, NamespaceName, MethodDecl, MethodTypeName, NamespaceAccess, Designator, DesignatorStatement;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ConstDeclaration;
 // symboltable struct
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ConstValue, Expr, Term, Factor;
 
@@ -247,7 +247,11 @@ Term ::= (TermMulOp) Term:T1 MulOp:M2 Factor:F3 {: RESULT=new TermMulOp(T1, M2, 
 		(TermFactor) Factor:F1 {: RESULT=new TermFactor(F1); RESULT.setLine(F1left); :}
 		; 
 
-Factor ::= (FactorConstValue) ConstValue:constValue {: RESULT=new FactorConstValue(constValue); RESULT.setLine(constValueleft); :}
+Factor ::= (FactorConstValueNum) NUMBER:N1 {: RESULT=new FactorConstValueNum(N1); RESULT.setLine(N1left); :}
+		|
+		(FactorConstValueChar) CHAR:C1 {: RESULT=new FactorConstValueChar(C1); RESULT.setLine(C1left); :}
+		|
+		(FactorConstValueBool) BOOL:B1 {: RESULT=new FactorConstValueBool(B1); RESULT.setLine(B1left); :}
 		|
 		(FactorNew) NEW Type:T1 LSBRACE Expr:E2 RSBRACE {: RESULT=new FactorNew(T1, E2); RESULT.setLine(T1left); :}
 		|

@@ -1,0 +1,200 @@
+INFO  13:50:47,275 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program2.mj
+INFO  13:50:47,321 - #2 program
+INFO  13:50:47,321 - #41 mihailo
+INFO  13:50:47,321 - #3 const
+INFO  13:50:47,323 - #41 int
+INFO  13:50:47,323 - #41 xx
+INFO  13:50:47,324 - #24 =
+INFO  13:50:47,324 - #40 22
+INFO  13:50:47,325 - #27 ;
+INFO  13:50:47,326 - #3 const
+INFO  13:50:47,327 - #41 char
+INFO  13:50:47,327 - #41 yy
+INFO  13:50:47,327 - #24 =
+INFO  13:50:47,327 - #42 'y'
+INFO  13:50:47,327 - #27 ;
+INFO  13:50:47,327 - #3 const
+INFO  13:50:47,327 - #41 bool
+INFO  13:50:47,327 - #41 zz
+INFO  13:50:47,327 - #24 =
+INFO  13:50:47,327 - #39 true
+INFO  13:50:47,327 - #27 ;
+INFO  13:50:47,327 - #41 int
+INFO  13:50:47,333 - #41 tmp
+INFO  13:50:47,333 - #27 ;
+INFO  13:50:47,333 - #35 {
+INFO  13:50:47,333 - #9 void
+INFO  13:50:47,335 - #41 main
+INFO  13:50:47,335 - #31 (
+INFO  13:50:47,335 - #32 )
+INFO  13:50:47,336 - #35 {
+INFO  13:50:47,337 - #41 tmp
+INFO  13:50:47,337 - #24 =
+INFO  13:50:47,337 - #41 xx
+INFO  13:50:47,339 - #27 ;
+INFO  13:50:47,339 - #41 m
+INFO  13:50:47,339 - #25 ++
+INFO  13:50:47,339 - #27 ;
+INFO  13:50:47,339 - #41 xx
+INFO  13:50:47,339 - #25 ++
+INFO  13:50:47,339 - #27 ;
+INFO  13:50:47,339 - #6 print
+INFO  13:50:47,339 - #31 (
+INFO  13:50:47,340 - #41 tmp
+INFO  13:50:47,340 - #32 )
+INFO  13:50:47,342 - #27 ;
+INFO  13:50:47,342 - #36 }
+INFO  13:50:47,342 - #36 }
+INFO  13:50:47,353 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          NoConstVarDeclarationList(
+          ) [NoConstVarDeclarationList]
+          ConstCVDeclaration(
+            TypeSemiConstDecl(
+              Type(
+               int
+              ) [Type]
+              SingleConstDecl(
+                ConstDeclaration(
+                 xx
+                  NumberConst(
+                   22
+                  ) [NumberConst]
+                ) [ConstDeclaration]
+              ) [SingleConstDecl]
+            ) [TypeSemiConstDecl]
+          ) [ConstCVDeclaration]
+        ) [ConstVarDeclarationList]
+        ConstCVDeclaration(
+          TypeSemiConstDecl(
+            Type(
+             char
+            ) [Type]
+            SingleConstDecl(
+              ConstDeclaration(
+               yy
+                CharConst(
+                 'y'
+                ) [CharConst]
+              ) [ConstDeclaration]
+            ) [SingleConstDecl]
+          ) [TypeSemiConstDecl]
+        ) [ConstCVDeclaration]
+      ) [ConstVarDeclarationList]
+      ConstCVDeclaration(
+        TypeSemiConstDecl(
+          Type(
+           bool
+          ) [Type]
+          SingleConstDecl(
+            ConstDeclaration(
+             zz
+              BoolConst(
+               true
+              ) [BoolConst]
+            ) [ConstDeclaration]
+          ) [SingleConstDecl]
+        ) [TypeSemiConstDecl]
+      ) [ConstCVDeclaration]
+    ) [ConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        NoCommaVarDeclList(
+          VDeclaration(
+           tmp
+          ) [VDeclaration]
+        ) [NoCommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        StmtList(
+          StmtList(
+            StmtList(
+              NoStmtList(
+              ) [NoStmtList]
+              StmtDesignatorStatement(
+                DesignatorAssign(
+                  DesignatorIdent(
+                   tmp
+                  ) [DesignatorIdent]
+                  AssignOpEqual(
+                  ) [AssignOpEqual]
+                  ExprTerm(
+                    TermFactor(
+                      FactorDesignator(
+                        DesignatorIdent(
+                         xx
+                        ) [DesignatorIdent]
+                      ) [FactorDesignator]
+                    ) [TermFactor]
+                  ) [ExprTerm]
+                ) [DesignatorAssign]
+              ) [StmtDesignatorStatement]
+            ) [StmtList]
+            StmtDesignatorStatement(
+              DesignatorPlusPlus(
+                DesignatorIdent(
+                 m
+                ) [DesignatorIdent]
+              ) [DesignatorPlusPlus]
+            ) [StmtDesignatorStatement]
+          ) [StmtList]
+          StmtDesignatorStatement(
+            DesignatorPlusPlus(
+              DesignatorIdent(
+               xx
+              ) [DesignatorIdent]
+            ) [DesignatorPlusPlus]
+          ) [StmtDesignatorStatement]
+        ) [StmtList]
+        StmtPrint(
+          ExprTerm(
+            TermFactor(
+              FactorDesignator(
+                DesignatorIdent(
+                 tmp
+                ) [DesignatorIdent]
+              ) [FactorDesignator]
+            ) [TermFactor]
+          ) [ExprTerm]
+          NoOptPrint(
+          ) [NoOptPrint]
+        ) [StmtPrint]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  13:50:47,354 - ===================================
+INFO  13:50:47,357 - Deklarisana konstanta xx na liniji 3
+INFO  13:50:47,358 - Deklarisana konstanta yy na liniji 4
+INFO  13:50:47,358 - Deklarisana konstanta zz na liniji 5
+INFO  13:50:47,358 - Deklarisana promenljiva tmp na liniji 6
+INFO  13:50:47,358 - Obradjuje se funkcija main na liniji 10
+ERROR 13:50:47,358 - Nepostojeci simbol na liniji 13
+ERROR 13:50:47,358 - Nije dozvoljen inkrement koji nije tipa int u liniji 13
+ERROR 13:50:47,358 - Nije dozvoljeno inkrementiranje kontstanti u liniji 14
+INFO  13:50:47,358 - ===================================
+ERROR 13:50:47,359 - Parsiranje NIJE uspesno zavrseno!

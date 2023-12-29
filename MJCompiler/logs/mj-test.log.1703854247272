@@ -1,0 +1,158 @@
+INFO  13:30:56,544 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program2.mj
+INFO  13:30:56,588 - #2 program
+INFO  13:30:56,588 - #41 mihailo
+INFO  13:30:56,588 - #3 const
+INFO  13:30:56,590 - #41 int
+INFO  13:30:56,590 - #41 xx
+INFO  13:30:56,591 - #24 =
+INFO  13:30:56,591 - #40 22
+INFO  13:30:56,591 - #27 ;
+INFO  13:30:56,591 - #3 const
+INFO  13:30:56,592 - #41 char
+INFO  13:30:56,592 - #41 yy
+INFO  13:30:56,592 - #24 =
+INFO  13:30:56,592 - #42 'y'
+INFO  13:30:56,592 - #27 ;
+INFO  13:30:56,592 - #3 const
+INFO  13:30:56,592 - #41 bool
+INFO  13:30:56,592 - #41 zz
+INFO  13:30:56,592 - #24 =
+INFO  13:30:56,592 - #39 true
+INFO  13:30:56,592 - #27 ;
+INFO  13:30:56,592 - #35 {
+INFO  13:30:56,593 - #9 void
+INFO  13:30:56,594 - #41 main
+INFO  13:30:56,594 - #31 (
+INFO  13:30:56,594 - #32 )
+INFO  13:30:56,595 - #35 {
+INFO  13:30:56,596 - #41 m
+INFO  13:30:56,597 - #25 ++
+INFO  13:30:56,597 - #27 ;
+INFO  13:30:56,597 - #41 xx
+INFO  13:30:56,598 - #25 ++
+INFO  13:30:56,598 - #27 ;
+INFO  13:30:56,598 - #6 print
+INFO  13:30:56,598 - #31 (
+INFO  13:30:56,598 - #41 zz
+INFO  13:30:56,598 - #32 )
+INFO  13:30:56,599 - #27 ;
+INFO  13:30:56,599 - #36 }
+INFO  13:30:56,600 - #36 }
+INFO  13:30:56,611 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      ConstVarDeclarationList(
+        NoConstVarDeclarationList(
+        ) [NoConstVarDeclarationList]
+        ConstCVDeclaration(
+          TypeSemiConstDecl(
+            Type(
+             int
+            ) [Type]
+            SingleConstDecl(
+              ConstDeclaration(
+               xx
+                NumberConst(
+                 22
+                ) [NumberConst]
+              ) [ConstDeclaration]
+            ) [SingleConstDecl]
+          ) [TypeSemiConstDecl]
+        ) [ConstCVDeclaration]
+      ) [ConstVarDeclarationList]
+      ConstCVDeclaration(
+        TypeSemiConstDecl(
+          Type(
+           char
+          ) [Type]
+          SingleConstDecl(
+            ConstDeclaration(
+             yy
+              CharConst(
+               'y'
+              ) [CharConst]
+            ) [ConstDeclaration]
+          ) [SingleConstDecl]
+        ) [TypeSemiConstDecl]
+      ) [ConstCVDeclaration]
+    ) [ConstVarDeclarationList]
+    ConstCVDeclaration(
+      TypeSemiConstDecl(
+        Type(
+         bool
+        ) [Type]
+        SingleConstDecl(
+          ConstDeclaration(
+           zz
+            BoolConst(
+             true
+            ) [BoolConst]
+          ) [ConstDeclaration]
+        ) [SingleConstDecl]
+      ) [TypeSemiConstDecl]
+    ) [ConstCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        StmtList(
+          StmtList(
+            NoStmtList(
+            ) [NoStmtList]
+            StmtDesignatorStatement(
+              DesignatorPlusPlus(
+                DesignatorIdent(
+                 m
+                ) [DesignatorIdent]
+              ) [DesignatorPlusPlus]
+            ) [StmtDesignatorStatement]
+          ) [StmtList]
+          StmtDesignatorStatement(
+            DesignatorPlusPlus(
+              DesignatorIdent(
+               xx
+              ) [DesignatorIdent]
+            ) [DesignatorPlusPlus]
+          ) [StmtDesignatorStatement]
+        ) [StmtList]
+        StmtPrint(
+          ExprTerm(
+            TermFactor(
+              FactorDesignator(
+                DesignatorIdent(
+                 zz
+                ) [DesignatorIdent]
+              ) [FactorDesignator]
+            ) [TermFactor]
+          ) [ExprTerm]
+          NoOptPrint(
+          ) [NoOptPrint]
+        ) [StmtPrint]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  13:30:56,611 - ===================================
+INFO  13:30:56,615 - Deklarisana konstanta xx na liniji 3
+INFO  13:30:56,615 - Deklarisana konstanta yy na liniji 4
+INFO  13:30:56,615 - Deklarisana konstanta zz na liniji 5
+INFO  13:30:56,615 - Obradjuje se funkcija main na liniji 9
+ERROR 13:30:56,615 - Nepostojeci simbol na liniji 11
+ERROR 13:30:56,616 - Nije dozvoljen inkrement koji nije tipa int u liniji 11
+ERROR 13:30:56,616 - Nije dozvoljena dodela vrednosti kontstanti u liniji 12
+INFO  13:30:56,616 - ===================================
+ERROR 13:30:56,617 - Parsiranje NIJE uspesno zavrseno!

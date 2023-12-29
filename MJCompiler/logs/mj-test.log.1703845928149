@@ -1,0 +1,86 @@
+INFO  11:31:59,685 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program2.mj
+INFO  11:31:59,733 - #2 program
+INFO  11:31:59,733 - #41 mihailo
+INFO  11:31:59,733 - #3 const
+INFO  11:31:59,736 - #41 int
+INFO  11:31:59,736 - #41 xx
+INFO  11:31:59,738 - #24 =
+INFO  11:31:59,738 - #40 2
+INFO  11:31:59,739 - #27 ;
+INFO  11:31:59,741 - #3 const
+INFO  11:31:59,741 - #41 char
+INFO  11:31:59,741 - #41 yy
+INFO  11:31:59,741 - #24 =
+INFO  11:31:59,741 - #42 'y'
+INFO  11:31:59,741 - #27 ;
+INFO  11:31:59,741 - #35 {
+INFO  11:31:59,742 - #9 void
+INFO  11:31:59,743 - #41 main
+INFO  11:31:59,743 - #31 (
+INFO  11:31:59,743 - #32 )
+INFO  11:31:59,744 - #35 {
+INFO  11:31:59,745 - #36 }
+INFO  11:31:59,746 - #36 }
+INFO  11:31:59,763 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      NoConstVarDeclarationList(
+      ) [NoConstVarDeclarationList]
+      ConstCVDeclaration(
+        TypeSemiConstDecl(
+          Type(
+           int
+          ) [Type]
+          SingleConstDecl(
+            ConstDeclaration(
+             xx
+              NumberConst(
+               2
+              ) [NumberConst]
+            ) [ConstDeclaration]
+          ) [SingleConstDecl]
+        ) [TypeSemiConstDecl]
+      ) [ConstCVDeclaration]
+    ) [ConstVarDeclarationList]
+    ConstCVDeclaration(
+      TypeSemiConstDecl(
+        Type(
+         char
+        ) [Type]
+        SingleConstDecl(
+          ConstDeclaration(
+           yy
+            CharConst(
+             'y'
+            ) [CharConst]
+          ) [ConstDeclaration]
+        ) [SingleConstDecl]
+      ) [TypeSemiConstDecl]
+    ) [ConstCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      NoStmtList(
+      ) [NoStmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  11:31:59,764 - ===================================
+INFO  11:31:59,766 - Deklarisana konstanta xx na liniji 3
+INFO  11:31:59,766 - Deklarisana konstanta yy na liniji 4
+INFO  11:31:59,767 - Obradjuje se funkcija main na liniji 8
+INFO  11:31:59,767 - ===================================

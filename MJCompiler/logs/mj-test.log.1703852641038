@@ -1,0 +1,131 @@
+INFO  12:02:28,647 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program2.mj
+INFO  12:02:28,694 - #2 program
+INFO  12:02:28,694 - #41 mihailo
+INFO  12:02:28,695 - #3 const
+INFO  12:02:28,696 - #41 int
+INFO  12:02:28,696 - #41 xx
+INFO  12:02:28,697 - #24 =
+INFO  12:02:28,697 - #40 22
+INFO  12:02:28,697 - #27 ;
+INFO  12:02:28,698 - #3 const
+INFO  12:02:28,698 - #41 char
+INFO  12:02:28,698 - #41 yy
+INFO  12:02:28,698 - #24 =
+INFO  12:02:28,699 - #42 'y'
+INFO  12:02:28,699 - #27 ;
+INFO  12:02:28,699 - #3 const
+INFO  12:02:28,699 - #41 bool
+INFO  12:02:28,699 - #41 zz
+INFO  12:02:28,699 - #24 =
+INFO  12:02:28,699 - #39 true
+INFO  12:02:28,699 - #27 ;
+INFO  12:02:28,699 - #35 {
+INFO  12:02:28,700 - #9 void
+INFO  12:02:28,701 - #41 main
+INFO  12:02:28,701 - #31 (
+INFO  12:02:28,701 - #32 )
+INFO  12:02:28,701 - #35 {
+INFO  12:02:28,702 - #6 print
+INFO  12:02:28,703 - #31 (
+INFO  12:02:28,703 - #41 zz
+INFO  12:02:28,703 - #32 )
+INFO  12:02:28,705 - #27 ;
+INFO  12:02:28,705 - #36 }
+INFO  12:02:28,706 - #36 }
+INFO  12:02:28,719 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      ConstVarDeclarationList(
+        NoConstVarDeclarationList(
+        ) [NoConstVarDeclarationList]
+        ConstCVDeclaration(
+          TypeSemiConstDecl(
+            Type(
+             int
+            ) [Type]
+            SingleConstDecl(
+              ConstDeclaration(
+               xx
+                NumberConst(
+                 22
+                ) [NumberConst]
+              ) [ConstDeclaration]
+            ) [SingleConstDecl]
+          ) [TypeSemiConstDecl]
+        ) [ConstCVDeclaration]
+      ) [ConstVarDeclarationList]
+      ConstCVDeclaration(
+        TypeSemiConstDecl(
+          Type(
+           char
+          ) [Type]
+          SingleConstDecl(
+            ConstDeclaration(
+             yy
+              CharConst(
+               'y'
+              ) [CharConst]
+            ) [ConstDeclaration]
+          ) [SingleConstDecl]
+        ) [TypeSemiConstDecl]
+      ) [ConstCVDeclaration]
+    ) [ConstVarDeclarationList]
+    ConstCVDeclaration(
+      TypeSemiConstDecl(
+        Type(
+         bool
+        ) [Type]
+        SingleConstDecl(
+          ConstDeclaration(
+           zz
+            BoolConst(
+             true
+            ) [BoolConst]
+          ) [ConstDeclaration]
+        ) [SingleConstDecl]
+      ) [TypeSemiConstDecl]
+    ) [ConstCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoFormParsOptional(
+      ) [NoFormParsOptional]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        NoStmtList(
+        ) [NoStmtList]
+        StmtPrint(
+          ExprTerm(
+            TermFactor(
+              FactorDesignator(
+                DesignatorIdent(
+                 zz
+                ) [DesignatorIdent]
+              ) [FactorDesignator]
+            ) [TermFactor]
+          ) [ExprTerm]
+          NoOptPrint(
+          ) [NoOptPrint]
+        ) [StmtPrint]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  12:02:28,720 - ===================================
+INFO  12:02:28,725 - Deklarisana konstanta xx na liniji 3
+INFO  12:02:28,725 - Deklarisana konstanta yy na liniji 4
+INFO  12:02:28,725 - Deklarisana konstanta zz na liniji 5
+INFO  12:02:28,726 - Obradjuje se funkcija main na liniji 9
+INFO  12:02:28,726 - ===================================
+INFO  12:02:28,732 - Parsiranje uspesno zavrseno!
