@@ -70,7 +70,6 @@ nonterminal ConstDecl ConstDecl;
 nonterminal ConstDeclList ConstDeclList;
 nonterminal VarDecl VarDecl;
 nonterminal VarDeclList VarDeclList;
-nonterminal VarDeclaration VarDeclaration;
 nonterminal OptionalSquareBrackets OptionalSquareBrackets;	
 // namespace
 nonterminal NamespaceList NamespaceList;
@@ -98,7 +97,7 @@ nonterminal CondFact CondFact;
 
 // symboltable obj
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, Namespace, NamespaceName, MethodDecl, MethodTypeName, NamespaceAccess, Designator, DesignatorStatement;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ConstDeclaration;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ConstDeclaration, VarDeclaration;
 // symboltable struct
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ConstValue, Expr, Term, Factor;
 

@@ -13,7 +13,7 @@ namespace Konstante{
 namespace Nizovi{
 	int niz[];
 	char nizch[];
-	
+	int bodovi;
 	{}
 }
 
@@ -22,6 +22,7 @@ namespace Nizovi{
 {
 	void main()	
 		int bodovi;
+		int bodovi1;
 		bool bt;
 	{
 		bodovi = 0;
@@ -31,26 +32,19 @@ namespace Nizovi{
 		bodovi--;
 		print(bodovi);
 		
+		print(bodovi);
 		Nizovi::niz = new int[3];
+		print(bodovi);
 		Nizovi::niz[Konstante::nula] = Konstante::jedan;
+		print(bodovi);
 		Nizovi::niz[1] = 2;
+		print(bodovi);
 		Nizovi::niz[Nizovi::niz[Konstante::jedan]] = Nizovi::niz[Nizovi::niz[0]] * 3;
-		bodovi = Nizovi::niz[2]/Nizovi::niz[0];
 		print(bodovi);
-		// print(Nizovi::niz[0]);
-			
-		
-		Nizovi::nizch = new char[3];
-		Nizovi::nizch[0] = 'a';
-		Nizovi::nizch[Konstante::jedan] = 'b';
-		Nizovi::nizch[Konstante::pet - 3] = 'c';
-		print(Nizovi::nizch[1]);
-		print(Nizovi::nizch[Konstante::jedan * 2]);
-			
-		a=1;
-		read(bodovi);
-		bodovi = -bodovi + (Konstante::pet * a / 2 - Konstante::jedan) * bodovi - (3 % 2 + 3 * 2 - 3); 
-		print(bodovi);
+		// bodovi = Nizovi::niz[2]/Nizovi::niz[0];
+		Nizovi::niz[2]=bodovi;
+
+
 			
 	}
 }

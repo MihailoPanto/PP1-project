@@ -97,9 +97,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	}
 
 	public void visit(Namespace namespace) {
-		currentNamespace = null;
 		Tab.chainLocalSymbols(namespace.getNamespaceName().obj);
 		Tab.closeScope();
+		currentNamespace = null;
 	}
 
 	// Deklaracija promenljivih
@@ -123,7 +123,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_info("Deklarisana namespace promenljiva " + currentNamespace.getName() + "::"
 					+ vDeclaration.getVarName(), vDeclaration);
 		}
-		Obj varD = Tab.insert(Obj.Var, vDeclaration.getVarName(), tsvd.getType().struct);
+		vDeclaration.obj = Tab.insert(Obj.Var, vDeclaration.getVarName(), tsvd.getType().struct);
 
 	}
 
@@ -146,7 +146,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_info("Deklarisana namespace promenljiva niza " + currentNamespace.getName() + "::"
 					+ vArrayDeclaration.getVarName(), vArrayDeclaration);
 		}
-		Obj varD = Tab.insert(Obj.Var, vArrayDeclaration.getVarName(), new Struct(Struct.Array, tsvd.getType().struct));
+		vArrayDeclaration.obj = Tab.insert(Obj.Var, vArrayDeclaration.getVarName(), new Struct(Struct.Array, tsvd.getType().struct));
 	}
 
 	// Deklaracija konstanti
@@ -276,7 +276,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 				if (designatorNamespaceBraces.getExpr().struct != Tab.intType) {
 					report_error("U uglastim zagradama mora biti tip int " + designatorNamespaceBraces.getLine(), null);
 				}
-				designatorNamespaceBraces.obj = new Obj(Obj.Elem, "", array.getType().getElemType());
+				designatorNamespaceBraces.obj = new Obj(Obj.Elem, designatorNamespaceBraces.getDesigName(), array.getType().getElemType());
 				flag = true;
 				break;
 			}

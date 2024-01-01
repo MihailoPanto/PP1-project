@@ -59,7 +59,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		// Generate the entry
 		Code.put(Code.enter);
 		Code.put(fpCnt.getCount());
-		Code.put(fpCnt.getCount() + varCnt.getCount());
+		Code.put(currentMethod.getLocalSymbols().size());
 	}
 
 	public void visit(MethodDecl methodDecl) {
@@ -97,20 +97,18 @@ public class CodeGenerator extends VisitorAdaptor {
 	public void visit(ConstDeclaration constDeclaration) {
 		Struct type = constDeclaration.getConstValue().struct;
 		if (type == Tab.intType) {
-			System.out.println("int");
+
 			constDeclaration.obj.setAdr(((NumberConst) constDeclaration.getConstValue()).getN1());
 		} else if (type == Tab.charType) {
-			System.out.println("char");
+
 			constDeclaration.obj.setAdr(((CharConst) constDeclaration.getConstValue()).getC1().charAt(1));
 		} else if (type == NewTab.boolType) {
-			System.out.println("bool");
+
 			if (((BoolConst) constDeclaration.getConstValue()).getB1().equals("true")) {
 				constDeclaration.obj.setAdr(1);
 			} else {
 				constDeclaration.obj.setAdr(2);
 			}
-		} else {
-			System.out.println("nista");
 		}
 		Code.load(constDeclaration.obj);
 	}
@@ -131,51 +129,88 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorIdent designatorIdent) {
-		Code.load(designatorIdent.obj);
+		System.out.println(designatorIdent.obj.getAdr()+ "  " + designatorIdent.getDesigName()+"   " + designatorIdent.getLine());
+		if (!(designatorIdent.getParent() instanceof DesignatorAssign)
+				&& !(designatorIdent.getParent() instanceof DesignatorPlusPlus)
+				&& !(designatorIdent.getParent() instanceof DesignatorMinusMinus)) {
+			Code.load(designatorIdent.obj);
+		}
+//		Code.load(designatorIdent.obj);
 	}
 
 	public void visit(DesignatorIdentBraces designatorIdentBraces) {
+		System.out.println(designatorIdentBraces.obj.getAdr()+ "  " + designatorIdentBraces.getDesigName()+"   " + designatorIdentBraces.getLine());
 		Obj array = getVarConst(designatorIdentBraces.getDesigName());
 		if (array != null) {
 			Code.load(array);
 			Code.put(Code.dup_x1);
 			Code.put(Code.pop);
-			if (!(designatorIdentBraces.getParent() instanceof DesignatorAssign)) {
+			if (!(designatorIdentBraces.getParent() instanceof DesignatorAssign)
+					&& !(designatorIdentBraces.getParent() instanceof DesignatorPlusPlus)
+					&& !(designatorIdentBraces.getParent() instanceof DesignatorMinusMinus)) {
 
+//				if(!(designatorIdentBraces.getParent()))
 				if (designatorIdentBraces.obj.getType() == Tab.charType) {
 					Code.put(Code.baload);
 				} else {
 					Code.put(Code.aload);
+
 				}
 			}
 		}
 	}
 
 	public void visit(DesignatorNamespace designatorNamespace) {
-		Code.load(designatorNamespace.obj);
+		System.out.println(designatorNamespace.obj.getAdr()+ "  " + designatorNamespace.getDesigName()+"   " + designatorNamespace.getLine());
+		if (!(designatorNamespace.getParent() instanceof DesignatorAssign)
+				&& !(designatorNamespace.getParent() instanceof DesignatorPlusPlus)
+				&& !(designatorNamespace.getParent() instanceof DesignatorMinusMinus)) {
+			Code.load(designatorNamespace.obj);
+		}
 	}
 
 	public void visit(DesignatorNamespaceBraces designatorNamespaceBraces) {
+		System.out.println(designatorNamespaceBraces.obj.getAdr()+ "  " + designatorNamespaceBraces.getDesigName()+"   " + designatorNamespaceBraces.getLine());
 		Obj array = findNamespaceField(designatorNamespaceBraces.getNamespaceName(),
 				designatorNamespaceBraces.getDesigName());
 		if (array != null) {
 			Code.load(array);
 			Code.put(Code.dup_x1);
 			Code.put(Code.pop);
-			if (!(designatorNamespaceBraces.getParent() instanceof DesignatorAssign)) {
+			if (!(designatorNamespaceBraces.getParent() instanceof DesignatorAssign)
+					&& !(designatorNamespaceBraces.getParent() instanceof DesignatorPlusPlus)
+					&& !(designatorNamespaceBraces.getParent() instanceof DesignatorMinusMinus)) {
 
+//				if(!(designatorNamespaceBraces.getParent() instanceof)) {
+//					
+//				}
+
+//				System.out.println("a  " + designatorNamespaceBraces.getLine());
 				if (designatorNamespaceBraces.obj.getType() == Tab.charType) {
 					Code.put(Code.baload);
 				} else {
 					Code.put(Code.aload);
+//					System.out.println(array.getAdr());
 				}
+			} else {
+//				System.out.println("b  " + designatorNamespaceBraces.getLine());
+
 			}
+
 		}
 	}
 
 	public void visit(DesignatorAssign designatorAssign) {
-		Code.store(designatorAssign.getDesignator().obj);
-//		Code.put(Code.aload);
+//		Code.store(designatorAssign.getDesignator().obj);
+		if (designatorAssign.getDesignator().obj.getKind() == Obj.Elem) {
+			if (designatorAssign.getDesignator().obj.getType() == Tab.charType)
+				Code.put(Code.bastore);
+			else
+				Code.put(Code.astore);
+		} else {
+			Code.store(designatorAssign.getDesignator().obj);
+		}
+
 	}
 
 	public void visit(DesignatorPlusPlus designatorPlusPlus) {
@@ -255,5 +290,4 @@ public class CodeGenerator extends VisitorAdaptor {
 			Code.put(Code.rem);
 		}
 	}
-
 }

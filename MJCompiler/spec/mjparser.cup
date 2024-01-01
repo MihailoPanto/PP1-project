@@ -64,7 +64,7 @@ terminal String CHAR;
 
 // program
 // consts & var
-nonterminal ConstVarDeclList, ConstVarDecl, ConstDecl, ConstDeclList, VarDecl, VarDeclList, VarDeclaration, OptionalSquareBrackets;	
+nonterminal ConstVarDeclList, ConstVarDecl, ConstDecl, ConstDeclList, VarDecl, VarDeclList, OptionalSquareBrackets;	
 // namespace
 nonterminal NamespaceList;
 // method
@@ -79,7 +79,7 @@ nonterminal ConditionList, CondTermList, CondFact;
 
 // symboltable obj
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, Namespace, NamespaceName, MethodDecl, MethodTypeName, NamespaceAccess, Designator, DesignatorStatement;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ConstDeclaration;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ConstDeclaration, VarDeclaration;
 // symboltable struct
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, ConstValue, Expr, Term, Factor;
 
