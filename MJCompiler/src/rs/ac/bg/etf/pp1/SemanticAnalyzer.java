@@ -21,7 +21,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	Logger log = Logger.getLogger(getClass());
 
 	// Greske i informacije
-	
+
 	public Obj getMainScope() {
 		return mainScope;
 	}
@@ -89,24 +89,61 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 	// Namespace
 
+//	public void visit(NamespaceName namespaceName) {
+//		currentNamespace = Tab.insert(NewObj.Namespace, namespaceName.getNamespaceName(), Tab.noType);
+//		namespaceName.obj = currentNamespace;
+//		Tab.openScope();
+//		report_info("Obradjuje se namespace " + currentNamespace.getName(), namespaceName);
+//	}
+//
+//	public void visit(Namespace namespace) {
+//		Tab.chainLocalSymbols(namespace.getNamespaceName().obj);
+//		Tab.closeScope();
+//		currentNamespace = null;
+//	}
+
 	public void visit(NamespaceName namespaceName) {
 		currentNamespace = Tab.insert(NewObj.Namespace, namespaceName.getNamespaceName(), Tab.noType);
 		namespaceName.obj = currentNamespace;
-		Tab.openScope();
 		report_info("Obradjuje se namespace " + currentNamespace.getName(), namespaceName);
 	}
 
 	public void visit(Namespace namespace) {
-		Tab.chainLocalSymbols(namespace.getNamespaceName().obj);
-		Tab.closeScope();
 		currentNamespace = null;
 	}
 
 	// Deklaracija promenljivih
 
+//	public void visit(VDeclaration vDeclaration) {
+//
+//		Obj var = Tab.currentScope.findSymbol(vDeclaration.getVarName());
+//		if (var != null) {
+//			report_error("Ime promenljive na liniji " + vDeclaration.getLine() + " je zauzeto!", null);
+//		}
+//
+//		SyntaxNode par = vDeclaration.getParent();
+//		while (!(par instanceof TypeSemiVarDecl))
+//			par = par.getParent();
+//
+//		TypeSemiVarDecl tsvd = (TypeSemiVarDecl) par;
+//
+//		if (currentNamespace == null) {
+//			report_info("Deklarisana promenljiva " + vDeclaration.getVarName(), vDeclaration);
+//		} else {
+//			report_info("Deklarisana namespace promenljiva " + currentNamespace.getName() + "::"
+//					+ vDeclaration.getVarName(), vDeclaration);
+//		}
+//		vDeclaration.obj = Tab.insert(Obj.Var, vDeclaration.getVarName(), tsvd.getType().struct);
+//
+//	}
 	public void visit(VDeclaration vDeclaration) {
-
-		Obj var = Tab.currentScope.findSymbol(vDeclaration.getVarName());
+		String name = "";
+		if (currentNamespace != null) {
+			name = currentNamespace.getName() + "::" + vDeclaration.getVarName();
+		} else {
+			name = vDeclaration.getVarName();
+		}
+		Obj var = Tab.currentScope.findSymbol(name);
 		if (var != null) {
 			report_error("Ime promenljive na liniji " + vDeclaration.getLine() + " je zauzeto!", null);
 		}
@@ -118,18 +155,45 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		TypeSemiVarDecl tsvd = (TypeSemiVarDecl) par;
 
 		if (currentNamespace == null) {
-			report_info("Deklarisana promenljiva " + vDeclaration.getVarName(), vDeclaration);
+			report_info("Deklarisana promenljiva " + name, vDeclaration);
 		} else {
-			report_info("Deklarisana namespace promenljiva " + currentNamespace.getName() + "::"
-					+ vDeclaration.getVarName(), vDeclaration);
+			report_info("Deklarisana namespace promenljiva " + name, vDeclaration);
 		}
-		vDeclaration.obj = Tab.insert(Obj.Var, vDeclaration.getVarName(), tsvd.getType().struct);
+		vDeclaration.obj = Tab.insert(Obj.Var, name, tsvd.getType().struct);
 
 	}
 
-	public void visit(VArrayDeclaration vArrayDeclaration) {
+//	public void visit(VArrayDeclaration vArrayDeclaration) {
+//
+//		Obj var = Tab.currentScope.findSymbol(vArrayDeclaration.getVarName());
+//		if (var != null) {
+//			report_error("Ime promenljive niza na liniji " + vArrayDeclaration.getLine() + " je zauzeto!", null);
+//		}
+//
+//		SyntaxNode par = vArrayDeclaration.getParent();
+//		while (!(par instanceof TypeSemiVarDecl))
+//			par = par.getParent();
+//
+//		TypeSemiVarDecl tsvd = (TypeSemiVarDecl) par;
+//
+//		if (currentNamespace == null) {
+//			report_info("Deklarisana promenljiva niza " + vArrayDeclaration.getVarName(), vArrayDeclaration);
+//		} else {
+//			report_info("Deklarisana namespace promenljiva niza " + currentNamespace.getName() + "::"
+//					+ vArrayDeclaration.getVarName(), vArrayDeclaration);
+//		}
+//		vArrayDeclaration.obj = Tab.insert(Obj.Var, vArrayDeclaration.getVarName(),
+//				new Struct(Struct.Array, tsvd.getType().struct));
+//	}
 
-		Obj var = Tab.currentScope.findSymbol(vArrayDeclaration.getVarName());
+	public void visit(VArrayDeclaration vArrayDeclaration) {
+		String name = "";
+		if (currentNamespace != null) {
+			name = currentNamespace.getName() + "::" + vArrayDeclaration.getVarName();
+		} else {
+			name = vArrayDeclaration.getVarName();
+		}
+		Obj var = Tab.currentScope.findSymbol(name);
 		if (var != null) {
 			report_error("Ime promenljive niza na liniji " + vArrayDeclaration.getLine() + " je zauzeto!", null);
 		}
@@ -141,12 +205,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		TypeSemiVarDecl tsvd = (TypeSemiVarDecl) par;
 
 		if (currentNamespace == null) {
-			report_info("Deklarisana promenljiva niza " + vArrayDeclaration.getVarName(), vArrayDeclaration);
+			report_info("Deklarisana promenljiva niza " + name, vArrayDeclaration);
 		} else {
-			report_info("Deklarisana namespace promenljiva niza " + currentNamespace.getName() + "::"
-					+ vArrayDeclaration.getVarName(), vArrayDeclaration);
+			report_info("Deklarisana namespace promenljiva niza " + name, vArrayDeclaration);
 		}
-		vArrayDeclaration.obj = Tab.insert(Obj.Var, vArrayDeclaration.getVarName(), new Struct(Struct.Array, tsvd.getType().struct));
+		vArrayDeclaration.obj = Tab.insert(Obj.Var, name, new Struct(Struct.Array, tsvd.getType().struct));
 	}
 
 	// Deklaracija konstanti
@@ -164,9 +227,45 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		boolConst.struct = NewTab.boolType;
 	}
 
-	public void visit(ConstDeclaration constDeclaration) {
+//	public void visit(ConstDeclaration constDeclaration) {
+//
+//		Obj con = Tab.currentScope.findSymbol(constDeclaration.getConstName());
+//		if (con != null) {
+//			report_error("Ime konstante na liniji " + constDeclaration.getLine() + " je zauzeto!", null);
+//		}
+//
+//		SyntaxNode par = constDeclaration.getParent();
+//		while (!(par instanceof TypeSemiConstDecl))
+//			par = par.getParent();
+//
+//		TypeSemiConstDecl tscd = (TypeSemiConstDecl) par;
+//
+//		Struct cd = constDeclaration.getConstValue().struct;
+//		Struct ctype = tscd.getType().struct;
+//
+//		if (cd.equals(ctype)) {
+//			if (currentNamespace == null) {
+//				report_info("Deklarisana konstanta " + constDeclaration.getConstName(), constDeclaration);
+//				constDeclaration.obj = Tab.insert(Obj.Con, constDeclaration.getConstName(), tscd.getType().struct);
+//			} else {
+//				report_info("Deklarisana namespace konstanta " + currentNamespace.getName() + "::"
+//						+ constDeclaration.getConstName(), constDeclaration);
+//				constDeclaration.obj = Tab.insert(Obj.Con, constDeclaration.getConstName(), tscd.getType().struct);
+//			}
+//		} else {
+//			report_error("Greska na liniji " + constDeclaration.getLine()
+//					+ " : nekompatibilni tipovi pri definisanju konstante", null);
+//		}
+//	}
 
-		Obj con = Tab.currentScope.findSymbol(constDeclaration.getConstName());
+	public void visit(ConstDeclaration constDeclaration) {
+		String name = "";
+		if (currentNamespace != null) {
+			name = currentNamespace.getName() + "::" + constDeclaration.getConstName();
+		} else {
+			name = constDeclaration.getConstName();
+		}
+		Obj con = Tab.currentScope.findSymbol(name);
 		if (con != null) {
 			report_error("Ime konstante na liniji " + constDeclaration.getLine() + " je zauzeto!", null);
 		}
@@ -182,12 +281,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
 		if (cd.equals(ctype)) {
 			if (currentNamespace == null) {
-				report_info("Deklarisana konstanta " + constDeclaration.getConstName(), constDeclaration);
+				report_info("Deklarisana konstanta " + name, constDeclaration);
 				constDeclaration.obj = Tab.insert(Obj.Con, constDeclaration.getConstName(), tscd.getType().struct);
 			} else {
-				report_info("Deklarisana namespace konstanta " + currentNamespace.getName() + "::"
-						+ constDeclaration.getConstName(), constDeclaration);
-				constDeclaration.obj = Tab.insert(Obj.Con, constDeclaration.getConstName(), tscd.getType().struct);
+				report_info("Deklarisana namespace konstanta " + name, constDeclaration);
+				constDeclaration.obj = Tab.insert(Obj.Con, name, tscd.getType().struct);
 			}
 		} else {
 			report_error("Greska na liniji " + constDeclaration.getLine()
@@ -256,8 +354,38 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		if (designatorIdentBraces.getExpr().struct != Tab.intType) {
 			report_error("U uglastim zagradama mora biti tip int " + designatorIdentBraces.getLine(), null);
 		}
-		designatorIdentBraces.obj = new Obj(Obj.Elem, designatorIdentBraces.getDesigName(), array.getType().getElemType());
+		designatorIdentBraces.obj = new Obj(Obj.Elem, designatorIdentBraces.getDesigName(),
+				array.getType().getElemType());
 	}
+
+//	public void visit(DesignatorNamespaceBraces designatorNamespaceBraces) {
+//		Boolean flag = false;
+//		designatorNamespaceBraces.obj = Tab.noObj;
+//		Obj namespace = Tab.find(designatorNamespaceBraces.getNamespaceName());
+//		if (namespace.getKind() != NewObj.Namespace) {
+//			report_error("Nije napisan postojeci namespace na liniji " + designatorNamespaceBraces.getLine(), null);
+//		}
+//
+//		for (Obj o : namespace.getLocalSymbols()) {
+//			if (o.getName().equals(designatorNamespaceBraces.getDesigName())) {
+//				Obj array = o;
+//				if (array.getType().getKind() != Struct.Array) {
+//					report_error("Nije niz Namespace-a u liniji " + designatorNamespaceBraces.getLine(), null);
+//				}
+//				if (designatorNamespaceBraces.getExpr().struct != Tab.intType) {
+//					report_error("U uglastim zagradama mora biti tip int " + designatorNamespaceBraces.getLine(), null);
+//				}
+//				designatorNamespaceBraces.obj = new Obj(Obj.Elem, designatorNamespaceBraces.getDesigName(),
+//						array.getType().getElemType());
+//				flag = true;
+//				break;
+//			}
+//		}
+//		if (!flag) {
+//			report_error("Ne postoji zadat simbol niza u namespace-u na liniji " + designatorNamespaceBraces.getLine(),
+//					null);
+//		}
+//	}
 
 	public void visit(DesignatorNamespaceBraces designatorNamespaceBraces) {
 		Boolean flag = false;
@@ -267,25 +395,62 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error("Nije napisan postojeci namespace na liniji " + designatorNamespaceBraces.getLine(), null);
 		}
 
-		for (Obj o : namespace.getLocalSymbols()) {
-			if (o.getName().equals(designatorNamespaceBraces.getDesigName())) {
-				Obj array = o;
-				if (array.getType().getKind() != Struct.Array) {
-					report_error("Nije niz Namespace-a u liniji " + designatorNamespaceBraces.getLine(), null);
-				}
-				if (designatorNamespaceBraces.getExpr().struct != Tab.intType) {
-					report_error("U uglastim zagradama mora biti tip int " + designatorNamespaceBraces.getLine(), null);
-				}
-				designatorNamespaceBraces.obj = new Obj(Obj.Elem, designatorNamespaceBraces.getDesigName(), array.getType().getElemType());
-				flag = true;
-				break;
-			}
+		Obj des = Tab
+				.find(designatorNamespaceBraces.getNamespaceName() + "::" + designatorNamespaceBraces.getDesigName());
+		if (des == Tab.noObj) {
+			report_error("Nepostojeci simbol iz namespace na liniji " + designatorNamespaceBraces.getLine(), null);
 		}
-		if (!flag) {
-			report_error("Ne postoji zadat simbol niza u namespace-u na liniji " + designatorNamespaceBraces.getLine(),
-					null);
+
+		if (des.getType().getKind() != Struct.Array) {
+			report_error("Nije niz Namespace-a u liniji " + designatorNamespaceBraces.getLine(), null);
 		}
+		if (designatorNamespaceBraces.getExpr().struct != Tab.intType) {
+			report_error("U uglastim zagradama mora biti tip int " + designatorNamespaceBraces.getLine(), null);
+		}
+		designatorNamespaceBraces.obj = new Obj(Obj.Elem, designatorNamespaceBraces.getDesigName(),
+				des.getType().getElemType());
+
+
+//		for (Obj o : namespace.getLocalSymbols()) {
+//			if (o.getName().equals(designatorNamespaceBraces.getDesigName())) {
+//				Obj array = o;
+//				if (array.getType().getKind() != Struct.Array) {
+//					report_error("Nije niz Namespace-a u liniji " + designatorNamespaceBraces.getLine(), null);
+//				}
+//				if (designatorNamespaceBraces.getExpr().struct != Tab.intType) {
+//					report_error("U uglastim zagradama mora biti tip int " + designatorNamespaceBraces.getLine(), null);
+//				}
+//				designatorNamespaceBraces.obj = new Obj(Obj.Elem, designatorNamespaceBraces.getDesigName(),
+//						array.getType().getElemType());
+//				flag = true;
+//				break;
+//			}
+//		}
+//		if (!flag) {
+//			report_error("Ne postoji zadat simbol niza u namespace-u na liniji " + designatorNamespaceBraces.getLine(),
+//					null);
+//		}
 	}
+
+//	public void visit(DesignatorNamespace designatorNamespace) {
+//		Boolean flag = false;
+//		designatorNamespace.obj = Tab.noObj;
+//		Obj namespace = Tab.find(designatorNamespace.getNamespaceName());
+//		if (namespace.getKind() != NewObj.Namespace) {
+//			report_error("Nije napisan postojeci namespace na liniji " + designatorNamespace.getLine(), null);
+//		}
+//
+//		for (Obj o : namespace.getLocalSymbols()) {
+//			if (o.getName().equals(designatorNamespace.getDesigName())) {
+//				designatorNamespace.obj = o;
+//				flag = true;
+//				break;
+//			}
+//		}
+//		if (!flag) {
+//			report_error("Ne postoji zadat simbol u namespace-u na liniji " + designatorNamespace.getLine(), null);
+//		}
+//	}
 
 	public void visit(DesignatorNamespace designatorNamespace) {
 		Boolean flag = false;
@@ -295,16 +460,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error("Nije napisan postojeci namespace na liniji " + designatorNamespace.getLine(), null);
 		}
 
-		for (Obj o : namespace.getLocalSymbols()) {
-			if (o.getName().equals(designatorNamespace.getDesigName())) {
-				designatorNamespace.obj = o;
-				flag = true;
-				break;
-			}
+		Obj des = Tab.find(designatorNamespace.getNamespaceName() + "::" + designatorNamespace.getDesigName());
+		if (des == Tab.noObj) {
+			report_error("Nepostojeci simbol iz namespace na liniji " + designatorNamespace.getLine(), null);
 		}
-		if (!flag) {
-			report_error("Ne postoji zadat simbol u namespace-u na liniji " + designatorNamespace.getLine(), null);
-		}
+		designatorNamespace.obj = des;
 	}
 
 	public void visit(DesignatorAssign designatorAssign) {
@@ -388,11 +548,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	public void visit(FactorConstValueNum factorConstValue) {
 		factorConstValue.struct = Tab.intType;
 	}
-	
+
 	public void visit(FactorConstValueChar factorConstValue) {
 		factorConstValue.struct = Tab.charType;
 	}
-	
+
 	public void visit(FactorConstValueBool factorConstValue) {
 		factorConstValue.struct = NewTab.boolType;
 	}

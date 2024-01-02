@@ -201,12 +201,9 @@ Statement ::= (StmtDesignatorStatement) DesignatorStatement SEMI
 		|
 		(StmtRead) READ LPAREN Designator RPAREN SEMI
 		|
-		(StmtPrint) PRINT LPAREN Expr OptPrint RPAREN SEMI
-		;
-
-OptPrint ::= (CommaOptPrint) COMMA NUMBER
+		(StmtPrint) PRINT LPAREN Expr RPAREN SEMI
 		|
-		(NoOptPrint) /*epsilon*/
+		(StmtPrintNum) PRINT LPAREN Expr COMMA NUMBER RPAREN SEMI
 		;
 
 DesignatorStatement ::= (DesignatorAssign) Designator AssignOp Expr

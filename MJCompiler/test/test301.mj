@@ -19,8 +19,9 @@ namespace Nizovi{
 	int a;
 {
 	void main()	
-		bool bt;
 		int bodovi;
+		bool bt;
+		int x;
 	{
 		bodovi = 0;
 		bodovi++;
@@ -42,14 +43,16 @@ namespace Nizovi{
 		Nizovi::nizch[0] = 'a';
 		Nizovi::nizch[Konstante::jedan] = 'b';
 		Nizovi::nizch[Konstante::pet - 3] = 'c';
-		print(Nizovi::nizch[1]);
-		print(Nizovi::nizch[Konstante::jedan * 2]);
+		print(Nizovi::nizch[1],2);
+		print(Nizovi::nizch[Konstante::jedan * 2],2);
 			
 		a=1;
 		// read(bodovi);
 		bodovi = -bodovi + (Konstante::pet * a / 2 - Konstante::jedan) * bodovi - (3 % 2 + 3 * 2 - 3); 
 		print(bodovi);
-			
+		
+		x=2*(2+1);
+		print(x);
 	}
 }
 

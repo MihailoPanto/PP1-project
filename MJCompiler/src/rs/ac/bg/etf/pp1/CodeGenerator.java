@@ -77,6 +77,26 @@ public class CodeGenerator extends VisitorAdaptor {
 			Code.put(Code.bprint);
 		}
 	}
+	
+	public void visit(StmtPrintNum printStmt) {
+		if (printStmt.getExpr().struct == Tab.intType || printStmt.getExpr().struct == NewTab.boolType) {
+			Code.loadConst(printStmt.getN2());
+			Code.put(Code.print);
+		} else {
+			Code.loadConst(printStmt.getN2());
+			Code.put(Code.bprint);
+		}
+	}
+
+	public void visit(StmtRead StmtRead) {
+		Obj obj = StmtRead.getDesignator().obj;
+		if (obj.getType().getKind() == Struct.Int)
+			Code.put(Code.read);
+		else if (obj.getType().getKind() == Struct.Char) {
+			Code.put(Code.bread);
+		}
+		Code.store(obj);
+	}
 
 	public void visit(FactorConstValueNum factorConstValue) {
 		Code.loadConst(factorConstValue.getN1());
@@ -129,7 +149,8 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorIdent designatorIdent) {
-		System.out.println(designatorIdent.obj.getAdr()+ "  " + designatorIdent.getDesigName()+"   " + designatorIdent.getLine());
+		System.out.println(designatorIdent.obj.getAdr() + "  " + designatorIdent.getDesigName() + "   "
+				+ designatorIdent.getLine());
 		if (!(designatorIdent.getParent() instanceof DesignatorAssign)
 				&& !(designatorIdent.getParent() instanceof DesignatorPlusPlus)
 				&& !(designatorIdent.getParent() instanceof DesignatorMinusMinus)) {
@@ -139,7 +160,8 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorIdentBraces designatorIdentBraces) {
-		System.out.println(designatorIdentBraces.obj.getAdr()+ "  " + designatorIdentBraces.getDesigName()+"   " + designatorIdentBraces.getLine());
+		System.out.println(designatorIdentBraces.obj.getAdr() + "  " + designatorIdentBraces.getDesigName() + "   "
+				+ designatorIdentBraces.getLine());
 		Obj array = getVarConst(designatorIdentBraces.getDesigName());
 		if (array != null) {
 			Code.load(array);
@@ -161,7 +183,8 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorNamespace designatorNamespace) {
-		System.out.println(designatorNamespace.obj.getAdr()+ "  " + designatorNamespace.getDesigName()+"   " + designatorNamespace.getLine());
+		System.out.println(designatorNamespace.obj.getAdr() + "  " + designatorNamespace.getDesigName() + "   "
+				+ designatorNamespace.getLine());
 		if (!(designatorNamespace.getParent() instanceof DesignatorAssign)
 				&& !(designatorNamespace.getParent() instanceof DesignatorPlusPlus)
 				&& !(designatorNamespace.getParent() instanceof DesignatorMinusMinus)) {
@@ -169,10 +192,42 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 	}
 
+//	public void visit(DesignatorNamespaceBraces designatorNamespaceBraces) {
+//		System.out.println(designatorNamespaceBraces.obj.getAdr()+ "  " + designatorNamespaceBraces.getDesigName()+"   " + designatorNamespaceBraces.getLine());
+//		Obj array = findNamespaceField(designatorNamespaceBraces.getNamespaceName(),
+//				designatorNamespaceBraces.getDesigName());
+//		if (array != null) {
+//			Code.load(array);
+//			Code.put(Code.dup_x1);
+//			Code.put(Code.pop);
+//			if (!(designatorNamespaceBraces.getParent() instanceof DesignatorAssign)
+//					&& !(designatorNamespaceBraces.getParent() instanceof DesignatorPlusPlus)
+//					&& !(designatorNamespaceBraces.getParent() instanceof DesignatorMinusMinus)) {
+//
+////				if(!(designatorNamespaceBraces.getParent() instanceof)) {
+////					
+////				}
+//
+////				System.out.println("a  " + designatorNamespaceBraces.getLine());
+//				if (designatorNamespaceBraces.obj.getType() == Tab.charType) {
+//					Code.put(Code.baload);
+//				} else {
+//					Code.put(Code.aload);
+////					System.out.println(array.getAdr());
+//				}
+//			} else {
+////				System.out.println("b  " + designatorNamespaceBraces.getLine());
+//
+//			}
+//
+//		}
+//	}
+
 	public void visit(DesignatorNamespaceBraces designatorNamespaceBraces) {
-		System.out.println(designatorNamespaceBraces.obj.getAdr()+ "  " + designatorNamespaceBraces.getDesigName()+"   " + designatorNamespaceBraces.getLine());
-		Obj array = findNamespaceField(designatorNamespaceBraces.getNamespaceName(),
-				designatorNamespaceBraces.getDesigName());
+		System.out.println(designatorNamespaceBraces.obj.getAdr() + "  " + designatorNamespaceBraces.getDesigName()
+				+ "   " + designatorNamespaceBraces.getLine());
+		Obj array = getVarConst(
+				designatorNamespaceBraces.getNamespaceName() + "::" + designatorNamespaceBraces.getDesigName());
 		if (array != null) {
 			Code.load(array);
 			Code.put(Code.dup_x1);

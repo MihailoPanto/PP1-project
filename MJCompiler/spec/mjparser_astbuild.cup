@@ -219,12 +219,9 @@ Statement ::= (StmtDesignatorStatement) DesignatorStatement:D1 SEMI {: RESULT=ne
 		|
 		(StmtRead) READ LPAREN Designator:D1 RPAREN SEMI {: RESULT=new StmtRead(D1); RESULT.setLine(D1left); :}
 		|
-		(StmtPrint) PRINT LPAREN Expr:E1 OptPrint:O2 RPAREN SEMI {: RESULT=new StmtPrint(E1, O2); RESULT.setLine(E1left); :}
-		;
-
-OptPrint ::= (CommaOptPrint) COMMA NUMBER:N1 {: RESULT=new CommaOptPrint(N1); RESULT.setLine(N1left); :}
+		(StmtPrint) PRINT LPAREN Expr:E1 RPAREN SEMI {: RESULT=new StmtPrint(E1); RESULT.setLine(E1left); :}
 		|
-		(NoOptPrint) {: RESULT=new NoOptPrint(); :} /*epsilon*/
+		(StmtPrintNum) PRINT LPAREN Expr:E1 COMMA NUMBER:N2 RPAREN SEMI {: RESULT=new StmtPrintNum(E1, N2); RESULT.setLine(E1left); :}
 		;
 
 DesignatorStatement ::= (DesignatorAssign) Designator:D1 AssignOp:A2 Expr:E3 {: RESULT=new DesignatorAssign(D1, A2, E3); RESULT.setLine(D1left); :}
