@@ -70,7 +70,7 @@ nonterminal NamespaceList;
 // method
 nonterminal MethodDeclList, MethodType, FormParsOpt, FormPars, FormPar, LocalVarDeclList;
 // statement
-nonterminal StatementList, Statement, OptPrint;
+nonterminal StatementList, Statement, OptPrint, Array;
 // designator
 // operators
 nonterminal MulOp, AddOp, AssignOp, RelOp;
@@ -238,14 +238,16 @@ Factor ::= (FactorConstValueNum) NUMBER
 		(FactorDesignator) Designator
 		;
 
-Designator ::= (DesignatorIdentBraces) IDENT:desigName LSBRACE Expr RSBRACE
+Designator ::= (DesignatorIdentBraces) IDENT:desigName Array LSBRACE Expr RSBRACE
 		|
-		(DesignatorNamespaceBraces) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName LSBRACE Expr RSBRACE
+		(DesignatorNamespaceBraces) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName Array LSBRACE Expr RSBRACE
 		|
 		(DesignatorNamespace) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName
 		|
 		(DesignatorIdent) IDENT:desigName
 		;
+		
+Array ::= (Array) /*epsilon*/;
 	
 // -------------------- CONDITIONS --------------------
 			

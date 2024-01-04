@@ -2,12 +2,12 @@ package rs.ac.bg.etf.pp1;
 
 import java.util.Collection;
 
-import rs.ac.bg.etf.pp1.CounterVisitor.FormParamCounter;
-import rs.ac.bg.etf.pp1.CounterVisitor.VarCounter;
+import rs.etf.pp1.symboltable.concepts.*;
 import rs.ac.bg.etf.pp1.ast.*;
 import rs.etf.pp1.mj.runtime.Code;
 import rs.etf.pp1.symboltable.*;
-import rs.etf.pp1.symboltable.concepts.*;
+import rs.ac.bg.etf.pp1.CounterVisitor.FormParamCounter;
+import rs.ac.bg.etf.pp1.CounterVisitor.VarCounter;
 
 public class CodeGenerator extends VisitorAdaptor {
 
@@ -22,23 +22,6 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	public int getMainPc() {
 		return mainPc;
-	}
-
-	public void visit(MethodTypeNameType methodTypeName) {
-		methodTypeName.obj.setAdr(Code.pc);
-		// Collect arguments and local variables
-		SyntaxNode methodNode = methodTypeName.getParent();
-		currentMethod = methodTypeName.obj;
-		VarCounter varCnt = new VarCounter();
-		methodNode.traverseTopDown(varCnt);
-
-		FormParamCounter fpCnt = new FormParamCounter();
-		methodNode.traverseTopDown(fpCnt);
-
-		// Generate the entry
-		Code.put(Code.enter);
-		Code.put(fpCnt.getCount());
-		Code.put(fpCnt.getCount() + varCnt.getCount());
 	}
 
 	public void visit(MethodTypeNameVoid methodTypeName) {
@@ -68,34 +51,38 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.put(Code.return_);
 	}
 
-	public void visit(StmtPrint printStmt) {
-		if (printStmt.getExpr().struct == Tab.intType || printStmt.getExpr().struct == NewTab.boolType) {
-			Code.loadConst(5);
-			Code.put(Code.print);
+	public void visit(StmtRead StmtRead) {
+		Obj tmp = StmtRead.getDesignator().obj;
+		if (tmp.getType().getKind() == Struct.Char) {
+			Code.put(Code.bread);
+			Code.store(tmp);
 		} else {
-			Code.loadConst(1);
-			Code.put(Code.bprint);
-		}
-	}
-	
-	public void visit(StmtPrintNum printStmt) {
-		if (printStmt.getExpr().struct == Tab.intType || printStmt.getExpr().struct == NewTab.boolType) {
-			Code.loadConst(printStmt.getN2());
-			Code.put(Code.print);
-		} else {
-			Code.loadConst(printStmt.getN2());
-			Code.put(Code.bprint);
+			Code.put(Code.read);
+			Code.store(tmp);
 		}
 	}
 
-	public void visit(StmtRead StmtRead) {
-		Obj obj = StmtRead.getDesignator().obj;
-		if (obj.getType().getKind() == Struct.Int)
-			Code.put(Code.read);
-		else if (obj.getType().getKind() == Struct.Char) {
-			Code.put(Code.bread);
+	public void visit(StmtPrint printStmt) {
+		Struct exprType = printStmt.getExpr().struct;
+		if (exprType == Tab.charType) {
+			Code.loadConst(1);
+			Code.put(Code.bprint);
+		} else {
+			Code.loadConst(5);
+			Code.put(Code.print);
 		}
-		Code.store(obj);
+	}
+
+	public void visit(StmtPrintNum printStmt) {
+		Struct exprType = printStmt.getExpr().struct;
+		if (exprType == Tab.charType) {
+			Code.loadConst(printStmt.getN2());
+			Code.put(Code.bprint);
+		} else {
+			Code.loadConst(printStmt.getN2());
+			Code.put(Code.print);
+
+		}
 	}
 
 	public void visit(FactorConstValueNum factorConstValue) {
@@ -109,7 +96,7 @@ public class CodeGenerator extends VisitorAdaptor {
 	public void visit(FactorConstValueBool factorConstValue) {
 		if (factorConstValue.getB1().equals("true")) {
 			Code.loadConst(1);
-		} else {
+		} else if (factorConstValue.getB1().equals("false")) {
 			Code.loadConst(0);
 		}
 	}
@@ -117,13 +104,10 @@ public class CodeGenerator extends VisitorAdaptor {
 	public void visit(ConstDeclaration constDeclaration) {
 		Struct type = constDeclaration.getConstValue().struct;
 		if (type == Tab.intType) {
-
 			constDeclaration.obj.setAdr(((NumberConst) constDeclaration.getConstValue()).getN1());
 		} else if (type == Tab.charType) {
-
 			constDeclaration.obj.setAdr(((CharConst) constDeclaration.getConstValue()).getC1().charAt(1));
 		} else if (type == NewTab.boolType) {
-
 			if (((BoolConst) constDeclaration.getConstValue()).getB1().equals("true")) {
 				constDeclaration.obj.setAdr(1);
 			} else {
@@ -133,51 +117,80 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.load(constDeclaration.obj);
 	}
 
-	public Obj findNamespaceField(String ns, String field) {
+	public void visit(DesignatorPlusPlus designator) {
+		if (designator.getDesignator().obj.getKind() == Obj.Elem) {
+			Code.put(Code.dup2);
+		}
+		Obj tmp = designator.getDesignator().obj;
+		Code.load(tmp);
+		Code.loadConst(1);
+		Code.put(Code.add);
+		Code.store(tmp);
+	}
 
-		Collection<Obj> localSymbols = outerScope.getLocalSymbols();
-		for (Obj o : localSymbols) {
-			if (o.getKind() != Obj.Meth && o.getName().equals(ns)) {
-				for (Obj f : o.getLocalSymbols()) {
-					if (f.getName().equals(field)) {
-						return f;
-					}
-				}
+	public void visit(DesignatorMinusMinus designator) {
+		if (designator.getDesignator().obj.getKind() == Obj.Elem) {
+			Code.put(Code.dup2);
+		}
+		Obj tmp = designator.getDesignator().obj;
+		Code.load(tmp);
+		Code.loadConst(1);
+		Code.put(Code.sub);
+		Code.store(tmp);
+	}
+
+	public Obj getFromScope(Obj scope, String name) {
+		if (scope == null) {
+			return null;
+		}
+		for (Obj tmp : scope.getLocalSymbols()) {
+			if (tmp.getName().equals(name) && (tmp.getKind() == Obj.Var || tmp.getKind() == Obj.Con)) {
+				return tmp;
 			}
 		}
 		return null;
 	}
 
+	public void visit(Array array) {
+		String name = "";
+		if (array.getParent() instanceof DesignatorIdentBraces) {
+			DesignatorIdentBraces par = (DesignatorIdentBraces) array.getParent();
+			name = par.getDesigName();
+		} else if (array.getParent() instanceof DesignatorNamespaceBraces) {
+			DesignatorNamespaceBraces par = (DesignatorNamespaceBraces) array.getParent();
+			name = par.getNamespaceName() + "::" + par.getDesigName();
+		}
+		Obj arr = Tab.find(name);
+		if (arr.equals(Tab.noObj)) {
+			if (currentMethod != null) {
+				arr = getFromScope(currentMethod, name);
+			}
+			if (arr == null) {
+				arr = getFromScope(outerScope, name);
+			}
+		}
+		if (arr != null) {
+			Code.load(arr);
+		}
+	}
+
 	public void visit(DesignatorIdent designatorIdent) {
-		System.out.println(designatorIdent.obj.getAdr() + "  " + designatorIdent.getDesigName() + "   "
-				+ designatorIdent.getLine());
 		if (!(designatorIdent.getParent() instanceof DesignatorAssign)
 				&& !(designatorIdent.getParent() instanceof DesignatorPlusPlus)
 				&& !(designatorIdent.getParent() instanceof DesignatorMinusMinus)) {
 			Code.load(designatorIdent.obj);
 		}
-//		Code.load(designatorIdent.obj);
 	}
 
 	public void visit(DesignatorIdentBraces designatorIdentBraces) {
-		System.out.println(designatorIdentBraces.obj.getAdr() + "  " + designatorIdentBraces.getDesigName() + "   "
-				+ designatorIdentBraces.getLine());
-		Obj array = getVarConst(designatorIdentBraces.getDesigName());
-		if (array != null) {
-			Code.load(array);
-			Code.put(Code.dup_x1);
-			Code.put(Code.pop);
-			if (!(designatorIdentBraces.getParent() instanceof DesignatorAssign)
-					&& !(designatorIdentBraces.getParent() instanceof DesignatorPlusPlus)
-					&& !(designatorIdentBraces.getParent() instanceof DesignatorMinusMinus)) {
-
-//				if(!(designatorIdentBraces.getParent()))
-				if (designatorIdentBraces.obj.getType() == Tab.charType) {
-					Code.put(Code.baload);
-				} else {
-					Code.put(Code.aload);
-
-				}
+		if (!(designatorIdentBraces.getParent() instanceof DesignatorAssign)
+				&& !(designatorIdentBraces.getParent() instanceof DesignatorPlusPlus)
+				&& !(designatorIdentBraces.getParent() instanceof DesignatorMinusMinus)) {
+			if (designatorIdentBraces.obj.getType() == Tab.intType
+					|| designatorIdentBraces.obj.getType() == NewTab.boolType) {
+				Code.put(Code.aload);
+			} else {
+				Code.put(Code.baload);
 			}
 		}
 	}
@@ -192,134 +205,31 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 	}
 
-//	public void visit(DesignatorNamespaceBraces designatorNamespaceBraces) {
-//		System.out.println(designatorNamespaceBraces.obj.getAdr()+ "  " + designatorNamespaceBraces.getDesigName()+"   " + designatorNamespaceBraces.getLine());
-//		Obj array = findNamespaceField(designatorNamespaceBraces.getNamespaceName(),
-//				designatorNamespaceBraces.getDesigName());
-//		if (array != null) {
-//			Code.load(array);
-//			Code.put(Code.dup_x1);
-//			Code.put(Code.pop);
-//			if (!(designatorNamespaceBraces.getParent() instanceof DesignatorAssign)
-//					&& !(designatorNamespaceBraces.getParent() instanceof DesignatorPlusPlus)
-//					&& !(designatorNamespaceBraces.getParent() instanceof DesignatorMinusMinus)) {
-//
-////				if(!(designatorNamespaceBraces.getParent() instanceof)) {
-////					
-////				}
-//
-////				System.out.println("a  " + designatorNamespaceBraces.getLine());
-//				if (designatorNamespaceBraces.obj.getType() == Tab.charType) {
-//					Code.put(Code.baload);
-//				} else {
-//					Code.put(Code.aload);
-////					System.out.println(array.getAdr());
-//				}
-//			} else {
-////				System.out.println("b  " + designatorNamespaceBraces.getLine());
-//
-//			}
-//
-//		}
-//	}
-
 	public void visit(DesignatorNamespaceBraces designatorNamespaceBraces) {
-		System.out.println(designatorNamespaceBraces.obj.getAdr() + "  " + designatorNamespaceBraces.getDesigName()
-				+ "   " + designatorNamespaceBraces.getLine());
-		Obj array = getVarConst(
-				designatorNamespaceBraces.getNamespaceName() + "::" + designatorNamespaceBraces.getDesigName());
-		if (array != null) {
-			Code.load(array);
-			Code.put(Code.dup_x1);
-			Code.put(Code.pop);
-			if (!(designatorNamespaceBraces.getParent() instanceof DesignatorAssign)
-					&& !(designatorNamespaceBraces.getParent() instanceof DesignatorPlusPlus)
-					&& !(designatorNamespaceBraces.getParent() instanceof DesignatorMinusMinus)) {
-
-//				if(!(designatorNamespaceBraces.getParent() instanceof)) {
-//					
-//				}
-
-//				System.out.println("a  " + designatorNamespaceBraces.getLine());
-				if (designatorNamespaceBraces.obj.getType() == Tab.charType) {
-					Code.put(Code.baload);
-				} else {
-					Code.put(Code.aload);
-//					System.out.println(array.getAdr());
-				}
+		if (!(designatorNamespaceBraces.getParent() instanceof DesignatorAssign)
+				&& !(designatorNamespaceBraces.getParent() instanceof DesignatorPlusPlus)
+				&& !(designatorNamespaceBraces.getParent() instanceof DesignatorMinusMinus)) {
+			if (designatorNamespaceBraces.obj.getType() == Tab.intType
+					|| designatorNamespaceBraces.obj.getType() == NewTab.boolType) {
+				Code.put(Code.aload);
 			} else {
-//				System.out.println("b  " + designatorNamespaceBraces.getLine());
-
+				Code.put(Code.baload);
 			}
-
 		}
 	}
 
 	public void visit(DesignatorAssign designatorAssign) {
-//		Code.store(designatorAssign.getDesignator().obj);
-		if (designatorAssign.getDesignator().obj.getKind() == Obj.Elem) {
-			if (designatorAssign.getDesignator().obj.getType() == Tab.charType)
-				Code.put(Code.bastore);
-			else
+		if ((designatorAssign.getDesignator() instanceof DesignatorIdentBraces)
+				|| (designatorAssign.getDesignator() instanceof DesignatorNamespaceBraces)) {
+			if (designatorAssign.getDesignator().obj.getType() == Tab.intType
+					|| designatorAssign.getDesignator().obj.getType() == NewTab.boolType) {
 				Code.put(Code.astore);
+			} else {
+				Code.put(Code.bastore);
+			}
 		} else {
 			Code.store(designatorAssign.getDesignator().obj);
 		}
-
-	}
-
-	public void visit(DesignatorPlusPlus designatorPlusPlus) {
-		Obj obj = designatorPlusPlus.getDesignator().obj;
-		if (obj.getKind() == Obj.Elem) {
-			Code.put(Code.dup2);
-		}
-		Code.load(obj);
-		Code.loadConst(1);
-		Code.put(Code.add);
-		Code.store(obj);
-	}
-
-	public void visit(DesignatorMinusMinus designatorMinusMinus) {
-		Obj obj = designatorMinusMinus.getDesignator().obj;
-		if (obj.getKind() == Obj.Elem) {
-			Code.put(Code.dup2);
-		}
-		Code.load(obj);
-		Code.loadConst(1);
-		Code.put(Code.sub);
-		Code.store(obj);
-	}
-
-	public void visit(FactorNew factorNew) {
-		Code.put(Code.newarray);
-		if (factorNew.getType().struct == Tab.charType) {
-			Code.put(0);
-		} else {
-			Code.put(1);
-		}
-	}
-
-	public Obj getVarConst(String objName) {
-		Obj obj = Tab.find(objName);
-		if (obj == Tab.noObj) {
-			Collection<Obj> localSymbols = outerScope.getLocalSymbols();
-			for (Obj o : localSymbols) {
-				if (o.getKind() != Obj.Meth && o.getName().equals(objName)) {
-					return o;
-				}
-			}
-			if (currentMethod != null) {
-				localSymbols = currentMethod.getLocalSymbols();
-				for (Obj o : localSymbols) {
-					if (o.getName().equals(objName)) {
-						return o;
-					}
-				}
-			}
-		} else {
-			return obj;
-		}
-		return null;
 	}
 
 	public void visit(ExprMinus exprMinus) {
@@ -328,21 +238,37 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	public void visit(ExprAddop exprAddop) {
 		SyntaxNode addOrSub = exprAddop.getAddOp();
-		if (addOrSub instanceof AddOpPlus) {
-			Code.put(Code.add);
-		} else if (addOrSub instanceof AddOpMinus) {
-			Code.put(Code.sub);
-		}
+		Code.put(getAddOp(addOrSub));
 	}
 
 	public void visit(TermMulOp termMulOp) {
 		SyntaxNode mulOperation = termMulOp.getMulOp();
-		if (mulOperation instanceof Mul) {
-			Code.put(Code.mul);
-		} else if (mulOperation instanceof Div) {
-			Code.put(Code.div);
-		} else if (mulOperation instanceof Mod) {
-			Code.put(Code.rem);
+		Code.put(getMulOp(mulOperation));
+	}
+
+	public int getAddOp(SyntaxNode node) {
+		if (node instanceof AddOpPlus)
+			return Code.add;
+		else
+			return Code.sub;
+	}
+
+	public int getMulOp(SyntaxNode node) {
+		if (node instanceof Mul)
+			return Code.mul;
+		else if (node instanceof Div)
+			return Code.div;
+		else
+			return Code.rem;
+	}
+
+	public void visit(FactorNew factorNew) {
+		Struct newType = factorNew.getType().struct;
+		Code.put(Code.newarray);
+		if (newType == Tab.intType || newType == NewTab.boolType) {
+			Code.put(0);
+		} else {
+			Code.put(1);
 		}
 	}
 }
