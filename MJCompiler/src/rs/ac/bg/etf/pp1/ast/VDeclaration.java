@@ -1,24 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 14/0/2024 11:12:37
+// 14/0/2024 19:49:5
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class VDeclaration extends VarDeclaration {
 
-    private String varName;
+    private String name;
 
-    public VDeclaration (String varName) {
-        this.varName=varName;
+    public VDeclaration (String name) {
+        this.name=name;
     }
 
-    public String getVarName() {
-        return varName;
+    public String getName() {
+        return name;
     }
 
-    public void setVarName(String varName) {
-        this.varName=varName;
+    public void setName(String name) {
+        this.name=name;
     }
 
     public void accept(Visitor visitor) {
@@ -41,7 +41,7 @@ public class VDeclaration extends VarDeclaration {
         buffer.append(tab);
         buffer.append("VDeclaration(\n");
 
-        buffer.append(" "+tab+varName);
+        buffer.append(" "+tab+name);
         buffer.append("\n");
 
         buffer.append(tab);

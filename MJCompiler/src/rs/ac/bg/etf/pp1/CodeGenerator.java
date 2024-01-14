@@ -6,7 +6,6 @@ import rs.etf.pp1.symboltable.concepts.*;
 import rs.ac.bg.etf.pp1.ast.*;
 import rs.etf.pp1.mj.runtime.Code;
 import rs.etf.pp1.symboltable.*;
-import rs.ac.bg.etf.pp1.CounterVisitor.FormParamCounter;
 import rs.ac.bg.etf.pp1.CounterVisitor.VarCounter;
 
 public class CodeGenerator extends VisitorAdaptor {
@@ -36,12 +35,9 @@ public class CodeGenerator extends VisitorAdaptor {
 		VarCounter varCnt = new VarCounter();
 		methodNode.traverseTopDown(varCnt);
 
-		FormParamCounter fpCnt = new FormParamCounter();
-		methodNode.traverseTopDown(fpCnt);
-
 		// Generate the entry
 		Code.put(Code.enter);
-		Code.put(fpCnt.getCount());
+		Code.put(0);
 		Code.put(currentMethod.getLocalSymbols().size());
 	}
 
@@ -51,8 +47,8 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.put(Code.return_);
 	}
 
-	public void visit(StmtRead StmtRead) {
-		Obj tmp = StmtRead.getDesignator().obj;
+	public void visit(ReadStmt readStmt) {
+		Obj tmp = readStmt.getDesignator().obj;
 		if (tmp.getType().getKind() == Struct.Char) {
 			Code.put(Code.bread);
 			Code.store(tmp);
@@ -62,7 +58,19 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 	}
 
-	public void visit(StmtPrint printStmt) {
+	public void visit(PrintNumStmt printStmt) {
+		Struct exprType = printStmt.getExpr().struct;
+		if (exprType == Tab.charType) {
+			Code.loadConst(printStmt.getN2());
+			Code.put(Code.bprint);
+		} else {
+			Code.loadConst(printStmt.getN2());
+			Code.put(Code.print);
+
+		}
+	}
+
+	public void visit(PrintStmt printStmt) {
 		Struct exprType = printStmt.getExpr().struct;
 		if (exprType == Tab.charType) {
 			Code.loadConst(1);
@@ -73,32 +81,20 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 	}
 
-	public void visit(StmtPrintNum printStmt) {
-		Struct exprType = printStmt.getExpr().struct;
-		if (exprType == Tab.charType) {
-			Code.loadConst(printStmt.getN2());
-			Code.put(Code.bprint);
-		} else {
-			Code.loadConst(printStmt.getN2());
-			Code.put(Code.print);
-
-		}
-	}
-
-	public void visit(FactorConstValueNum factorConstValue) {
-		Code.loadConst(factorConstValue.getN1());
-	}
-
-	public void visit(FactorConstValueChar factorConstValue) {
-		Code.loadConst(factorConstValue.getC1().charAt(1));
-	}
-
 	public void visit(FactorConstValueBool factorConstValue) {
 		if (factorConstValue.getB1().equals("true")) {
 			Code.loadConst(1);
 		} else if (factorConstValue.getB1().equals("false")) {
 			Code.loadConst(0);
 		}
+	}
+
+	public void visit(FactorConstValueChar factorConstValue) {
+		Code.loadConst(factorConstValue.getC1().charAt(1));
+	}
+
+	public void visit(FactorConstValueNum factorConstValue) {
+		Code.loadConst(factorConstValue.getN1());
 	}
 
 	public void visit(ConstDeclaration constDeclaration) {
@@ -117,7 +113,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.load(constDeclaration.obj);
 	}
 
-	public void visit(DesignatorPlusPlus designator) {
+	public void visit(DesignatorPP designator) {
 		if (designator.getDesignator().obj.getKind() == Obj.Elem) {
 			Code.put(Code.dup2);
 		}
@@ -128,7 +124,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.store(tmp);
 	}
 
-	public void visit(DesignatorMinusMinus designator) {
+	public void visit(DesignatorMM designator) {
 		if (designator.getDesignator().obj.getKind() == Obj.Elem) {
 			Code.put(Code.dup2);
 		}
@@ -153,8 +149,9 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	public void visit(DesignatorIdent designatorIdent) {
 		if (!(designatorIdent.getParent() instanceof DesignatorAssign)
-				&& !(designatorIdent.getParent() instanceof DesignatorPlusPlus)
-				&& !(designatorIdent.getParent() instanceof DesignatorMinusMinus)) {
+				&& !(designatorIdent.getParent() instanceof DesignatorPP)
+				&& !(designatorIdent.getParent() instanceof DesignatorMM)
+				&& !(designatorIdent.getParent() instanceof ReadStmt)) {
 			Code.load(designatorIdent.obj);
 		}
 	}
@@ -168,13 +165,13 @@ public class CodeGenerator extends VisitorAdaptor {
 		if (arr == null) {
 			arr = getFromScope(outerScope, name);
 		}
-
 		Code.load(arr);
 		Code.put(Code.dup_x1);
 		Code.put(Code.pop);
 		if (!(designatorIdentBraces.getParent() instanceof DesignatorAssign)
-				&& !(designatorIdentBraces.getParent() instanceof DesignatorPlusPlus)
-				&& !(designatorIdentBraces.getParent() instanceof DesignatorMinusMinus)) {
+				&& !(designatorIdentBraces.getParent() instanceof DesignatorPP)
+				&& !(designatorIdentBraces.getParent() instanceof DesignatorMM)
+				&& !(designatorIdentBraces.getParent() instanceof ReadStmt)) {
 			if (designatorIdentBraces.obj.getType() == Tab.intType
 					|| designatorIdentBraces.obj.getType() == NewTab.boolType) {
 				Code.put(Code.aload);
@@ -186,16 +183,15 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorNamespace designatorNamespace) {
-
 		if (!(designatorNamespace.getParent() instanceof DesignatorAssign)
-				&& !(designatorNamespace.getParent() instanceof DesignatorPlusPlus)
-				&& !(designatorNamespace.getParent() instanceof DesignatorMinusMinus)) {
+				&& !(designatorNamespace.getParent() instanceof DesignatorPP)
+				&& !(designatorNamespace.getParent() instanceof DesignatorMM)
+				&& !(designatorNamespace.getParent() instanceof ReadStmt)) {
 			Code.load(designatorNamespace.obj);
 		}
 	}
 
 	public void visit(DesignatorNamespaceBraces designatorNamespaceBraces) {
-
 		String name = designatorNamespaceBraces.getNamespaceName() + "::" + designatorNamespaceBraces.getDesigName();
 		Obj arr = null;
 		if (currentMethod != null) {
@@ -204,13 +200,13 @@ public class CodeGenerator extends VisitorAdaptor {
 		if (arr == null) {
 			arr = getFromScope(outerScope, name);
 		}
-
 		Code.load(arr);
 		Code.put(Code.dup_x1);
 		Code.put(Code.pop);
 		if (!(designatorNamespaceBraces.getParent() instanceof DesignatorAssign)
-				&& !(designatorNamespaceBraces.getParent() instanceof DesignatorPlusPlus)
-				&& !(designatorNamespaceBraces.getParent() instanceof DesignatorMinusMinus)) {
+				&& !(designatorNamespaceBraces.getParent() instanceof DesignatorPP)
+				&& !(designatorNamespaceBraces.getParent() instanceof DesignatorMM)
+				&& !(designatorNamespaceBraces.getParent() instanceof ReadStmt)) {
 			if (designatorNamespaceBraces.obj.getType() == Tab.intType
 					|| designatorNamespaceBraces.obj.getType() == NewTab.boolType) {
 				Code.put(Code.aload);
@@ -218,20 +214,19 @@ public class CodeGenerator extends VisitorAdaptor {
 				Code.put(Code.baload);
 			}
 		}
-
 	}
 
 	public void visit(DesignatorAssign designatorAssign) {
-		if ((designatorAssign.getDesignator() instanceof DesignatorIdentBraces)
-				|| (designatorAssign.getDesignator() instanceof DesignatorNamespaceBraces)) {
+		if (!(designatorAssign.getDesignator() instanceof DesignatorIdentBraces)
+				&& !(designatorAssign.getDesignator() instanceof DesignatorNamespaceBraces)) {
+			Code.store(designatorAssign.getDesignator().obj);
+		} else {
 			if (designatorAssign.getDesignator().obj.getType() == Tab.intType
 					|| designatorAssign.getDesignator().obj.getType() == NewTab.boolType) {
 				Code.put(Code.astore);
 			} else {
 				Code.put(Code.bastore);
 			}
-		} else {
-			Code.store(designatorAssign.getDesignator().obj);
 		}
 	}
 
@@ -250,19 +245,24 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public int getAddOp(SyntaxNode node) {
-		if (node instanceof AddOpPlus)
+		if (node instanceof Plus) {
 			return Code.add;
-		else
+		} else {
 			return Code.sub;
+		}
+
 	}
 
 	public int getMulOp(SyntaxNode node) {
-		if (node instanceof Mul)
+		if (node instanceof Mul) {
 			return Code.mul;
-		else if (node instanceof Div)
+		}
+		else if (node instanceof Div) {
 			return Code.div;
-		else
+		}
+		else {
 			return Code.rem;
+		}
 	}
 
 	public void visit(FactorNew factorNew) {

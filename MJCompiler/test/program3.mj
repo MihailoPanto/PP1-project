@@ -1,61 +1,14 @@
-// Test301
+// Program3
 
-program test301
-
-namespace Konstante{
-	const int nula = 0;
-	const int jedan = 1;
-	const int pet = 5;
-	
-	{}
-}
-
-namespace Nizovi{
-	int niz[];
-	char nizch[];
-	
-	{}
-}
+program program3
 	int a;
 {
 	void main()	
-		int bodovi;
-		bool bt;
-		int x;
-		char ggg[];
+	int m[];
 	{
-		bodovi = 0;
-		bodovi++;
-		bodovi = bodovi + Konstante::jedan;
-		bodovi = bodovi * Konstante::pet;
-		bodovi--;
-		print(bodovi);
-		
-		Nizovi::niz = new int[3];
-		Nizovi::niz[Konstante::nula] = Konstante::jedan;
-		Nizovi::niz[1] = 2;
-		Nizovi::niz[Nizovi::niz[Konstante::jedan]] = Nizovi::niz[Nizovi::niz[0]] * 3;
-		bodovi = Nizovi::niz[2]/Nizovi::niz[0];
-		print(bodovi);
-		print(Nizovi::niz[2]);
-		
-		
-		
-		Nizovi::nizch = new char[3];
-		Nizovi::nizch[0] = 'a';
-		Nizovi::nizch[Konstante::jedan] = 'b';
-		Nizovi::nizch[Konstante::pet - 3] = 'c';
-		print(Nizovi::nizch[1],2);
-		print(Nizovi::nizch[Konstante::jedan * 2],2);
-			
-		a=1;
-		// read(bodovi);
-		bodovi = -bodovi + (Konstante::pet * a / 2 - Konstante::jedan) * bodovi - (3 % 2 + 3 * 2 - 3); 
-		print(bodovi);
-		
-		a=-(2+1);
-		print(a);
-		
+		m=new int[4];
+		//read(m[2]);
+		//print(m[2]);
 		read(a);
 		print(a);
 	}

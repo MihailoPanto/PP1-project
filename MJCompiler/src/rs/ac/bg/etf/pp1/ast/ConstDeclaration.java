@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 14/0/2024 11:12:37
+// 14/0/2024 19:49:5
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -11,21 +11,21 @@ public class ConstDeclaration implements SyntaxNode {
     private int line;
     public rs.etf.pp1.symboltable.concepts.Obj obj = null;
 
-    private String constName;
+    private String name;
     private ConstValue ConstValue;
 
-    public ConstDeclaration (String constName, ConstValue ConstValue) {
-        this.constName=constName;
+    public ConstDeclaration (String name, ConstValue ConstValue) {
+        this.name=name;
         this.ConstValue=ConstValue;
         if(ConstValue!=null) ConstValue.setParent(this);
     }
 
-    public String getConstName() {
-        return constName;
+    public String getName() {
+        return name;
     }
 
-    public void setConstName(String constName) {
-        this.constName=constName;
+    public void setName(String name) {
+        this.name=name;
     }
 
     public ConstValue getConstValue() {
@@ -75,7 +75,7 @@ public class ConstDeclaration implements SyntaxNode {
         buffer.append(tab);
         buffer.append("ConstDeclaration(\n");
 
-        buffer.append(" "+tab+constName);
+        buffer.append(" "+tab+name);
         buffer.append("\n");
 
         if(ConstValue!=null)

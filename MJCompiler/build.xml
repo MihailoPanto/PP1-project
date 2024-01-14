@@ -13,10 +13,11 @@
 				<exclude name="NewTab.java" />
 				<exclude name="CodeGenerator.java" />
 				<exclude name="CounterVisitor.java" />
+				<exclude name="Compiler.java" />
 			</fileset>
 		</delete>
 		<delete>
-			<fileset dir="spec">
+			<fileset dir="src/spec">
 				<exclude name="mjlexer.flex" />
 				<exclude name="mjparser.cup" />
 			</fileset>
@@ -27,7 +28,7 @@
 		<java jar="lib/JFlex.jar" fork="true">
 			<arg value="-d" />
 			<arg value="./src/rs/ac/bg/etf/pp1" />
-			<arg value="spec/mjlexer.flex" />
+			<arg value="src/spec/mjlexer.flex" />
 		</java>
 	</target>
 
@@ -41,7 +42,7 @@
 			<arg value="MJParser" />
 			<arg value="-dump_states" />
 			<arg value="-buildtree" />
-			<arg value="spec/mjparser.cup" />
+			<arg value="src/spec/mjparser.cup" />
 		</java>
 	</target>
 
@@ -74,7 +75,7 @@
 	<target name="runObj" depends="disasm">
 		<java classname="rs.etf.pp1.mj.runtime.Run" fork="true">
 			<arg value="test/program.obj" />
-
+			<arg value="-debug" />
 			<redirector input="input.txt" />
 			<classpath>
 				<pathelement location="lib/mj-runtime-1.1.jar" />

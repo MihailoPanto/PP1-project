@@ -1,0 +1,148 @@
+INFO  19:44:58,515 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program3.mj
+INFO  19:44:58,565 - #2 program
+INFO  19:44:58,565 - #28 program3
+INFO  19:44:58,565 - #28 int
+INFO  19:44:58,569 - #28 a
+INFO  19:44:58,570 - #17 ;
+INFO  19:44:58,570 - #23 {
+INFO  19:44:58,570 - #7 void
+INFO  19:44:58,571 - #28 main
+INFO  19:44:58,572 - #19 (
+INFO  19:44:58,572 - #20 )
+INFO  19:44:58,572 - #28 int
+INFO  19:44:58,573 - #28 m
+INFO  19:44:58,573 - #21 [
+INFO  19:44:58,573 - #22 ]
+INFO  19:44:58,573 - #17 ;
+INFO  19:44:58,574 - #23 {
+INFO  19:44:58,574 - #28 m
+INFO  19:44:58,575 - #14 =
+INFO  19:44:58,575 - #4 new
+INFO  19:44:58,577 - #28 int
+INFO  19:44:58,577 - #21 [
+INFO  19:44:58,577 - #27 4
+INFO  19:44:58,577 - #22 ]
+INFO  19:44:58,578 - #17 ;
+INFO  19:44:58,578 - #6 read
+INFO  19:44:58,578 - #19 (
+INFO  19:44:58,579 - #28 m
+INFO  19:44:58,579 - #21 [
+INFO  19:44:58,579 - #27 2
+INFO  19:44:58,579 - #22 ]
+INFO  19:44:58,579 - #20 )
+INFO  19:44:58,579 - #17 ;
+INFO  19:44:58,579 - #5 print
+INFO  19:44:58,580 - #19 (
+INFO  19:44:58,580 - #28 a
+INFO  19:44:58,580 - #20 )
+INFO  19:44:58,580 - #17 ;
+INFO  19:44:58,580 - #24 }
+INFO  19:44:58,580 - #24 }
+INFO  19:44:58,593 - Program(
+  ProgName(
+   program3
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        NoCommaVarDeclList(
+          VDeclaration(
+           a
+          ) [VDeclaration]
+        ) [NoCommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      LocalVarDeclarationList(
+        NoLocalVarDeclarationList(
+        ) [NoLocalVarDeclarationList]
+        TypeSemiVarDecl(
+          Type(
+           int
+          ) [Type]
+          NoCommaVarDeclList(
+            VArrayDeclaration(
+             m
+            ) [VArrayDeclaration]
+          ) [NoCommaVarDeclList]
+        ) [TypeSemiVarDecl]
+      ) [LocalVarDeclarationList]
+      StmtList(
+        StmtList(
+          StmtList(
+            NoStmtList(
+            ) [NoStmtList]
+            DesignatorStatementStmt(
+              DesignatorAssign(
+                DesignatorIdent(
+                 m
+                ) [DesignatorIdent]
+                Equal(
+                ) [Equal]
+                ExprTerm(
+                  TermFactor(
+                    FactorNew(
+                      Type(
+                       int
+                      ) [Type]
+                      ExprTerm(
+                        TermFactor(
+                          FactorConstValueNum(
+                           4
+                          ) [FactorConstValueNum]
+                        ) [TermFactor]
+                      ) [ExprTerm]
+                    ) [FactorNew]
+                  ) [TermFactor]
+                ) [ExprTerm]
+              ) [DesignatorAssign]
+            ) [DesignatorStatementStmt]
+          ) [StmtList]
+          ReadStmt(
+            DesignatorIdentBraces(
+             m
+              ExprTerm(
+                TermFactor(
+                  FactorConstValueNum(
+                   2
+                  ) [FactorConstValueNum]
+                ) [TermFactor]
+              ) [ExprTerm]
+            ) [DesignatorIdentBraces]
+          ) [ReadStmt]
+        ) [StmtList]
+        PrintStmt(
+          ExprTerm(
+            TermFactor(
+              FactorDesignator(
+                DesignatorIdent(
+                 a
+                ) [DesignatorIdent]
+              ) [FactorDesignator]
+            ) [TermFactor]
+          ) [ExprTerm]
+        ) [PrintStmt]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  19:44:58,593 - ===================================
+INFO  19:44:58,595 - INFO: deklarisana promenljiva a na liniji 4
+INFO  19:44:58,595 - INFO: obradjuje se funkcija main na liniji 6
+INFO  19:44:58,596 - INFO: deklarisana promenljiva niza m na liniji 7
+INFO  19:44:58,596 - ===================================
+INFO  19:44:58,603 - Parsiranje uspesno zavrseno!

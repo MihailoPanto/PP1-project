@@ -1,0 +1,85 @@
+INFO  19:37:48,827 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program3.mj
+INFO  19:37:48,868 - #2 program
+INFO  19:37:48,868 - #28 program3
+INFO  19:37:48,868 - #28 int
+INFO  19:37:48,870 - #28 a
+INFO  19:37:48,870 - #17 ;
+INFO  19:37:48,871 - #23 {
+INFO  19:37:48,871 - #7 void
+INFO  19:37:48,873 - #28 main
+INFO  19:37:48,873 - #19 (
+INFO  19:37:48,873 - #20 )
+INFO  19:37:48,873 - #23 {
+INFO  19:37:48,875 - #6 read
+INFO  19:37:48,876 - #19 (
+INFO  19:37:48,876 - #28 a
+INFO  19:37:48,876 - #20 )
+INFO  19:37:48,876 - #17 ;
+INFO  19:37:48,876 - #5 print
+INFO  19:37:48,877 - #19 (
+INFO  19:37:48,877 - #28 a
+INFO  19:37:48,877 - #20 )
+INFO  19:37:48,877 - #17 ;
+INFO  19:37:48,892 - #24 }
+INFO  19:37:48,892 - #24 }
+INFO  19:37:48,906 - Program(
+  ProgName(
+   program3
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        NoCommaVarDeclList(
+          VDeclaration(
+           a
+          ) [VDeclaration]
+        ) [NoCommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        StmtList(
+          NoStmtList(
+          ) [NoStmtList]
+          ReadStmt(
+            DesignatorIdent(
+             a
+            ) [DesignatorIdent]
+          ) [ReadStmt]
+        ) [StmtList]
+        PrintStmt(
+          ExprTerm(
+            TermFactor(
+              FactorDesignator(
+                DesignatorIdent(
+                 a
+                ) [DesignatorIdent]
+              ) [FactorDesignator]
+            ) [TermFactor]
+          ) [ExprTerm]
+        ) [PrintStmt]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  19:37:48,906 - ===================================
+INFO  19:37:48,910 - INFO: deklarisana promenljiva a na liniji 4
+INFO  19:37:48,910 - INFO: obradjuje se funkcija main na liniji 6
+INFO  19:37:48,910 - ===================================
+INFO  19:37:48,915 - Parsiranje uspesno zavrseno!

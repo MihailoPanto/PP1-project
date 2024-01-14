@@ -9,12 +9,6 @@ public class CounterVisitor extends VisitorAdaptor {
 		return count;
 	}
 	
-	public static class FormParamCounter extends CounterVisitor{
-		public void visit(FormPar formParamDecl) {
-			count++;
-		}
-	}
-	
 	public static class VarCounter extends CounterVisitor{
 		public void visit(VarDecl varDecl) {
 			count++;

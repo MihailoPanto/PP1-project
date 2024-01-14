@@ -52,6 +52,8 @@ namespace Nizovi{
 		bodovi = -bodovi + (Konstante::pet * a / 2 - Konstante::jedan) * bodovi - (3 % 2 + 3 * 2 - 3); 
 		print(bodovi);
 		
+		bodovi++;
+		print(bodovi);
 	}
 }
 
