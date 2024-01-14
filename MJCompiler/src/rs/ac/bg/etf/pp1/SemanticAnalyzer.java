@@ -128,16 +128,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 				new Struct(Struct.Array, ((TypeSemiVarDecl) par).getType().struct));
 	}
 
-	public void visit(NumberConst numberConst) {
-		numberConst.struct = Tab.intType;
+	public void visit(BoolConst boolConst) {
+		boolConst.struct = NewTab.boolType;
 	}
 
 	public void visit(CharConst charConst) {
 		charConst.struct = Tab.charType;
 	}
 
-	public void visit(BoolConst boolConst) {
-		boolConst.struct = NewTab.boolType;
+	public void visit(NumberConst numberConst) {
+		numberConst.struct = Tab.intType;
 	}
 
 	public void visit(ConstDeclaration constDeclaration) {
