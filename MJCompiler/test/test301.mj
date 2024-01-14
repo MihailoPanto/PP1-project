@@ -47,12 +47,11 @@ namespace Nizovi{
 		print(Nizovi::nizch[Konstante::jedan * 2],2);
 			
 		a=1;
-		// read(bodovi);
+		read(bodovi);
+		print(bodovi);
 		bodovi = -bodovi + (Konstante::pet * a / 2 - Konstante::jedan) * bodovi - (3 % 2 + 3 * 2 - 3); 
 		print(bodovi);
 		
-		x=2*(2+1);
-		print(x);
 	}
 }
 

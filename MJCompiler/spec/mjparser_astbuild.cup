@@ -257,9 +257,9 @@ Factor ::= (FactorConstValueNum) NUMBER:N1 {: RESULT=new FactorConstValueNum(N1)
 		(FactorDesignator) Designator:D1 {: RESULT=new FactorDesignator(D1); RESULT.setLine(D1left); :}
 		;
 
-Designator ::= (DesignatorIdentBraces) IDENT:desigName Array:A1 LSBRACE Expr:E2 RSBRACE {: RESULT=new DesignatorIdentBraces(desigName, A1, E2); RESULT.setLine(desigNameleft); :}
+Designator ::= (DesignatorIdentBraces) IDENT:desigName LSBRACE Expr:E1 RSBRACE {: RESULT=new DesignatorIdentBraces(desigName, E1); RESULT.setLine(desigNameleft); :}
 		|
-		(DesignatorNamespaceBraces) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName Array:A1 LSBRACE Expr:E2 RSBRACE {: RESULT=new DesignatorNamespaceBraces(namespaceName, desigName, A1, E2); RESULT.setLine(namespaceNameleft); :}
+		(DesignatorNamespaceBraces) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName LSBRACE Expr:E1 RSBRACE {: RESULT=new DesignatorNamespaceBraces(namespaceName, desigName, E1); RESULT.setLine(namespaceNameleft); :}
 		|
 		(DesignatorNamespace) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName {: RESULT=new DesignatorNamespace(namespaceName, desigName); RESULT.setLine(namespaceNameleft); :}
 		|

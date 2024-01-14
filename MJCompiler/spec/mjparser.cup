@@ -238,9 +238,9 @@ Factor ::= (FactorConstValueNum) NUMBER
 		(FactorDesignator) Designator
 		;
 
-Designator ::= (DesignatorIdentBraces) IDENT:desigName Array LSBRACE Expr RSBRACE
+Designator ::= (DesignatorIdentBraces) IDENT:desigName LSBRACE Expr RSBRACE
 		|
-		(DesignatorNamespaceBraces) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName Array LSBRACE Expr RSBRACE
+		(DesignatorNamespaceBraces) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName LSBRACE Expr RSBRACE
 		|
 		(DesignatorNamespace) IDENT:namespaceName TWO_DOUBLE_DOT IDENT:desigName
 		|

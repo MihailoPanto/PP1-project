@@ -306,21 +306,45 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		designatorNamespace.obj = des;
 	}
 
+//	public void visit(DesignatorAssign designatorAssign) {
+//		Struct leftVariable = designatorAssign.getDesignator().obj.getType();
+//		Struct rightVariable = designatorAssign.getExpr().struct;
+//
+//		if (designatorAssign.getDesignator().obj.getKind() == Obj.Con) {
+//			report_error("GRESKA: nije dozvoljena dodela vrednosti kontstanti na liniji " + designatorAssign.getLine(),
+//					null);
+//		}
+//		if (!leftVariable.compatibleWith(rightVariable)) {
+//			report_error("GRESKA: nisu odgovarajuci tipovi na liniji " + designatorAssign.getLine(), null);
+//		} else if ((leftVariable.getKind() == Struct.Array && rightVariable.getKind() == Struct.Array)
+//				&& (leftVariable.getElemType() != rightVariable.getElemType())) {
+//			report_error("GRESKA: nisu odgovarajuci tipovi dva niza na liniji " + designatorAssign.getLine(), null);
+//		}
+//		designatorAssign.obj = designatorAssign.getDesignator().obj;
+//	}
+	
 	public void visit(DesignatorAssign designatorAssign) {
-		Struct leftVariable = designatorAssign.getDesignator().obj.getType();
-		Struct rightVariable = designatorAssign.getExpr().struct;
 
-		if (designatorAssign.getDesignator().obj.getKind() == Obj.Con) {
-			report_error("GRESKA: nije dozvoljena dodela vrednosti kontstanti na liniji " + designatorAssign.getLine(),
-					null);
+		if (designatorAssign.getDesignator().obj.equals(Tab.noObj)) {
+			report_error("GRESKA na liniji " + designatorAssign.getLine(), null);
+		}else {
+			Struct leftVariable = designatorAssign.getDesignator().obj.getType();
+			Struct rightVariable = designatorAssign.getExpr().struct;
+
+			if (designatorAssign.getDesignator().obj.getKind() == Obj.Con) {
+				report_error("GRESKA: nije dozvoljena dodela vrednosti kontstanti na liniji " + designatorAssign.getLine(),
+						null);
+			}
+			if (!leftVariable.compatibleWith(rightVariable)) {
+				report_error("GRESKA: nisu odgovarajuci tipovi na liniji " + designatorAssign.getLine(), null);
+			} else if ((leftVariable.getKind() == Struct.Array && rightVariable.getKind() == Struct.Array)
+					&& (leftVariable.getElemType() != rightVariable.getElemType())) {
+				report_error("GRESKA: nisu odgovarajuci tipovi dva niza na liniji " + designatorAssign.getLine(), null);
+			}
+			designatorAssign.obj = designatorAssign.getDesignator().obj;
 		}
-		if (!leftVariable.compatibleWith(rightVariable)) {
-			report_error("GRESKA: nisu odgovarajuci tipovi na liniji " + designatorAssign.getLine(), null);
-		} else if ((leftVariable.getKind() == Struct.Array && rightVariable.getKind() == Struct.Array)
-				&& (leftVariable.getElemType() != rightVariable.getElemType())) {
-			report_error("GRESKA: nisu odgovarajuci tipovi dva niza na liniji " + designatorAssign.getLine(), null);
-		}
-		designatorAssign.obj = designatorAssign.getDesignator().obj;
+
+
 	}
 
 	public void visit(DesignatorPlusPlus designatorPlusPlus) {

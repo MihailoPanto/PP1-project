@@ -151,29 +151,6 @@ public class CodeGenerator extends VisitorAdaptor {
 		return null;
 	}
 
-	public void visit(Array array) {
-		String name = "";
-		if (array.getParent() instanceof DesignatorIdentBraces) {
-			DesignatorIdentBraces par = (DesignatorIdentBraces) array.getParent();
-			name = par.getDesigName();
-		} else if (array.getParent() instanceof DesignatorNamespaceBraces) {
-			DesignatorNamespaceBraces par = (DesignatorNamespaceBraces) array.getParent();
-			name = par.getNamespaceName() + "::" + par.getDesigName();
-		}
-		Obj arr = Tab.find(name);
-		if (arr.equals(Tab.noObj)) {
-			if (currentMethod != null) {
-				arr = getFromScope(currentMethod, name);
-			}
-			if (arr == null) {
-				arr = getFromScope(outerScope, name);
-			}
-		}
-		if (arr != null) {
-			Code.load(arr);
-		}
-	}
-
 	public void visit(DesignatorIdent designatorIdent) {
 		if (!(designatorIdent.getParent() instanceof DesignatorAssign)
 				&& !(designatorIdent.getParent() instanceof DesignatorPlusPlus)
@@ -183,6 +160,18 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorIdentBraces designatorIdentBraces) {
+		String name = designatorIdentBraces.getDesigName();
+		Obj arr = null;
+		if (currentMethod != null) {
+			arr = getFromScope(currentMethod, name);
+		}
+		if (arr == null) {
+			arr = getFromScope(outerScope, name);
+		}
+
+		Code.load(arr);
+		Code.put(Code.dup_x1);
+		Code.put(Code.pop);
 		if (!(designatorIdentBraces.getParent() instanceof DesignatorAssign)
 				&& !(designatorIdentBraces.getParent() instanceof DesignatorPlusPlus)
 				&& !(designatorIdentBraces.getParent() instanceof DesignatorMinusMinus)) {
@@ -193,11 +182,11 @@ public class CodeGenerator extends VisitorAdaptor {
 				Code.put(Code.baload);
 			}
 		}
+
 	}
 
 	public void visit(DesignatorNamespace designatorNamespace) {
-		System.out.println(designatorNamespace.obj.getAdr() + "  " + designatorNamespace.getDesigName() + "   "
-				+ designatorNamespace.getLine());
+
 		if (!(designatorNamespace.getParent() instanceof DesignatorAssign)
 				&& !(designatorNamespace.getParent() instanceof DesignatorPlusPlus)
 				&& !(designatorNamespace.getParent() instanceof DesignatorMinusMinus)) {
@@ -206,6 +195,19 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	public void visit(DesignatorNamespaceBraces designatorNamespaceBraces) {
+
+		String name = designatorNamespaceBraces.getNamespaceName() + "::" + designatorNamespaceBraces.getDesigName();
+		Obj arr = null;
+		if (currentMethod != null) {
+			arr = getFromScope(currentMethod, name);
+		}
+		if (arr == null) {
+			arr = getFromScope(outerScope, name);
+		}
+
+		Code.load(arr);
+		Code.put(Code.dup_x1);
+		Code.put(Code.pop);
 		if (!(designatorNamespaceBraces.getParent() instanceof DesignatorAssign)
 				&& !(designatorNamespaceBraces.getParent() instanceof DesignatorPlusPlus)
 				&& !(designatorNamespaceBraces.getParent() instanceof DesignatorMinusMinus)) {
@@ -216,6 +218,7 @@ public class CodeGenerator extends VisitorAdaptor {
 				Code.put(Code.baload);
 			}
 		}
+
 	}
 
 	public void visit(DesignatorAssign designatorAssign) {
