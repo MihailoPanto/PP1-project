@@ -1,0 +1,171 @@
+INFO  15:42:39,027 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program4.mj
+INFO  15:42:39,066 - #2 program
+INFO  15:42:39,066 - #28 mihailo
+INFO  15:42:39,066 - #8 namespace
+INFO  15:42:39,067 - #28 Miki
+INFO  15:42:39,067 - #23 {
+INFO  15:42:39,068 - #28 int
+INFO  15:42:39,069 - #28 a
+INFO  15:42:39,069 - #17 ;
+INFO  15:42:39,069 - #28 char
+INFO  15:42:39,070 - #28 d
+INFO  15:42:39,070 - #17 ;
+INFO  15:42:39,070 - #28 char
+INFO  15:42:39,070 - #28 e
+INFO  15:42:39,070 - #21 [
+INFO  15:42:39,070 - #22 ]
+INFO  15:42:39,070 - #17 ;
+INFO  15:42:39,070 - #3 const
+INFO  15:42:39,070 - #28 char
+INFO  15:42:39,070 - #28 f
+INFO  15:42:39,070 - #14 =
+INFO  15:42:39,070 - #29 'f'
+INFO  15:42:39,071 - #17 ;
+INFO  15:42:39,072 - #23 {
+INFO  15:42:39,072 - #24 }
+INFO  15:42:39,072 - #24 }
+INFO  15:42:39,073 - #28 int
+INFO  15:42:39,074 - #28 a
+INFO  15:42:39,074 - #18 ,
+INFO  15:42:39,074 - #28 b
+INFO  15:42:39,074 - #18 ,
+INFO  15:42:39,074 - #28 c
+INFO  15:42:39,074 - #21 [
+INFO  15:42:39,074 - #22 ]
+INFO  15:42:39,074 - #18 ,
+INFO  15:42:39,074 - #18 ,
+ERROR 15:42:39,075 - 
+Sintaksna greska na liniji 12
+INFO  15:42:39,075 - #17 ;
+INFO  15:42:39,075 - #23 {
+INFO  15:42:39,075 - #7 void
+INFO  15:42:39,075 - #28 main
+ERROR 15:42:39,075 - Oporavak izvrsen do , u liniji 12
+INFO  15:42:39,077 - #19 (
+INFO  15:42:39,077 - #20 )
+INFO  15:42:39,077 - #23 {
+INFO  15:42:39,078 - #28 a
+INFO  15:42:39,079 - #14 =
+INFO  15:42:39,080 - #9 +
+ERROR 15:42:39,080 - 
+Sintaksna greska na liniji 20
+INFO  15:42:39,080 - #17 ;
+INFO  15:42:39,080 - #24 }
+INFO  15:42:39,080 - #24 }
+ERROR 15:42:39,080 - Oporavak izvrsen do , u liniji 20
+INFO  15:42:39,093 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NameSpacesList(
+    NoNameSpacesList(
+    ) [NoNameSpacesList]
+    Namespace(
+      NamespaceName(
+       Miki
+      ) [NamespaceName]
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          ConstVarDeclarationList(
+            ConstVarDeclarationList(
+              NoConstVarDeclarationList(
+              ) [NoConstVarDeclarationList]
+              VarCVDeclaration(
+                TypeSemiVarDecl(
+                  Type(
+                   int
+                  ) [Type]
+                  NoCommaVarDeclList(
+                    VDeclaration(
+                     a
+                    ) [VDeclaration]
+                  ) [NoCommaVarDeclList]
+                ) [TypeSemiVarDecl]
+              ) [VarCVDeclaration]
+            ) [ConstVarDeclarationList]
+            VarCVDeclaration(
+              TypeSemiVarDecl(
+                Type(
+                 char
+                ) [Type]
+                NoCommaVarDeclList(
+                  VDeclaration(
+                   d
+                  ) [VDeclaration]
+                ) [NoCommaVarDeclList]
+              ) [TypeSemiVarDecl]
+            ) [VarCVDeclaration]
+          ) [ConstVarDeclarationList]
+          VarCVDeclaration(
+            TypeSemiVarDecl(
+              Type(
+               char
+              ) [Type]
+              NoCommaVarDeclList(
+                VArrayDeclaration(
+                 e
+                ) [VArrayDeclaration]
+              ) [NoCommaVarDeclList]
+            ) [TypeSemiVarDecl]
+          ) [VarCVDeclaration]
+        ) [ConstVarDeclarationList]
+        ConstCVDeclaration(
+          TypeSemiConstDecl(
+            Type(
+             char
+            ) [Type]
+            OneConstDecl(
+              ConstDeclaration(
+               f
+                CharConst(
+                 'f'
+                ) [CharConst]
+              ) [ConstDeclaration]
+            ) [OneConstDecl]
+          ) [TypeSemiConstDecl]
+        ) [ConstCVDeclaration]
+      ) [ConstVarDeclarationList]
+      NoMethodDeclarationList(
+      ) [NoMethodDeclarationList]
+    ) [Namespace]
+  ) [NameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        ErrorCommaVList(
+        ) [ErrorCommaVList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        NoStmtList(
+        ) [NoStmtList]
+        ErrorStmt(
+        ) [ErrorStmt]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  15:42:39,093 - ===================================
+INFO  15:42:39,097 - INFO: obradjuje se namespace Miki na liniji 4
+INFO  15:42:39,097 - INFO: deklarisana namespace promenljiva Miki::a na liniji 5
+INFO  15:42:39,097 - INFO: deklarisana namespace promenljiva Miki::d na liniji 6
+INFO  15:42:39,097 - INFO: deklarisana namespace promenljiva niza Miki::e na liniji 7
+INFO  15:42:39,097 - INFO: deklarisana namespace konstanta Miki::f na liniji 8
+INFO  15:42:39,098 - INFO: obradjuje se funkcija main na liniji 16
+INFO  15:42:39,098 - ===================================
+ERROR 15:42:39,098 - Parsiranje NIJE uspesno zavrseno!

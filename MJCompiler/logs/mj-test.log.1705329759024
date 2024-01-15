@@ -1,0 +1,207 @@
+INFO  15:41:20,461 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program4.mj
+INFO  15:41:20,501 - #2 program
+INFO  15:41:20,501 - #28 mihailo
+INFO  15:41:20,501 - #8 namespace
+INFO  15:41:20,503 - #28 Miki
+INFO  15:41:20,503 - #23 {
+INFO  15:41:20,504 - #28 int
+INFO  15:41:20,506 - #28 a
+INFO  15:41:20,507 - #17 ;
+INFO  15:41:20,507 - #28 char
+INFO  15:41:20,508 - #28 d
+INFO  15:41:20,508 - #17 ;
+INFO  15:41:20,509 - #28 char
+INFO  15:41:20,509 - #28 e
+INFO  15:41:20,509 - #21 [
+INFO  15:41:20,509 - #22 ]
+INFO  15:41:20,509 - #17 ;
+INFO  15:41:20,509 - #3 const
+INFO  15:41:20,509 - #28 char
+INFO  15:41:20,509 - #28 f
+INFO  15:41:20,509 - #14 =
+INFO  15:41:20,509 - #29 'f'
+INFO  15:41:20,513 - #17 ;
+INFO  15:41:20,514 - #23 {
+INFO  15:41:20,514 - #24 }
+INFO  15:41:20,515 - #24 }
+INFO  15:41:20,516 - #28 int
+INFO  15:41:20,518 - #27 2
+ERROR 15:41:20,518 - 
+Sintaksna greska na liniji 12
+INFO  15:41:20,518 - #17 ;
+INFO  15:41:20,518 - #28 int
+INFO  15:41:20,518 - #28 a
+INFO  15:41:20,520 - #18 ,
+ERROR 15:41:20,520 - Oporavak izvrsen do ; u liniji 12
+INFO  15:41:20,521 - #28 b
+INFO  15:41:20,521 - #18 ,
+INFO  15:41:20,521 - #28 c
+INFO  15:41:20,521 - #21 [
+INFO  15:41:20,521 - #22 ]
+INFO  15:41:20,521 - #18 ,
+INFO  15:41:20,521 - #18 ,
+ERROR 15:41:20,521 - 
+Sintaksna greska na liniji 14
+INFO  15:41:20,521 - #17 ;
+INFO  15:41:20,521 - #23 {
+INFO  15:41:20,521 - #7 void
+INFO  15:41:20,521 - #28 main
+ERROR 15:41:20,521 - Oporavak izvrsen do , u liniji 14
+INFO  15:41:20,522 - #19 (
+INFO  15:41:20,522 - #20 )
+INFO  15:41:20,522 - #23 {
+INFO  15:41:20,523 - #28 a
+INFO  15:41:20,524 - #14 =
+INFO  15:41:20,524 - #9 +
+ERROR 15:41:20,524 - 
+Sintaksna greska na liniji 22
+INFO  15:41:20,525 - #17 ;
+INFO  15:41:20,525 - #28 a
+INFO  15:41:20,525 - #14 =
+INFO  15:41:20,525 - #29 'v'
+ERROR 15:41:20,525 - Oporavak izvrsen do , u liniji 22
+INFO  15:41:20,527 - #17 ;
+INFO  15:41:20,528 - #24 }
+INFO  15:41:20,528 - #24 }
+INFO  15:41:20,539 - Program(
+  ProgName(
+   mihailo
+  ) [ProgName]
+  NameSpacesList(
+    NoNameSpacesList(
+    ) [NoNameSpacesList]
+    Namespace(
+      NamespaceName(
+       Miki
+      ) [NamespaceName]
+      ConstVarDeclarationList(
+        ConstVarDeclarationList(
+          ConstVarDeclarationList(
+            ConstVarDeclarationList(
+              NoConstVarDeclarationList(
+              ) [NoConstVarDeclarationList]
+              VarCVDeclaration(
+                TypeSemiVarDecl(
+                  Type(
+                   int
+                  ) [Type]
+                  NoCommaVarDeclList(
+                    VDeclaration(
+                     a
+                    ) [VDeclaration]
+                  ) [NoCommaVarDeclList]
+                ) [TypeSemiVarDecl]
+              ) [VarCVDeclaration]
+            ) [ConstVarDeclarationList]
+            VarCVDeclaration(
+              TypeSemiVarDecl(
+                Type(
+                 char
+                ) [Type]
+                NoCommaVarDeclList(
+                  VDeclaration(
+                   d
+                  ) [VDeclaration]
+                ) [NoCommaVarDeclList]
+              ) [TypeSemiVarDecl]
+            ) [VarCVDeclaration]
+          ) [ConstVarDeclarationList]
+          VarCVDeclaration(
+            TypeSemiVarDecl(
+              Type(
+               char
+              ) [Type]
+              NoCommaVarDeclList(
+                VArrayDeclaration(
+                 e
+                ) [VArrayDeclaration]
+              ) [NoCommaVarDeclList]
+            ) [TypeSemiVarDecl]
+          ) [VarCVDeclaration]
+        ) [ConstVarDeclarationList]
+        ConstCVDeclaration(
+          TypeSemiConstDecl(
+            Type(
+             char
+            ) [Type]
+            OneConstDecl(
+              ConstDeclaration(
+               f
+                CharConst(
+                 'f'
+                ) [CharConst]
+              ) [ConstDeclaration]
+            ) [OneConstDecl]
+          ) [TypeSemiConstDecl]
+        ) [ConstCVDeclaration]
+      ) [ConstVarDeclarationList]
+      NoMethodDeclarationList(
+      ) [NoMethodDeclarationList]
+    ) [Namespace]
+  ) [NameSpacesList]
+  ConstVarDeclarationList(
+    ConstVarDeclarationList(
+      NoConstVarDeclarationList(
+      ) [NoConstVarDeclarationList]
+      VarCVDeclaration(
+        ErrorVarDecl(
+        ) [ErrorVarDecl]
+      ) [VarCVDeclaration]
+    ) [ConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        ErrorCommaVList(
+        ) [ErrorCommaVList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      NoLocalVarDeclarationList(
+      ) [NoLocalVarDeclarationList]
+      StmtList(
+        StmtList(
+          NoStmtList(
+          ) [NoStmtList]
+          ErrorStmt(
+          ) [ErrorStmt]
+        ) [StmtList]
+        DesignatorStatementStmt(
+          DesignatorAssign(
+            DesignatorIdent(
+             a
+            ) [DesignatorIdent]
+            Equal(
+            ) [Equal]
+            ExprTerm(
+              TermFactor(
+                FactorConstValueChar(
+                 'v'
+                ) [FactorConstValueChar]
+              ) [TermFactor]
+            ) [ExprTerm]
+          ) [DesignatorAssign]
+        ) [DesignatorStatementStmt]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  15:41:20,539 - ===================================
+INFO  15:41:20,543 - INFO: obradjuje se namespace Miki na liniji 4
+INFO  15:41:20,543 - INFO: deklarisana namespace promenljiva Miki::a na liniji 5
+INFO  15:41:20,543 - INFO: deklarisana namespace promenljiva Miki::d na liniji 6
+INFO  15:41:20,543 - INFO: deklarisana namespace promenljiva niza Miki::e na liniji 7
+INFO  15:41:20,543 - INFO: deklarisana namespace konstanta Miki::f na liniji 8
+INFO  15:41:20,543 - INFO: obradjuje se funkcija main na liniji 18
+ERROR 15:41:20,546 - GRESKA: nepostojeci simbol na liniji 23
+ERROR 15:41:20,546 - GRESKA na liniji 23
+INFO  15:41:20,546 - ===================================
+ERROR 15:41:20,546 - Parsiranje NIJE uspesno zavrseno!

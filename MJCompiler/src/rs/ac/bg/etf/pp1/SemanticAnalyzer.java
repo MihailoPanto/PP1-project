@@ -36,15 +36,15 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		log.info(msg.toString());
 	}
 
-	public boolean passed() {
-		return !errorDetected;
-	}
-
 	public void visit(ProgName progName) {
 		progName.obj = Tab.insert(Obj.Prog, progName.getProgName(), Tab.noType);
 		Tab.openScope();
 	}
 
+	public boolean passed() {
+		return !errorDetected;
+	}
+	
 	public void visit(Program program) {
 		if (mainFunction == null) {
 			report_error("GRESKA: funkcija main mora postojati!");

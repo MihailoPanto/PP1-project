@@ -1,0 +1,138 @@
+INFO  15:02:03,216 - Compiling source file: C:\Users\Korisnik\Desktop\github\PP1-project\MJCompiler\test\program3.mj
+INFO  15:02:03,253 - #2 program
+INFO  15:02:03,253 - #28 program3
+INFO  15:02:03,253 - #28 int
+INFO  15:02:03,255 - #28 a
+INFO  15:02:03,256 - #17 ;
+INFO  15:02:03,257 - #23 {
+INFO  15:02:03,257 - #7 void
+INFO  15:02:03,258 - #28 main
+INFO  15:02:03,258 - #19 (
+INFO  15:02:03,258 - #20 )
+INFO  15:02:03,258 - #28 int
+INFO  15:02:03,259 - #28 m
+INFO  15:02:03,259 - #21 [
+INFO  15:02:03,259 - #22 ]
+INFO  15:02:03,259 - #17 ;
+INFO  15:02:03,260 - #23 {
+INFO  15:02:03,260 - #28 m
+INFO  15:02:03,261 - #14 =
+INFO  15:02:03,261 - #4 new
+INFO  15:02:03,263 - #28 int
+INFO  15:02:03,263 - #21 [
+INFO  15:02:03,263 - #27 4
+INFO  15:02:03,263 - #22 ]
+INFO  15:02:03,263 - #17 ;
+INFO  15:02:03,265 - #6 read
+INFO  15:02:03,265 - #19 (
+INFO  15:02:03,265 - #28 a
+INFO  15:02:03,265 - #20 )
+INFO  15:02:03,265 - #17 ;
+INFO  15:02:03,265 - #5 print
+INFO  15:02:03,265 - #19 (
+INFO  15:02:03,265 - #28 a
+INFO  15:02:03,265 - #20 )
+INFO  15:02:03,266 - #17 ;
+INFO  15:02:03,266 - #24 }
+INFO  15:02:03,266 - #24 }
+INFO  15:02:03,280 - Program(
+  ProgName(
+   program3
+  ) [ProgName]
+  NoNameSpacesList(
+  ) [NoNameSpacesList]
+  ConstVarDeclarationList(
+    NoConstVarDeclarationList(
+    ) [NoConstVarDeclarationList]
+    VarCVDeclaration(
+      TypeSemiVarDecl(
+        Type(
+         int
+        ) [Type]
+        NoCommaVarDeclList(
+          VDeclaration(
+           a
+          ) [VDeclaration]
+        ) [NoCommaVarDeclList]
+      ) [TypeSemiVarDecl]
+    ) [VarCVDeclaration]
+  ) [ConstVarDeclarationList]
+  MethodDeclarationList(
+    NoMethodDeclarationList(
+    ) [NoMethodDeclarationList]
+    MethodDecl(
+      MethodTypeNameVoid(
+       main
+      ) [MethodTypeNameVoid]
+      LocalVarDeclarationList(
+        NoLocalVarDeclarationList(
+        ) [NoLocalVarDeclarationList]
+        TypeSemiVarDecl(
+          Type(
+           int
+          ) [Type]
+          NoCommaVarDeclList(
+            VArrayDeclaration(
+             m
+            ) [VArrayDeclaration]
+          ) [NoCommaVarDeclList]
+        ) [TypeSemiVarDecl]
+      ) [LocalVarDeclarationList]
+      StmtList(
+        StmtList(
+          StmtList(
+            NoStmtList(
+            ) [NoStmtList]
+            DesignatorStatementStmt(
+              DesignatorAssign(
+                DesignatorIdent(
+                 m
+                ) [DesignatorIdent]
+                Equal(
+                ) [Equal]
+                ExprTerm(
+                  TermFactor(
+                    FactorNew(
+                      Type(
+                       int
+                      ) [Type]
+                      ExprTerm(
+                        TermFactor(
+                          FactorConstValueNum(
+                           4
+                          ) [FactorConstValueNum]
+                        ) [TermFactor]
+                      ) [ExprTerm]
+                    ) [FactorNew]
+                  ) [TermFactor]
+                ) [ExprTerm]
+              ) [DesignatorAssign]
+            ) [DesignatorStatementStmt]
+          ) [StmtList]
+          ReadStmt(
+            DesignatorIdent(
+             a
+            ) [DesignatorIdent]
+          ) [ReadStmt]
+        ) [StmtList]
+        PrintStmt(
+          ExprTerm(
+            TermFactor(
+              FactorDesignator(
+                DesignatorIdent(
+                 a
+                ) [DesignatorIdent]
+              ) [FactorDesignator]
+            ) [TermFactor]
+          ) [ExprTerm]
+        ) [PrintStmt]
+      ) [StmtList]
+    ) [MethodDecl]
+  ) [MethodDeclarationList]
+) [Program]
+INFO  15:02:03,280 - ===================================
+INFO  15:02:03,283 - INFO: deklarisana promenljiva a na liniji 4
+INFO  15:02:03,283 - INFO: obradjuje se funkcija main na liniji 6
+INFO  15:02:03,283 - INFO: deklarisana promenljiva niza m na liniji 7
+INFO  15:02:03,283 - ===================================
+INFO  15:02:03,289 - Parsiranje uspesno zavrseno!

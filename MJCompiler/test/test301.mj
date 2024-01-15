@@ -48,11 +48,7 @@ namespace Nizovi{
 			
 		a=1;
 		read(bodovi);
-		print(bodovi);
 		bodovi = -bodovi + (Konstante::pet * a / 2 - Konstante::jedan) * bodovi - (3 % 2 + 3 * 2 - 3); 
-		print(bodovi);
-		
-		bodovi++;
 		print(bodovi);
 	}
 }

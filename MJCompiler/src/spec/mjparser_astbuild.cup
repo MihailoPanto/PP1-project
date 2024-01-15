@@ -4,6 +4,7 @@ import java_cup.runtime.*;
 import org.apache.log4j.*;
 import rs.ac.bg.etf.pp1.ast.*;
 
+// Kod preuzet sa snimaka vezbi za 2. fazu projekta linija 7 - linija 47
 parser code {:
 
 	boolean errorDetected;
