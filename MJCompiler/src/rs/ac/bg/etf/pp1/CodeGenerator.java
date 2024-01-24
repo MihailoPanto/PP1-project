@@ -108,32 +108,46 @@ public class CodeGenerator extends VisitorAdaptor {
 			if (((BoolConst) constDeclaration.getConstValue()).getB1().equals("true")) {
 				constDeclaration.obj.setAdr(1);
 			} else {
-				constDeclaration.obj.setAdr(2);
+				constDeclaration.obj.setAdr(0);
 			}
 		}
 		Code.load(constDeclaration.obj);
 	}
 
 	public void visit(DesignatorPP designator) {
+		Obj tmp=null;
 		if (designator.getDesignator().obj.getKind() == Obj.Elem) {
 			Code.put(Code.dup2);
+			Code.put(Code.aload);
+		}else {
+			tmp = designator.getDesignator().obj;
+			Code.load(tmp);
 		}
-		Obj tmp = designator.getDesignator().obj;
-		Code.load(tmp);
 		Code.loadConst(1);
 		Code.put(Code.add);
-		Code.store(tmp);
+		if (designator.getDesignator().obj.getKind() == Obj.Elem) {
+			Code.put(Code.astore);
+		}else {
+			Code.store(tmp);
+		}
 	}
 
 	public void visit(DesignatorMM designator) {
+		Obj tmp=null;
 		if (designator.getDesignator().obj.getKind() == Obj.Elem) {
 			Code.put(Code.dup2);
+			Code.put(Code.aload);
+		}else {
+			tmp = designator.getDesignator().obj;
+			Code.load(tmp);
 		}
-		Obj tmp = designator.getDesignator().obj;
-		Code.load(tmp);
 		Code.loadConst(1);
 		Code.put(Code.sub);
-		Code.store(tmp);
+		if (designator.getDesignator().obj.getKind() == Obj.Elem) {
+			Code.put(Code.astore);
+		}else {
+			Code.store(tmp);
+		}
 	}
 
 	public Obj getFromScope(Obj scope, String name) {
